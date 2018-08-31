@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Admin Page</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/adminpage.css" type="text/css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<!-- reference Responsive Menu with Media Queries (Checkbox Trick) - Using only CSS3 -->
+	<body>
+	
+	<!-- Start of Navigation bar -->
+	  <div class="nav">
+	    <label id="hamburger" for="toggle">&#9776;</label>
+		<input type="checkbox" id="toggle">
+		<div class="menu">
+		 <a href="#">Home</a>
+		  <a href="#"><i class="fa fa-user"></i></a>
+		  <a href="#"><i class="fa fa-shopping-cart"></i></a>
+		</div>
+	  </div>
+	<!-- End of Navigation bar -->
+	<section id="admin-page">
+	<div class="order-navigation">
+	  <h1>All orders</h1>
+	  <ul>
+	    <li><a class="pending-orders" href="#">Pending Orders</a></li>
+		<li><a class="completed-orders" href="#">Completed Orders</a></li>
+		<li><a class="declined-orders" href="#">Declined Orders</a></li>
+	  </ul>
+	  <section id="pending-section">
+		  <table>
+			<tr>
+				<th>Order #</th>
+				<th>Date</th>
+				<th>User</th>
+				<th>Order Time</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
+				<td>26 August 2018</td>
+				<td><a href="#">John</a></td>
+				<td>20:30</td>
+				<td class="admin-action">
+				  <a class="declined-link" href="#">Decline</a>
+				  <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+				</td>
+		    </tr>
+		  </table>
+	  </section>
+	   <section id="completed-section">
+		  <table>
+			<tr>
+				<th>Order #</th>
+				<th>Date</th>
+				<th>User</th>
+				<th>Order Time</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
+				<td>20 August 2018</td>
+				<td><a href="#">Chinemelu</a></td>
+				<td>01:30</td>
+				<td class="admin-action">
+				  <a href="#">Decline</a>
+				  <label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
+				</td>
+		    </tr>
+		  </table>
+	  </section>
+	    <section id="declined-section">
+		  <table>
+			<tr>
+				<th>Order #</th>
+				<th>Date</th>
+				<th>User</th>
+				<th>Order Time</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
+				<td>6 August 2018</td>
+				<td><a href="#">Amaka</a></td>
+				<td>09:00</td>
+				<td class="admin-action">
+				   <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+				</td>
+		    </tr>
+		   </table>
+	  </section>
+	  
+	  
+	  <!-- Start of Modal -->
+	
+	<div class="adminpage-modal">
+      <div class="adminpage-modal-container">
+			  <div class="orders">
+			  <table>
+				<tr>
+				<th>
+				  Date
+				</th>
+				<th>
+				  Total
+				</th>
+				<th>
+				  Time
+				</th>
+				<th>
+				  Order #8fff7a77-7d7d-77e1-a888-10d8888888d8
+				</th>
+				</tr>
+				<tr>
+				<td>
+				  26 August 2018
+				</td>
+				
+				<td>
+				  £19.50
+				</td>
+				
+				<td>
+				  20:30
+				</td>
+			   <tr>
+			   </table>
+			  <div class="order">
+				<div class="order-image">
+				  <img src="images/blue-colors-cream-928475.jpg">
+				</div>
+				<div class="order-details">
+				<h1 class="order-name">Coloured Doughnut</h1>
+				<h1>Qty: 1</h1>
+				<h1>£1.50</h1>
+				</div>
+			  </div>
+				  
+			  <div class="order">
+				<div class="order-image">
+				  <img src="images/burrito-chicken-close-up-461198.jpg">
+				</div>
+				<div class="order-details">
+				<h1 class="order-name">Chicken burrito</h1>
+				<h1>Qty: 1</h1>
+				<h1>£6.50</h1>
+				</div>
+			  </div>
+			  
+			  <div class="order">
+				<div class="order-image">
+				  <img src="images/basil-dinner-food-8500.jpg">
+				</div>
+				<div class="order-details">
+				<h1 class="order-name">Spaghetti</h1>
+				<h1>Qty: 1</h1>
+				<h1>£8.50</h1>
+				</div>
+			  </div>
+				  
+			  <div class="order">
+				<div class="order-image">
+				  <img src="images/cake-chocolate-chocolate-cake-132694.jpg">
+				</div>
+				<div class="order-details">
+				<h1 class="order-name">Chocolate cake</h1>
+				<h1>Qty: 1</h1>
+				<h1>£3.00</h1>
+				</div>
+			  </div>
+					 
+			</div>
+	  </div>
+	</div>
+	
+	</div>
+	</section>
+	<script src="js/adminpage.js"></script>
+	</body>
+</html>
