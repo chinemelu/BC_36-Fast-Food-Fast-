@@ -1,0 +1,144 @@
+html, body {
+  width: 100%;  
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Beginning of navigation styling  */
+
+.nav {
+	text-align: right;
+	height: 90px;
+	line-height: 90px;
+	background-color: #FF4136;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+}
+
+.nav i {
+    font-size: 140%;
+}	
+	
+.menu {
+	margin-right: 3%;
+}
+
+.menu a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #FFF;
+	margin: 0 30px;
+	line-height: 70px;
+	clear: both;
+}
+
+#hamburger {
+    margin-right: 7%;
+	font-size: 170%;
+	line-height: 70px;
+	display: none;
+	width: 26px;
+	float: right;
+}
+
+#toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+	#hamburger {
+		display: block;
+		cursor: pointer;
+	}
+	.menu {
+		text-align: center;
+		width: 100%;
+		display: none;
+	}
+	.menu a {
+		display: block;
+		border-bottom: 1px solid #EAEAEB;
+		margin: 0;
+	}
+	#toggle:checked + .menu {
+		display: block;
+	}
+}
+
+/* End of navigation styling */
+
+#customer-page-cover-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0,0,0,0.65)), url("../images/brownie-cake-chocolate-45202.jpg");
+	background-position: center;
+	background-size: cover;
+	height: 60vh;
+}
+
+.customer-page-image-text {
+	position: absolute;
+	color: #FFF;
+	border: 1px solid #FF4136;
+	text-align: center;
+	padding: 1%;
+	font-size: 150%;
+	left: 500px;
+	right: 500px;
+	top: 20%;
+}
+
+.add-to-cart  {
+	background-color: #659DBD;
+	border: none;
+	padding: 0.9em 1.2em;
+	color: #FFF;
+	cursor: pointer;
+}
+
+.heading h1 {
+	text-align: center;
+	text-transform: uppercase;
+	border-bottom: 1px solid #d2d8d8;
+}
+
+#food-list {
+	margin-bottom: 3%;
+	float: left;
+}
+
+.food-item img{
+	height: 200px;
+	width: 85%;
+}
+
+#food-list .food-item {
+	float: left;
+	border: 1px solid #d2d8d8;
+	width: 20%;
+	text-align: center;
+	margin-left: 2.2%;
+	padding: 1%;
+	margin-top: 1%;
+}
+
+#listing-price {
+	color: #659DBD;
+}
+
+#food-list .food-item h1 {
+	font-size: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
