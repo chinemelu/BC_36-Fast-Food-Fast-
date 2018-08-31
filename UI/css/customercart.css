@@ -1,0 +1,144 @@
+html, body {
+  width: 100%;  
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Beginning of navigation styling  */
+
+.nav {
+	text-align: right;
+	height: 90px;
+	line-height: 90px;
+	background-color: #FF4136;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+}
+
+.nav i {
+    font-size: 140%;
+}	
+	
+.menu {
+	margin-right: 3%;
+}
+
+.menu a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #FFF;
+	margin: 0 30px;
+	line-height: 70px;
+	clear: both;
+}
+
+#hamburger {
+    margin-right: 7%;
+	font-size: 170%;
+	line-height: 70px;
+	display: none;
+	width: 26px;
+	float: right;
+}
+
+#toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+	#hamburger {
+		display: block;
+		cursor: pointer;
+	}
+	.menu {
+		text-align: center;
+		width: 100%;
+		display: none;
+	}
+	.menu a {
+		display: block;
+		border-bottom: 1px solid #EAEAEB;
+		margin: 0;
+	}
+	#toggle:checked + .menu {
+		display: block;
+	}
+}
+
+/* End of navigation styling */
+#shopping-cart {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+#shopping-cart .heading table th:first-child, #shopping-cart .heading table td:first-child{
+	padding-left: 0%;
+}
+
+#shopping-cart .heading table td {
+	border-top: 1px solid #d2d8d8;
+	text-align: center;
+}
+
+#shopping-cart .heading table th:last-child, #shopping-cart .heading table td:last-child {
+	padding-left: 20%;
+}
+
+#shopping-cart .price-data {
+	font-size: 85%;
+	
+}
+
+#shopping-cart .image-details .image-name h1 {
+	color: #659DBD;
+}
+
+#shopping-cart .image-details .image-name a {
+	text-decoration: none;
+	color: #FF4136;
+	font-size: 80%;
+}
+
+.image-details .image img {
+	height: 100px;
+	width: 100px;
+}
+
+.image-details > div {
+	width: 100%;
+	margin-top: 3%;
+}
+
+.image-details h1 {
+	font-size: 100%;
+}
+
+#shopping-cart table {
+	border-spacing: 0px;
+	border-collapse: separate;
+	width: 100%;
+}
+
+#shopping-cart .sub-total {
+	font-size: 80%;
+	border-top: 1px solid #d2d8d8;
+	text-align: right;
+	margin-bottom: 10%;
+}
+
+#shopping-cart .order-btn {
+	border: 1px solid #FF4136;
+	border-radius: 12px;
+	color: #FF4136;
+	padding: 10px 30px;
+	text-decoration: none;
+	cursor: pointer;
+	background: #FFF;
+	outline: none;
+}
+
+
