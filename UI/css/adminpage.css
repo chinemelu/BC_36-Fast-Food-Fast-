@@ -1,7 +1,16 @@
-html, body {
-  width: 100%;  
-  height: 100%;
-  margin: 0;
+html {
+	height: 100%;
+	position: relative;
+}
+
+body {
+	margin: 0px;
+    font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
 * {
@@ -17,6 +26,8 @@ html, body {
 	background-color: #FF4136;
 	font-weight: 500;
 	letter-spacing: 0.1em;
+	z-index: 2;
+	position: relative;
 }
 
 .nav i {
@@ -25,6 +36,7 @@ html, body {
 	
 .menu {
 	margin-right: 3%;
+	background-color: #FF4136;
 }
 
 .menu a {
@@ -32,24 +44,25 @@ html, body {
 	text-transform: uppercase;
 	color: #FFF;
 	margin: 0 30px;
-	line-height: 70px;
+	line-height: 90px;
 	clear: both;
 }
 
 #hamburger {
     margin-right: 7%;
 	font-size: 170%;
-	line-height: 70px;
+	line-height: 90px;
 	display: none;
 	width: 26px;
 	float: right;
+	color: #FFF;
 }
 
 #toggle {
-  display: none;
+    display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
 	#hamburger {
 		display: block;
 		cursor: pointer;
@@ -64,6 +77,11 @@ html, body {
 		border-bottom: 1px solid #EAEAEB;
 		margin: 0;
 	}
+	
+	.menu a:first-child {
+	    border-top: 1px solid #EAEAEB;
+    }
+
 	#toggle:checked + .menu {
 		display: block;
 	}
@@ -73,7 +91,6 @@ html, body {
 
 
 #admin-page .order-navigation {
-  position: relative;
    max-width: 1100px;
    margin: 0 auto;
 }
@@ -100,7 +117,6 @@ html, body {
 #admin-page .order-navigation ul li a {
 	margin-right: 40px;
 	color: black;
-	width: 100%;
 }
 
 #admin-page .order-navigation ul li a:hover {
@@ -113,42 +129,40 @@ html, body {
 	
 }
 
-/* #admin-page .order-navigation th:last-child, #admin-page .order-navigation td:first-child { */
-	/* padding-left: 0; */
-/* } */
-
 #admin-page table {
 	width: 100%;
 	border: 1px solid #d2d8d8;
 	border-spacing: 0px;
+	border-collapse: collapse;
 }
 
-#admin-page table th:nth-child(odd), #admin-page table td:nth-child(odd){
-	border-left: none;
-	border-right: 1px solid #d2d8d8;
+
+#admin-page td, #admin-page th {
+    border: 1px solid #d2d8d8;
+    padding: 8px;
+	text-align: center;
 }
 
-#admin-page table th:nth-child(even), #admin-page table td:nth-child(even)  {
-	/* border-bottom: 1px solid #d2d8d8; */
-	border-left: none;
-	border-right: 1px solid #d2d8d8;
+#admin-page table tr:nth-child(even){
+	background-color: #f2f2f2;
 }
+
 
 #admin-page table th {
-	border-bottom: 1px solid #d2d8d8;
-	border-left: 1px solid #d2d8d8;
-	border-right: 1px solid #d2d8d8;
-}
-
-#admin-page .order-navigation table th, #admin-page .order-navigation table td {
-	padding-left: 2%;
-	padding-right: 2%;
-	text-align: center;
+	padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #FF4136 ;
+    color: #FFF;
 }
 
 .admin-action a, .admin-action label {
    margin-left: 2%;	
    cursor: pointer;
+}
+
+#pending-section, #completed-section, #declined-section {
+	max-width: 1100px;
+	margin: 0 auto;
 }
 
 #pending-section {
@@ -181,7 +195,7 @@ html, body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 10;	
+	z-index: 5;	
 	overflow-y: auto;
 	visibility: hidden;
 }
@@ -193,14 +207,14 @@ html, body {
 }
 
 .adminpage-modal-container {
-	max-width: 50%;
+	max-width: 400px;
 	background-color: #FFF;
-	margin: 4em auto;
+	margin: 4em auto 4em;
 	cursor: auto;
 	position: relative;
-	border-radius: 0.25em;	
+	border-radius: 0.25em;
+	width: 80%;
 }
-
 
 .orders .order-image > img {
 	width: 100px;
@@ -258,8 +272,30 @@ html, body {
     color: #659DBD;	
 }
 
+@media only screen and (max-width: 500px) {
+  .orders .order .order-details, .orders .order .order-image {
+	display: block;
+  }
+  
+  .orders .order {
+	margin-top: 5px;
+	border: 1px solid #d2d8d8;
+  }
+}
 
-
+@media only screen and (max-width: 700px) {
+	#admin-page .order-navigation ul {
+		width: 100%;
+    }
+	
+	#admin-page .order-navigation ul li {
+		width: 31%;
+    }
+	
+	#admin-page .order-navigation {
+	   z-index: -1
+    }
+}
 
 
 
