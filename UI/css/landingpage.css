@@ -1,7 +1,16 @@
-html, body {
-  width: 100%;  
-  height: 100%;
-  margin: 0;
+html {
+	height: 100%;
+	position: relative;
+}
+
+body {
+	margin: 0px;
+    font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
 * {
@@ -17,10 +26,17 @@ html, body {
 	background-color: #FF4136;
 	font-weight: 500;
 	letter-spacing: 0.1em;
+	z-index: 2;
+	position: relative;
 }
 
+.nav i {
+    font-size: 140%;
+}	
+	
 .menu {
 	margin-right: 3%;
+	background-color: #FF4136;
 }
 
 .menu a {
@@ -28,24 +44,25 @@ html, body {
 	text-transform: uppercase;
 	color: #FFF;
 	margin: 0 30px;
-	line-height: 70px;
+	line-height: 90px;
 	clear: both;
 }
 
 #hamburger {
-    margin-right: 7%;
+    margin-right: 9%;
 	font-size: 170%;
-	line-height: 70px;
+	line-height: 90px;
 	display: none;
 	width: 26px;
 	float: right;
+	color: #FFF;
 }
 
 #toggle {
   display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
 	#hamburger {
 		display: block;
 		cursor: pointer;
@@ -60,11 +77,15 @@ html, body {
 		border-bottom: 1px solid #EAEAEB;
 		margin: 0;
 	}
+	
+	.menu a:first-child {
+	    border-top: 1px solid #EAEAEB;
+    }
+
 	#toggle:checked + .menu {
 		display: block;
 	}
 }
-
 /* End of navigation styling */
 
 /* Start of modal styling */
@@ -92,10 +113,11 @@ html, body {
 .landingpage-modal-container {
 	max-width: 600px;
 	background-color: #FFF;
-	margin: 4em auto;
+	margin: 4em auto 4em;
 	cursor: auto;
 	position: relative;
 	border-radius: 0.25em;	
+	width: 90%;
 }
 
 .landingpage-modal-container .switcher {
@@ -127,7 +149,6 @@ html, body {
 	color: #505260;
 }
 
-
 .landingpage-modal-container .input-field {
 	width: 80%;
 	margin: 2em 3em;
@@ -144,6 +165,7 @@ html, body {
 
 .input-container {
 	position: relative;
+	margin: 0 auto;
 }
 
 .landingpage-modal-container .cd-form .input-label {
@@ -193,7 +215,7 @@ input[type="checkbox"] {
 	background-color: #FFF;
 	border: 1px solid #FF4136;
 	width: 85%;
-	margin: 2em 3em;
+	margin: 2em 2em;
 	padding: 1em;
 	color: #FF4136;
 	text-transform: uppercase;
@@ -243,18 +265,20 @@ section#background-image {
 	height: 100vh;
 	background-position: center;
 	background-size: cover;
+	position: relative;
 }
 
 .background-image-text {
 	position: absolute;
 	top: 30%;
-	max-width: 45%;
-	font-size: 200%;
+	max-width: 100%;
+	left: 20%;
+	right: 20%;
+	font-size: 1.6em;
 	text-align: center;
 	color: #FFF;
 	font-weight: 600;
 	border: 1px solid #FF4136;
-	margin-left: 1%;
 }
 
 .search-bar {
@@ -282,6 +306,54 @@ section#background-image {
 #search-bar-section button i {
 	margin-left: 5%;
 	font-size: 150%;
+}
+
+#getting-started {
+	margin-bottom: 7%;
+}
+
+.getting-started-text {
+	text-align: center;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.sign-up, .sign-in, .add-food-to-cart, .order {
+	display: inline-block;
+	text-align: center;
+	padding: 2%;
+	border: 1.5px solid #FF4136;
+	margin-left: 3.5%;
+	width: 20%;
+}
+
+.sign-up i, .sign-in i, .add-food-to-cart i, .order i {
+   font-size: 2.5em;
+}
+
+@media only screen and (max-width: 600px) {
+	.sign-up, .sign-in, .add-food-to-cart, .order {	
+	  width: 100%;
+	  margin: 0.5em auto;
+    }
+}	
+
+@media only screen and (max-width: 500px) {
+	.background-image-text {
+		top: 8%;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.background-image-text {
+		top: 11%;
+		font-size: 1.3em;
+	}
+	section#background-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0,0,0,0.75)), url("../images/cover-photo.jpg");
+	height: 100vh;
+	background-position: center;
+    }
 }
 
 
