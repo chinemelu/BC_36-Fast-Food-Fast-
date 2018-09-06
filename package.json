@@ -1,0 +1,37 @@
+{
+  "name": "fast-food-fast",
+  "version": "1.0.0",
+  "description": "Food delivery app",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "server": "nodemon --watch server --exec babel-node server/app",
+    "babel-node": "babel-node --presets env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinemelu/BC_36-Fast-Food-Fast-.git"
+  },
+  "keywords": [
+    "food",
+    "delivery"
+  ],
+  "author": "Chinemelu Anthony Nwosu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chinemelu/BC_36-Fast-Food-Fast-/issues"
+  },
+  "homepage": "https://github.com/chinemelu/BC_36-Fast-Food-Fast-#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.4"
+  }
+}
