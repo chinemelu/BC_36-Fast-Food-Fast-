@@ -349,13 +349,4 @@ section#background-image {
 		top: 11%;
 		font-size: 1.3em;
 	}
-	section#background-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0,0,0,0.75)), url("../images/cover-photo.jpg");
-	height: 100vh;
-	background-position: center;
-    }
 }
-
-
-
-
