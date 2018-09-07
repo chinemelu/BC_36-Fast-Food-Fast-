@@ -2,6 +2,8 @@ import express from 'express';
 import bodyparser from 'body-parser';
 import logger from 'morgan';
 
+import orderRoutes from './routes/orderRoutes';
+
 
 const app = express();
 
@@ -9,6 +11,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(logger('dev'));
 
+app.use('/api/v1/orders', orderRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
