@@ -1,4 +1,4 @@
-import { orderDatabase, ourItems } from '../../dataStructure/orderDatabase';
+import { orderDatabase, ourItems } from '../../dataStructure/dummyDatabase';
 
 /**
  * @class OrderController
@@ -21,7 +21,7 @@ class OrderController {
     const itemFound = ourItems.filter(item => item.name === name);
 
     // initialise items
-    const items =  [];
+    const items = [];
     
     if (!itemFound.length) {
       return res.status(400).json({
@@ -35,13 +35,11 @@ class OrderController {
       quantity
     };
 
-
-
     const newOrder = {
       id: orderDatabase.slice(-1)[0].id + 1,
       status: 'pending',
       items: items.push(newItem)
-    }
+    };
 
     res.status(201).json({
       message: 'You have successfully ordered',
