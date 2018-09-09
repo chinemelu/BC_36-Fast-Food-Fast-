@@ -21,7 +21,8 @@ describe('GET: /api/v1/cart/add-to-cart/itemId API route', () => {
           done();
         });
     });
-
+  });
+  describe('Item not found', () => {
     it("should respond with an error message if item doesn't exist", (done) => {
       chai.request(server)
         .get('/api/v1/cart/add-to-cart/0')
@@ -32,6 +33,22 @@ describe('GET: /api/v1/cart/add-to-cart/itemId API route', () => {
           res.body.should.have.property('message');
           res.body.message.should.be.a('string');
           res.body.message.should.eql('Item not found');
+          done();
+        });
+    });
+  });
+  describe('No errors', () => {
+    it('it should add an item to cart', (done) => {
+      chai.request(server)
+        .get('/api/v1/cart/add-to-cart/51')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('items');
+          res.body.items.should.have.property('51');
+          res.body.items['51'].should.be.a('object');
+          res.body.items['51'].item.unitPrice.should.eql(650);
+          res.body.items['51'].item.name.should.eql('Spaghetti');
           done();
         });
     });
