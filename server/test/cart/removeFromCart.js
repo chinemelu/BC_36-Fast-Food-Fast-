@@ -5,11 +5,11 @@ import server from '../../app';
 chai.should();
 chai.use(chaiHttp);
 
-describe('GET: /api/v1/cart/add-to-cart/itemId API route', () => {
+describe('GET: /api/v1/cart/remove/itemId API route', () => {
   describe('Bad request', () => {
     it('it should respond with an error message if id is not an integer', (done) => {
       chai.request(server)
-        .get('/api/v1/cart/add-to-cart/a')
+        .get('/api/v1/cart/remove/a')
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -25,7 +25,7 @@ describe('GET: /api/v1/cart/add-to-cart/itemId API route', () => {
   describe('Item not found', () => {
     it("should respond with an error message if item doesn't exist", (done) => {
       chai.request(server)
-        .get('/api/v1/cart/add-to-cart/0')
+        .get('/api/v1/cart/remove/0')
         .end((err, res) => {
           res.should.have.status(404);
           res.should.be.json;
@@ -36,19 +36,32 @@ describe('GET: /api/v1/cart/add-to-cart/itemId API route', () => {
           done();
         });
     });
-  });
-  describe('Successful addition of an item to the cart', () => {
-    it('it should add an item to cart', (done) => {
+    it("should respond with a message if item isn't in cart", (done) => {
       chai.request(server)
-        .get('/api/v1/cart/add-to-cart/51')
+        .get('/api/v1/cart/remove/55')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('message');
+          res.body.message.should.be.a('string');
+          res.body.message.should.eql('Item not in cart');
+          done();
+        });
+    });
+  });
+  describe('Successful removal of an item from the cart', () => {
+    it('it should remove an item from the cart', (done) => {
+      chai.request(server)
+        .get('/api/v1/cart/remove/53')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('items');
-          res.body.items.should.have.property('51');
-          res.body.items['51'].should.be.a('object');
-          res.body.items['51'].item.unitPrice.should.eql(650);
-          res.body.items['51'].item.name.should.eql('Spaghetti');
+          res.body.items.should.have.property('52');
+          res.body.items['52'].should.be.a('object');
+          res.body.items['52'].item.unitPrice.should.eql(250);
+          res.body.items['52'].item.name.should.eql('Chicken burrito');
           done();
         });
     });
