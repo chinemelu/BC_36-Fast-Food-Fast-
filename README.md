@@ -10,6 +10,17 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
 * Using HTTPS; copy and paste the following below on your terminal
 >```https://github.com/chinemelu/BC_36-Fast-Food-Fast-.git```
 
+## Running the tests
+* The tests have been written using Mocha, Chai and Chai-http.
+* cd into the folder
+* Write the following command on terminal.
+* ```npm test```
+* If the tests are successful, they will complete without failures or errors.
+  ```
+  .........
+  ----------------------------------------------------------------------
+    7 passing
+  ```
   
 ### Front End Dependencies
 * [Font Awesome](http://fontawesome.io/) -font and CSS toolkit
