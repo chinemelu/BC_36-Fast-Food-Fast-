@@ -29,6 +29,17 @@ class ShoppingCart {
   }
 
   /**
+   * @description remove food item from cart
+   * @param {object} item
+   * @param {integer} id
+   * @returns {JSON} returns a JSON object
+   */
+  removeItem(item, id) {
+    this.total -= (this.items[id].item.unitPrice * this.items[id].quantity);
+    delete this.items[id];
+  }
+
+  /**
    * @description generate array of items
    * @param {object} item
    * @param {integer} id
