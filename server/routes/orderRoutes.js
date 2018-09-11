@@ -1,10 +1,10 @@
 import express from 'express';
-import orderController from '../controllers/orderController/PlaceOrder';
+import CartController from '../controllers/shoppingCartContoller/CartController';
 
 const router = express.Router();
 
 router.post(
-  '/', orderController.placeOrder
+  '/', CartController.placeOrder
 );
 
 
