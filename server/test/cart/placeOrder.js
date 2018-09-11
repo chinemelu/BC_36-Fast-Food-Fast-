@@ -31,7 +31,7 @@ describe('POST: /api/v1/orders API route', () => {
             });
         });
     });
-});
+  });
   describe('A successful order', () => {
     it('it should order if there are no errors', (done) => {
       chai.request(server)
