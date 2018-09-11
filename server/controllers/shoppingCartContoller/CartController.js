@@ -1,5 +1,5 @@
 import ShoppingCart from './ShoppingCart';
-import { oldCart, ourItems } from '../../dataStructure/dummyDatabase';
+import { oldCart, ourItems, orders } from '../../dataStructure/dummyDatabase';
 import itemNotFound from '../../helper/itemNotFound';
 
 /**
@@ -46,5 +46,42 @@ class cartController {
       res.json(cart);
     });
   }
+
+  /**
+   * @description place food order
+   * @param {*} req http request
+   * @param {*} res http response
+   * @returns {JSON} returns a JSON object
+   */
+  static placeOrder(req, res) {
+    const cart = new ShoppingCart(oldCart);
+
+    const determineId = () => {
+      if (orders.length > 0) {
+        return orders.slice(-1)[0].id + 1;
+      }
+      return 1;
+    };
+
+    if (Object.keys(cart.items).length === 0) {
+      return res.status(400).json({
+        message: 'There are no items in the shopping cart'
+      });
+    }
+
+    const newOrder = {
+      id: determineId(),
+      status: 'pending',
+      cart: cart.generateArray()
+    };
+
+    orders.push(newOrder);
+
+    res.status(201).json({
+      message: 'You have successfully ordered the item(s)',
+      newOrder
+    });
+  }
 }
+
 export default cartController;

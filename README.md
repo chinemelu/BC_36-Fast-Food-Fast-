@@ -19,7 +19,7 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   ```
   .........
   ----------------------------------------------------------------------
-    7 passing
+    9 passing
   ```
   
 ### Front End Dependencies

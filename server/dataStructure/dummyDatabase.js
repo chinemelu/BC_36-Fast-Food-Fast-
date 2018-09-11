@@ -47,3 +47,5 @@ export const oldCart = {
     }
   }
 };
+
+export const orders = [];
