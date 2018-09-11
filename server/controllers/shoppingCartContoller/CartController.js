@@ -82,6 +82,21 @@ class cartController {
       newOrder
     });
   }
+
+  /**
+   * @description fetch all food orders
+   * @param {*} req http request
+   * @param {*} res http response
+   * @returns {JSON} returns a JSON object
+   */
+  static fetchAllOrders(req, res) {
+    if (orders.length) {
+      return res.status(200).json(orders);
+    }
+    res.status(200).json({
+      message: 'There are no available food orders'
+    });
+  }
 }
 
 export default cartController;

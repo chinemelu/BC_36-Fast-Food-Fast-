@@ -9,8 +9,8 @@ class ShoppingCart {
    * @returns {JSON} returns a JSON object
    */
   constructor(oldCart) {
-    this.total = oldCart.total;
-    this.items = oldCart.items;
+    this.total = oldCart.total || 0;
+    this.items = oldCart.items || {};
   }
 
   /**
