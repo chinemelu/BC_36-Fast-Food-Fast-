@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe('GET: /api/v1/orders', () => {
   describe('Successful request', () => {
-    it('it should indicate if there are no orders in the cart', (done) => {
+    it('it should indicate if there are no orders in the database', (done) => {
       chai.request(server)
         .get('/api/v1/orders')
         .end((err, res) => {
