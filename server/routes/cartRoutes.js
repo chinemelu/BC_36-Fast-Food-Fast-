@@ -12,5 +12,4 @@ router.get(
   '/remove/:id', idValidator, CartController.removeItem
 );
 
-
 export default router;
