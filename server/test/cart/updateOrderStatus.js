@@ -5,11 +5,11 @@ import server from '../../app';
 chai.should();
 chai.use(chaiHttp);
 
-describe('GET: /api/v1/orders/orderId API route', () => {
+describe('PUT: /api/v1/orders/orderId API route', () => {
   describe('Bad request', () => {
     it('it should respond with an error message if id is not an integer', (done) => {
       chai.request(server)
-        .get('/api/v1/orders/a')
+        .put('/api/v1/orders/a')
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -21,11 +21,27 @@ describe('GET: /api/v1/orders/orderId API route', () => {
           done();
         });
     });
+    it('it should respond with an error message if invalid status order is sent', (done) => {
+      const orderStatus = {
+        orderStatus: 'invalid'
+      };
+      chai.request(server)
+        .put('/api/v1/orders/1')
+        .send(orderStatus)
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('message');
+          res.body.message.should.be.a('string');
+          res.body.message.should.eql("Order status should be either 'completed', 'pending' or 'declined'");
+          done();
+        });
+    });
   });
   describe('Order not found', () => {
     it("should respond with an error message if order doesn't exist", (done) => {
       chai.request(server)
-        .get('/api/v1/orders/0')
+        .put('/api/v1/orders/0')
         .end((err, res) => {
           res.should.have.status(404);
           res.should.be.json;
@@ -38,9 +54,13 @@ describe('GET: /api/v1/orders/orderId API route', () => {
     });
   });
   describe('Successful request', () => {
-    it('it should fetch a food order if there are no errors', (done) => {
+    it('it should update a food order status if there are no errors', (done) => {
+      const orderStatus = {
+        orderStatus: 'completed'
+      };
       chai.request(server)
-        .get('/api/v1/orders/1')
+        .put('/api/v1/orders/1')
+        .send(orderStatus)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -48,7 +68,7 @@ describe('GET: /api/v1/orders/orderId API route', () => {
           res.body.should.have.property('status');
           res.body.should.have.property('cart');
           res.body.id.should.eql(1);
-          res.body.status.should.eql('pending');
+          res.body.status.should.eql('completed');
           res.body.cart[0].item.id.should.eql(51);
           res.body.cart[0].item.name.should.eql('Spaghetti');
           res.body.cart[0].item.unitPrice.should.eql(650);
