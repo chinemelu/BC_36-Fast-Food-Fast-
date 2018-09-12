@@ -13,6 +13,10 @@ router.get(
   '/:id', idValidator, OrderController.fetchOrder
 );
 
+router.put(
+  '/:id', idValidator, OrderController.updateOrderStatus
+);
+
 router.post(
   '/', CartController.placeOrder
 );
