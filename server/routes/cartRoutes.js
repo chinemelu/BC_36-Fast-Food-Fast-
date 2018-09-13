@@ -12,4 +12,8 @@ router.get(
   '/remove/:id', idValidator, CartController.removeItem
 );
 
+router.put(
+  '/update-quantity/:id', idValidator, CartController.updateItemQuantity
+);
+
 export default router;

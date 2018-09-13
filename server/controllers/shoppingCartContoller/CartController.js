@@ -72,6 +72,7 @@ class cartController {
     const newOrder = {
       id: determineId(),
       status: 'pending',
+      total: cart.total,
       cart: cart.generateArray()
     };
 
@@ -95,6 +96,41 @@ class cartController {
     }
     res.status(200).json({
       message: 'There are no available food orders'
+    });
+  }
+
+  /**
+   * @description update item quantity at checkout
+   * @param {*} req http request
+   * @param {*} res http response
+   * @returns {JSON} returns a JSON object
+   */
+  static updateItemQuantity(req, res) {
+    const cart = new ShoppingCart(oldCart);
+    const itemId = req.params.id;
+    const { quantity } = req.body;
+    const selectedItem = ourItems.filter(item => item.id === parseInt(itemId, 10));
+
+    itemNotFound(req, res, () => {
+      if (!(itemId in oldCart.items)) {
+        return res.status(404).json({
+          message: 'Item not in cart'
+        });
+      }
+     
+      if (!quantity) {
+        return res.status(400).json({
+          message: 'Quantity is required'
+        });
+      }
+
+      if (!/^[0-9]*$/.test(quantity)) {
+        return res.status(400).json({
+          message: 'Quantity must be an integer'
+        });
+      }
+      cart.checkout(selectedItem[0], itemId, parseInt(quantity, 10));
+      res.status(200).json(cart);
     });
   }
 }

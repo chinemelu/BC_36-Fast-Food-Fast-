@@ -52,6 +52,18 @@ class ShoppingCart {
     });
     return arr;
   }
+
+  /**
+   * @description checkout
+   * @param {object} item
+   * @param {integer} id
+   * @param {integer} quantity
+   * @returns {Array} returns an array
+   */
+  checkout(item, id, quantity) {
+    this.items[id].quantity = quantity;
+    this.total += (quantity - this.items[id].quantity) * this.items[id].item.unitPrice;
+  }
 }
 
 export default ShoppingCart;
