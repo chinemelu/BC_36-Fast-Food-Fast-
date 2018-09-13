@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/chinemelu/BC_36-Fast-Food-Fast-.svg?branch=develop)](https://travis-ci.org/chinemelu/BC_36-Fast-Food-Fast-)[![Coverage Status](https://coveralls.io/repos/github/chinemelu/BC_36-Fast-Food-Fast-/badge.svg?branch=ch-setup-CI-test-maintainability-coverage-tools-160479457)](https://coveralls.io/github/chinemelu/BC_36-Fast-Food-Fast-?branch=ch-setup-CI-test-maintainability-coverage-tools-160479457)
+[![Maintainability](https://api.codeclimate.com/v1/badges/77068c3cba2c7ec69772/maintainability)](https://codeclimate.com/github/chinemelu/BC_36-Fast-Food-Fast-/maintainability)
 
 # BC_36-Fast-Food-Fast-
 Fast-Food-Fast​ is a food delivery service app for a restaurant.
