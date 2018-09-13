@@ -37,6 +37,36 @@ describe('PUT: /api/v1/orders/orderId API route', () => {
           done();
         });
     });
+    it('should respond with an error message if order status is undefined', (done) => {
+      chai.request(server)
+        .put('/api/v1/orders/1')
+        .send()
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('message');
+          res.body.message.should.be.a('string');
+          res.body.message.should.eql('Order status is required');
+          done();
+        });
+    });
+    it('should respond with an error message if order status is empty', (done) => {
+      chai.request(server)
+        .put('/api/v1/orders/1')
+        .send({
+          orderStatus: ''
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('message');
+          res.body.message.should.be.a('string');
+          res.body.message.should.eql('Order status is required');
+          done();
+        });
+    });
   });
   describe('Order not found', () => {
     it("should respond with an error message if order doesn't exist", (done) => {
