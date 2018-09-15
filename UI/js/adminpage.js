@@ -22,7 +22,7 @@ const removeClassFromClassList = (element, className) => {
 const closeModalOnBackgroundClick = (modal, modalSelector) => {
   modal.addEventListener('click', (event) => {
     if (event.target.matches(modalSelector)) {
-      modal.classList.remove('is-visible');
+      removeClassFromClassList(modal, 'is-visible');
     }
   });
 };
@@ -78,7 +78,7 @@ declinedOrdersBtn.addEventListener('click', () => {
 
 // show add items modal when the add item button is clicked
 addItemBtn.addEventListener('click', () => {
-  addItemModal.classList.add('is-visible');
+  addClassToClassList(addItemModal, 'is-visible');
 });
 
 // close modal when you click on the add item modal background
@@ -87,7 +87,7 @@ closeModalOnBackgroundClick(addItemModal, '.add-food-item-modal');
 // show order details modal when the order links are clicked
 orderLinks.forEach(orderLink => orderLink.addEventListener('click', () => {
 // this.orderLink = orderLink;
-  orderModal.classList.add('is-visible');
+  addClassToClassList(orderModal, 'is-visible');
 }));
 
 
@@ -98,7 +98,7 @@ closeModalOnBackgroundClick(orderModal, '.adminpage-modal');
 // close modal when clicking the esc keyboard button
 document.addEventListener('keyup', (event) => {
   if (event.which === 27 || event.code === 'Escape' || event.key === 'Escape') {
-    orderModal.classList.remove('is-visible');
-    addItemModal.classList.remove('is-visible');
+    removeClassFromClassList(orderModal, 'is-visible');
+    removeClassFromClassList(addItemModal, 'is-visible');
   }
 });
