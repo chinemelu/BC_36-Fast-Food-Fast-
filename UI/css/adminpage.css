@@ -396,10 +396,6 @@ button.add-food-item i {
 	display: none;
 }
 
-#manage-food-items-section {
-	display: none
-}
-
 @media only screen and (max-width: 500px) {
   .orders .order .order-details, .orders .order .order-image {
 	display: block;
