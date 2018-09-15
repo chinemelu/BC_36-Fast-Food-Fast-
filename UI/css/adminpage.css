@@ -388,10 +388,6 @@ button.add-food-item i {
     color: #659DBD;	
 }
 
-.fa-edit{
-	display: none;
-}
-
 @media only screen and (max-width: 500px) {
   .orders .order .order-details, .orders .order .order-image {
 	display: block;
