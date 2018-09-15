@@ -18,7 +18,7 @@
 		<div class="menu">
 		 <a href="customerpage.html">Home</a>
 		 <a href="orderhistory.html">My Order History</a>
-		 <a href="adminpage.html">All Orders</a></li>
+		 <a href="adminpage.html">Admin</a></li>
 		 <a href="landingpage.html">Logout</a></li>
 		 <a href="customercart.html"><i class="fa fa-shopping-cart"></i></a>
 		</div>
@@ -26,136 +26,235 @@
 	<!-- End of Navigation bar -->
 	<section id="admin-page">
 	<div class="order-navigation">
-	  <h1>All orders</h1>
+	  <h1>Admin Dashboard</h1>
 	  <ul>
+			<li><a class="manage-food-items" href="#">Manage food items</a></li>
 	    <li><a class="pending-orders" href="#">Pending Orders</a></li>
-		<li><a class="completed-orders" href="#">Completed Orders</a></li>
-		<li><a class="declined-orders" href="#">Declined Orders</a></li>
+			<li><a class="completed-orders" href="#">Completed Orders</a></li>
+			<li><a class="declined-orders" href="#">Declined Orders</a></li>
 	  </ul>
 	</div>
 	
-	  <section id="pending-section">
-		  <table>
+	<button class="add-food-item">Add food item <i class="fa fa-plus"></i></button>
+
+	<section id="manage-food-items-section">
+		<button class="add-food-item">Add food item <i class="fa fa-plus"></i></button>
+		<table>
 			<tr>
-				<th>Order #</th>
-				<th>Date</th>
-				<th>User</th>
-				<th>Order Time</th>
+				<th>S/N</th>
+				<th>Name</th>
+				<th>Price (Naira)</th>
+				<th>Image</th>
 				<th>Action</th>
 			</tr>
 			<tr>
-				<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
-				<td>26 August 2018</td>
-				<td><a href="#">John</a></td>
-				<td>20:30</td>
-				<td class="admin-action">
-				  <a class="declined-link" href="#">Decline</a>
-				  <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+				<td>1</td>
+				<td>Spaghetti</td>
+				<td>1500</td>
+				<td><div class="image">
+					  <img src="images/basil-dinner-food-8500.jpg">
+					</div>
 				</td>
-		    </tr>
-				<tr>
-				<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
-				<td>26 August 2018</td>
-				<td><a href="#">John</a></td>
-				<td>20:30</td>
 				<td class="admin-action">
-				  <a class="declined-link" href="#">Decline</a>
-				  <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+					<div class="edit-entry">
+						<a href="#"><i class="fa fa-edit"></i></a>
+					</div>	 
+					<div class="delete-entry">
+						<a href="#"><i class="fa fa-times"></i></a>
+					</div>
 				</td>
-		    </tr>
-				<tr>
-				<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
-				<td>26 August 2018</td>
-				<td><a href="#">John</a></td>
-				<td>20:30</td>
-				<td class="admin-action">
-				  <a class="declined-link" href="#">Decline</a>
-				  <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-				</td>
-		    </tr>
-		  </table>
-	  </section>
-	   <section id="completed-section">
-		  <table>
+		  </tr>
 			<tr>
-				<th>Order #</th>
-				<th>Date</th>
-				<th>User</th>
-				<th>Order Time</th>
-				<th>Action</th>
+				<td>2</td>
+				<td>Doughnut</td>
+				<td>200</td>
+				<td>
+					<div class="image">
+						 <img src="images/blue-colors-cream-928475.jpg">
+					</div>
+				</td>
+				<td class="admin-action">
+					<div class="edit-entry">
+						<a href="#"><i class="fa fa-edit"></i></a>
+					</div>	 
+					<div class="delete-entry">
+						<a href="#"><i class="fa fa-times"></i></a>
+					</div>
+				</td>
+		  </tr>
+			<tr>
+				<td>3</td>
+				<td>Chicken burrito</td>
+				<td>1200</td>
+				<td>
+					<div class="image">
+						<img src="images/burrito-chicken-close-up-461198.jpg">
+					</div>
+				</td>
+				<td class="admin-action">
+					<div class="edit-entry">
+						<a href="#"><i class="fa fa-edit"></i></a>
+					</div>	 
+					<div class="delete-entry">
+						<a href="#"><i class="fa fa-times"></i></a>
+					</div>
+				</td>
+		  </tr>
+		</table>
+	</section>
+
+
+	<!-- Start of add food item modal -->
+	
+	<div class="add-food-item-modal">
+      <div class="add-food-item-modal-container">
+			  <form>
+					 <div class="input-container">
+							<div class="input-label-container"><label class="input-label" for="item-name">Name</label></div>
+							<input type="text" class="input-field" id="item-name">
+						</div>
+						<div class="input-container">
+							<div class="input-label-container"><label class="input-label" for="item-price">Price (Naira)</label></div>
+							<input type="number" class="input-field" id="item-price">
+						</div>
+						<div class="input-container">
+							<div class="input-label-container"><label class="input-label">Image</label></div>
+							<input type="file" name="pic" accept="image/*" id="item-img">
+						</div>
+						<div class="input-container">
+							<input type="submit" class="add-food-item-btn" value="Add">
+						</div>
+				</form>
+	  </div>
+	</div>
+  <!-- End of add food item modal  -->
+
+
+
+
+	<section id="pending-section">
+		<table>
+		<tr>
+			<th>Order #</th>
+			<th>Date</th>
+			<th>User</th>
+			<th>Order Time</th>
+			<th>Action</th>
+		</tr>
+		<tr>
+			<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
+			<td>26 August 2018</td>
+			<td><a href="#">John</a></td>
+			<td>20:30</td>
+			<td class="admin-action">
+				<a class="declined-link" href="#">Decline</a>
+				<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+			</td>
 			</tr>
 			<tr>
-				<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
-				<td>20 August 2018</td>
-				<td><a href="#">Chinemelu</a></td>
-				<td>01:30</td>
-				<td class="admin-action">
-				  <a href="#">Decline</a>
-				  <label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
-				</td>
-		    </tr>
-			<tr>
-				<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
-				<td>20 August 2018</td>
-				<td><a href="#">Chinemelu</a></td>
-				<td>01:30</td>
-				<td class="admin-action">
-				  <a href="#">Decline</a>
-				  <label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
-				</td>
-		    </tr>
-			<tr>
-				<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
-				<td>20 August 2018</td>
-				<td><a href="#">Chinemelu</a></td>
-				<td>01:30</td>
-				<td class="admin-action">
-				  <a href="#">Decline</a>
-				  <label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
-				</td>
-		    </tr>
-		  </table>
-	  </section>
-	    <section id="declined-section">
-		  <table>
-			<tr>
-				<th>Order #</th>
-				<th>Date</th>
-				<th>User</th>
-				<th>Order Time</th>
-				<th>Action</th>
+			<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
+			<td>26 August 2018</td>
+			<td><a href="#">John</a></td>
+			<td>20:30</td>
+			<td class="admin-action">
+				<a class="declined-link" href="#">Decline</a>
+				<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+			</td>
 			</tr>
 			<tr>
-				<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
-				<td>6 August 2018</td>
-				<td><a href="#">Amaka</a></td>
-				<td>09:00</td>
-				<td class="admin-action">
-				   <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-				</td>
-		    </tr>
-			<tr>
-				<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
-				<td>6 August 2018</td>
-				<td><a href="#">Amaka</a></td>
-				<td>09:00</td>
-				<td class="admin-action">
-				   <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-				</td>
-		    </tr>
-			<tr>
-				<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
-				<td>6 August 2018</td>
-				<td><a href="#">Amaka</a></td>
-				<td>09:00</td>
-				<td class="admin-action">
-				   <label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-				</td>
-		    </tr>
-		   </table>
-	  </section>	  
-	  
-	  <!-- Start of Modal -->
+			<td><a class="order-link" href="#">2trf3a33-3w5e-45e1-a888-12d4875357w3</a></td>
+			<td>26 August 2018</td>
+			<td><a href="#">John</a></td>
+			<td>20:30</td>
+			<td class="admin-action">
+				<a class="declined-link" href="#">Decline</a>
+				<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+			</td>
+			</tr>
+		</table>
+	</section>
+		<section id="completed-section">
+		<table>
+		<tr>
+			<th>Order #</th>
+			<th>Date</th>
+			<th>User</th>
+			<th>Order Time</th>
+			<th>Action</th>
+		</tr>
+		<tr>
+			<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
+			<td>20 August 2018</td>
+			<td><a href="#">Chinemelu</a></td>
+			<td>01:30</td>
+			<td class="admin-action">
+				<a href="#">Decline</a>
+				<label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
+			</td>
+			</tr>
+		<tr>
+			<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
+			<td>20 August 2018</td>
+			<td><a href="#">Chinemelu</a></td>
+			<td>01:30</td>
+			<td class="admin-action">
+				<a href="#">Decline</a>
+				<label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
+			</td>
+			</tr>
+		<tr>
+			<td><a class="order-link" href="#">8fff7a77-7d7d-77e1-a888-10d8888888d8</a></td>
+			<td>20 August 2018</td>
+			<td><a href="#">Chinemelu</a></td>
+			<td>01:30</td>
+			<td class="admin-action">
+				<a href="#">Decline</a>
+				<label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
+			</td>
+			</tr>
+		</table>
+	</section>
+
+	<section id="declined-section">
+		<table>
+		<tr>
+			<th>Order #</th>
+			<th>Date</th>
+			<th>User</th>
+			<th>Order Time</th>
+			<th>Action</th>
+		</tr>
+		<tr>
+			<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
+			<td>6 August 2018</td>
+			<td><a href="#">Amaka</a></td>
+			<td>09:00</td>
+			<td class="admin-action">
+					<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+			</td>
+			</tr>
+		<tr>
+			<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
+			<td>6 August 2018</td>
+			<td><a href="#">Amaka</a></td>
+			<td>09:00</td>
+			<td class="admin-action">
+					<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+			</td>
+			</tr>
+		<tr>
+			<td><a class="order-link" href="#">5fgt4a31-ew4e-64e1-a573-21e6455221x1</a></td>
+			<td>6 August 2018</td>
+			<td><a href="#">Amaka</a></td>
+			<td>09:00</td>
+			<td class="admin-action">
+					<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
+			</td>
+			</tr>
+			</table>
+	</section>	  
+	
+	  <!-- Start of order details Modal -->
 	
 	<div class="adminpage-modal">
       <div class="adminpage-modal-container">
