@@ -9,33 +9,27 @@ const formModal = document.querySelector('.landingpage-modal'),
   backToLoginLink = document.querySelector('#back-to-login'),
   inputFields = document.querySelectorAll('.input-field'),
   mainNav = document.querySelector('.menu a');
-  
-  console.log(mainNav)
 
 // login section is selected
 const loginSelected = () => {
-    formLogin.classList.add('is-selected');
-    formSignup.classList.remove('is-selected');
-    tabLogin[0].classList.add('selected');
-    tabSignup[0].classList.remove('selected');
-	
-    formForgotPassword.classList.remove('is-selected');
-}
+  formLogin.classList.add('is-selected');
+  formSignup.classList.remove('is-selected');
+  tabLogin[0].classList.add('selected');
+  tabSignup[0].classList.remove('selected');
+  formForgotPassword.classList.remove('is-selected');
+};
 
 // registration section is selected
-
 const registrationSelected = () => {
-    formLogin.classList.remove('is-selected');
-    formSignup.classList.add('is-selected');
-    tabLogin[0].classList.remove('selected');
-    tabSignup[0].classList.add('selected');
-	
-    formForgotPassword.classList.remove('is-selected');
-}
+  formLogin.classList.remove('is-selected');
+  formSignup.classList.add('is-selected');
+  tabLogin[0].classList.remove('selected');
+  tabSignup[0].classList.add('selected');
+  formForgotPassword.classList.remove('is-selected');
+};
 
 // show login section when navigation bar login/register button is clicked
-
-mainNav.addEventListener('click', (event) => {
+mainNav.addEventListener('click', () => {
   formModal.classList.add('is-visible');
   loginSelected();
 });
@@ -58,13 +52,13 @@ document.addEventListener('keyup', (event) => {
 // check if input field has a value on blur
 
 inputFields.forEach(inputField => inputField.addEventListener('blur', () => {
-	this.inputField = inputField;
-	if (this.inputField.value) {
-		this.inputField.classList.add('used');
-	} else {
-		this.inputField.classList.remove('used');
-	}
-}))
+  this.inputField = inputField;
+  if (this.inputField.value) {
+    this.inputField.classList.add('used');
+  } else {
+    this.inputField.classList.remove('used');
+  }
+}));
 
 // switch from a tab to another
 formModalTab[0].addEventListener('click', (event) => {
