@@ -49,7 +49,7 @@ body {
 }
 
 #hamburger {
-    margin-right: 9%;
+  margin-right: 9%;
 	font-size: 170%;
 	line-height: 90px;
 	display: none;
@@ -61,6 +61,13 @@ body {
 #toggle {
   display: none;
 }
+
+#app-name {
+	font-size: 150%;
+	position: absolute;
+	left: 10%;
+}
+
 
 @media only screen and (max-width: 800px) {
 	#hamburger {
@@ -79,11 +86,15 @@ body {
 	}
 	
 	.menu a:first-child {
-	    border-top: 1px solid #EAEAEB;
-    }
+	  border-top: 1px solid #EAEAEB;
+  }
 
 	#toggle:checked + .menu {
 		display: block;
+	}
+	#app-name {
+		right: 50%;
+		left: 50%;
 	}
 }
 /* End of navigation styling */
@@ -156,7 +167,7 @@ body {
 	border-right: transparent;
 	border-top: transparent;
 	border-left: transparent;
-	border-bottom: 1px solid #FF4136;
+	border-bottom: 1px solid #d2d8d8;
 }
 
 .landingpage-modal-container .input-field:focus {
@@ -205,19 +216,22 @@ input[type="checkbox"] {
 
 #login-section {
 	position: relative;
+	padding-bottom: 8%;
 }
 
 #forgot-password-section {
 	position: relative;
+	padding-bottom: 8%;
 }
 
 .submit-form-btn {
-	background-color: #FFF;
+	background-color: #FF4136;
 	border: 1px solid #FF4136;
+	border-radius: 25px;
 	width: 85%;
 	margin: 2em 2em;
 	padding: 1em;
-	color: #FF4136;
+	color: #FFF;
 	text-transform: uppercase;
 	cursor: pointer;
 	outline: none;
@@ -230,6 +244,7 @@ input[type="checkbox"] {
 	position: absolute;
 	bottom: 0;
 	right: 42%;
+	padding-bottom: 3%;
 }
 
 #forgot-password:hover, #back-to-login:hover {
@@ -247,7 +262,7 @@ input[type="checkbox"] {
 .input-field:focus ~ .input-label, 
 .input-field.used ~ .input-label {
 	top: 10px;
-    transform: scale(.90); 
+  transform: scale(.90); 
 	left: 35px;
 	color: #4a89dc;
 }
@@ -261,10 +276,12 @@ input[type="checkbox"] {
 }
 
 section#background-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url("../images/cover-photo.jpg");
-	height: 100vh;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url("../images/cover-photo.jpeg");
+	background-repeat: no-repeat;
+	height: 50vh;
+  max-width: 100%;
 	background-position: center;
-	background-size: cover;
+	/* background-size: cover; */
 	position: relative;
 }
 
@@ -308,28 +325,65 @@ section#background-image {
 	font-size: 150%;
 }
 
-#getting-started {
-	margin-bottom: 7%;
+#breakfast {
+	max-width: 100%;
+	padding: 0;
+	margin: 0;
+	border: 2px solid black;
 }
 
-.getting-started-text {
-	text-align: center;
-	margin-top: 3%;
-	margin-bottom: 3%;
+
+section img {
+	width: 640px;
+	height: 371px;
 }
 
-.sign-up, .sign-in, .add-food-to-cart, .order {
+#breakfast article {
+	width: 47%;
+	margin-left: 1%;
+}
+
+#breakfast aside{
+	width: 47%;
+	text-align: justify;
+}
+
+#breakfast article, #breakfast aside {
 	display: inline-block;
-	text-align: center;
-	padding: 2%;
-	border: 1.5px solid #FF4136;
-	margin-left: 3.5%;
-	width: 20%;
 }
 
-.sign-up i, .sign-in i, .add-food-to-cart i, .order i {
-   font-size: 2.5em;
+#asian {
+	max-width: 100%;
 }
+
+#asian article {
+	width: 47%;
+}
+
+#asian aside {
+	width: 47%;
+}
+
+#asian article, #asian aside {
+	float: left;
+}
+
+#healthy {
+	max-width: 100%;
+}
+
+#healthy article {
+	width: 47%;
+}
+
+#healthy aside {
+	width: 47%;
+}
+
+#healthy article, #healthy aside {
+	float: left;
+}
+
 
 @media only screen and (max-width: 600px) {
 	.sign-up, .sign-in, .add-food-to-cart, .order {	

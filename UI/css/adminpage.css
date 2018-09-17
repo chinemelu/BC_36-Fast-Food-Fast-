@@ -133,6 +133,7 @@ body {
 	border: 1px solid #d2d8d8;
 	border-spacing: 0px;
 	border-collapse: collapse;
+	table-layout: fixed;
 }
 
 .order-navigation ul a.manage-food-items {
@@ -148,8 +149,8 @@ body {
 }
 
 #admin-page td, #admin-page th {
-    border: 1px solid #d2d8d8;
-    padding: 8px;
+  border: 1px solid #d2d8d8;
+  padding: 8px;
 	text-align: center;
 }
 
@@ -157,12 +158,11 @@ body {
 	background-color: #f2f2f2;
 }
 
-
 #admin-page table th {
 	padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #FF4136 ;
-    color: #FFF;
+	padding-bottom: 12px;
+	background-color: #FF4136 ;
+	color: #FFF;
 }
 
 .admin-action a, .admin-action label {
@@ -195,6 +195,7 @@ button.add-food-item i {
 #manage-food-items-section .image > img {
 		height: 100px;
 		width: 100px;
+		border-radius: 5%;
 }
 
 #manage-food-items-section {
@@ -335,6 +336,7 @@ button.add-food-item i {
 .orders .order-image > img {
 	width: 100px;
 	height: 100px;
+	border-radius: 5%;
 }
 
 .orders table {
@@ -414,6 +416,25 @@ button.add-food-item i {
 		}
 }
 
+@media only screen and (max-width: 600px) {
+  #manage-food-items-section .image > img {
+		height: 50px;
+		width: 50px;
+	}
+	.admin-action i {
+		font-size: 100%;
+	}
+
+	#admin-page table td, #admin-page table th {
+		font-size: 70%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.nav {
+		width: 100%;
+	}
+}
 
 
 
