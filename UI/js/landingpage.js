@@ -8,7 +8,7 @@ const formModal = document.querySelector('.landingpage-modal'),
   forgotPasswordLink = formLogin.querySelector('#forgot-password'),
   backToLoginLink = document.querySelector('#back-to-login'),
   inputFields = document.querySelectorAll('.input-field'),
-  mainNav = document.querySelector('.menu a');
+  mainNav = document.querySelector('#Login');
 
 const addClassToClassList = (element, className) => {
   element.classList.add(className);

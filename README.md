@@ -26,7 +26,16 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
     27 passing
   ```
 
-  ## Deployment
+## Routes
+* GET ```/api/v1/cart/add-to-cart/itemId```
+* GET  ```/api/v1/cart/remove/itemId``` Use this route to remove items rom cart
+* POST ```/api/v1/orders``` Use this route to place an order. No fields are required
+* GET ``` /api/v1/orders``` Use this route to get all orders
+* GET  ```/api/v1/orders/orderId``` Use this route to get a particular order
+* PUT  ```/api/v1/orders/orderId``` Use this route to update the status of an order.
+* PUT  ```/api/v1/cart/update-quantity/itemId``` Use this route to update quantity of item at checkout
+
+## Deployment
 * copy this link `https://fast-food-fast-chinemelu.herokuapp.com/`
 * Using Postman, and the url above as a prefix, e.g ` https://fast-food-fast-chinemelu.herokuapp.com/api/v1/orders`
 utilise every endpoint in this application a with any of these headers: 

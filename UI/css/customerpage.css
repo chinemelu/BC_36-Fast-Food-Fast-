@@ -97,14 +97,7 @@ body {
 }
 
 .customer-page-image-text {
-	position: absolute;
-	color: #FFF;
-	text-align: center;
-	font-size: 1.2em;
-	left: 20%;
-	right: 20%;
-	top: 20%;
-	padding: 2%;
+	display: none;
 }
 
 .add-to-cart  {
