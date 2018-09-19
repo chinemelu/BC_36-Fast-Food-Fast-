@@ -23,17 +23,22 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   ```
   .........
   ----------------------------------------------------------------------
-    27 passing
+    26 passing
   ```
 
 ## Routes
-* GET ```/api/v1/cart/add-to-cart/itemId```
-* GET  ```/api/v1/cart/remove/itemId``` Use this route to remove items rom cart
-* POST ```/api/v1/orders``` Use this route to place an order. No fields are required
+* POST ```/api/v1/orders``` Use this route to place an order. The following fields are required
+  * ```userId``` The id of the user which is an integer
+  * ```items``` The items array containing the food item(s) object(s)
+  * ```itemId``` The itemId property of a food item 
+  * ```name``` The name property of a food item
+  * ```quantity``` The quantity property of a food item
+  * ```price``` The unit price property of a food item
+
 * GET ``` /api/v1/orders``` Use this route to get all orders
 * GET  ```/api/v1/orders/orderId``` Use this route to get a particular order
-* PUT  ```/api/v1/orders/orderId``` Use this route to update the status of an order.
-* PUT  ```/api/v1/cart/update-quantity/itemId``` Use this route to update quantity of item at checkout
+* PUT  ```/api/v1/orders/orderId``` Use this route to update the status of an order. The following fields are required
+  * ```orderStatus``` The status of an order. The acceptable values are 'completed', 'declined' and 'pending'.
 
 ## Deployment
 * copy this link `https://fast-food-fast-chinemelu.herokuapp.com/`
