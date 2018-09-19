@@ -5,7 +5,7 @@ html {
 
 body {
 	margin: 0px;
-    font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 }
 
@@ -62,7 +62,17 @@ body {
   display: none;
 }
 
-@media only screen and (max-width: 800px) {
+#app-name {
+	font-size: 150%;
+	position: absolute;
+	left: 10%;
+}
+
+#app-name-toggle {
+	display: none;
+}
+
+@media only screen and (max-width: 1100px) {
 	#hamburger {
 		display: block;
 		cursor: pointer;
@@ -83,6 +93,19 @@ body {
 
 	#toggle:checked + .menu {
 		display: block;
+	}
+
+	#app-name {
+		display: none;
+	}
+	#app-name-toggle {
+		display: inline-block;
+		position: absolute;
+		left: 5%;
+		top: -20%;
+		text-transform: uppercase;
+		font-size: 120%;
+		color: #FFF;
 	}
 }
 
@@ -146,6 +169,7 @@ body {
 	border-top: 1px solid #d2d8d8;
 	text-align: right;
 	margin-bottom: 10%;
+	width: 100%;
 }
 
 #shopping-cart .order-btn {
@@ -159,9 +183,19 @@ body {
 	outline: none;
 }
 
+.footer {
+	display: inline-block;
+	width: 100%;
+	background-color: #FF4136;
+	color: #FFF;
+	text-align: center;
+	padding: 0.8% 0%;
+	font-size: 120%;
+}
+
 @media only screen and (max-width: 950px) {
 	#shopping-cart {
-		max-width: 100%;
+		max-width: 80%;
 	}
 	
 	#shopping-cart .heading table td, #shopping-cart .heading table th  {
@@ -171,8 +205,53 @@ body {
 	#shopping-cart .heading table th:last-child, #shopping-cart .heading table td:last-child {
 		padding-left: 10%;
 	}
+
+	#shopping-cart .sub-total {
+		padding-right: 6%;
+	}
+
+	.main-heading {
+		font-size: 110%;
+		margin-bottom: 5%;
+	}
+	#shopping-cart .sub-total {
+		font-size: 70%;
+	}
 }
 
+@media only screen and (max-width: 450px) {
+	#shopping-cart {
+		max-width: 80%;
+	}
+	
+	#shopping-cart .heading table td, #shopping-cart .heading table th  {
+		padding-left: 6%;
+	}
+
+	#shopping-cart .heading table th:last-child, #shopping-cart .heading table td:last-child {
+		padding-left: 6%;
+	}
+
+	#shopping-cart .price-data {
+		font-size: 55%;
+		
+	}
+
+	#shopping-cart .image-details .image-name a {
+		text-decoration: none;
+		color: #FF4136;
+		font-size: 70%;
+	}
+	
+	.image-details .image img {
+		height: 80px;
+		width: 80px;
+	}
+
+	.image-details h1 {
+		font-size: 70%;
+	}
+}
 
 
 

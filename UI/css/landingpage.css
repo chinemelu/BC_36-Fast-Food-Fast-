@@ -5,8 +5,9 @@ html {
 
 body {
 	margin: 0px;
-    font-family: 'Work Sans', sans-serif;
-	font-weight: 400;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 900;
+	overflow-x: hidden;
 }
 
 *, *::before, *::after {
@@ -68,6 +69,9 @@ body {
 	left: 10%;
 }
 
+#app-name-toggle {
+	display: none;
+}
 
 @media only screen and (max-width: 800px) {
 	#hamburger {
@@ -93,8 +97,16 @@ body {
 		display: block;
 	}
 	#app-name {
-		right: 50%;
-		left: 50%;
+		display: none;
+	}
+	#app-name-toggle {
+		display: inline-block;
+		position: absolute;
+		left: 5%;
+		top: -20%;
+		text-transform: uppercase;
+		font-size: 120%;
+		color: #FFF;
 	}
 }
 /* End of navigation styling */
@@ -281,7 +293,6 @@ section#background-image {
 	height: 50vh;
   max-width: 100%;
 	background-position: center;
-	/* background-size: cover; */
 	position: relative;
 }
 
@@ -325,63 +336,153 @@ section#background-image {
 	font-size: 150%;
 }
 
-#breakfast {
+section img {
 	max-width: 100%;
-	padding: 0;
-	margin: 0;
-	border: 2px solid black;
+	height: auto;
 }
 
+#breakfast {
+	width: 100%;
+	float: left;
+}
 
-section img {
-	width: 640px;
-	height: 371px;
+.breakfast-text{
+	font-size: 1.5rem;
+	font-family: 'Work Sans', sans-serif;
+	max-width: 100%;
+	font-weight: 900;
+	border: 2px solid #FF4136;
+	position: relative;
+	left: 2%;
+	padding: 1%;
+}
+
+.breakfast-text-container {
+	padding-top: 10%;
 }
 
 #breakfast article {
-	width: 47%;
-	margin-left: 1%;
+	float: left;
 }
 
 #breakfast aside{
-	width: 47%;
-	text-align: justify;
-}
-
-#breakfast article, #breakfast aside {
-	display: inline-block;
+	float: right;
 }
 
 #asian {
-	max-width: 100%;
+  max-width: 100%;
+	float: right;
+}
+
+.asian-text{
+	font-size: 1.5rem;
+	width: 100%;
+	font-family: sans-serif;
+	position: relative;
+	font-weight: 900;
+	padding: 1% 0;
+	border: 2px solid #FF4136;
 }
 
 #asian article {
-	width: 47%;
+	float: left;
 }
 
 #asian aside {
-	width: 47%;
+	float: right;
 }
 
-#asian article, #asian aside {
+#pastries {
+	width: 100%;
 	float: left;
 }
 
-#healthy {
-	max-width: 100%;
+.pastries-text{
+	font-size: 1.5rem;
+	font-family: sans-serif;
+	font-weight: 900;
+	width: 100%;
+	border: 2px solid #FF4136;
+	position: relative;
+	right: 25%;
 }
 
-#healthy article {
-	width: 47%;
+.pastries-text-container {
+	padding-top: 10%;
+
 }
 
-#healthy aside {
-	width: 47%;
+#pastries article {
+	float: left
 }
 
-#healthy article, #healthy aside {
+#pastries aside {
+	float: right;
+}
+
+section#products {
+	max-width: 80%;
+	margin: 0 auto;
+}
+
+#african {
+	width: 100%;
+	float: right;
+	margin-bottom: 20%;
+}
+
+.african-text{
+	font-size: 1.5rem;
+	font-family: sans-serif;
+	font-weight: 900;
+	width: 100%;
+	border: 2px solid #FF4136;
+	position: relative;
+	left: 25%;
+}
+
+.african-text-container {
+	padding-top: 10%;
+}
+
+#african article {
 	float: left;
+}
+
+#african aside {
+	float: right;
+}
+
+.footer {
+	display: inline-block;
+	width: 100%;
+	background-color: #FF4136;
+	color: #FFF;
+	text-align: center;
+	padding: 0.8% 0%;
+	font-size: 120%;
+}
+
+@media only screen and (max-width: 1420px) {
+	#asian article {
+		float: right;
+	}
+
+	.asian-text{
+		left: 7%;
+	}
+
+	#asian aside {
+		float: left;
+	}
+
+	.pastries-text{
+		left: 7%;
+	}
+
+	.african-text {
+		left: 7%;
+	}
 }
 
 
@@ -389,18 +490,21 @@ section img {
 	.sign-up, .sign-in, .add-food-to-cart, .order {	
 	  width: 100%;
 	  margin: 0.5em auto;
-    }
+	}
+	.background-image-text {
+		top: 5%;
+	}
 }	
 
 @media only screen and (max-width: 500px) {
 	.background-image-text {
-		top: 8%;
+		top: 4%;
+		font-size: 140%;
 	}
 }
 
 @media only screen and (max-width: 400px) {
 	.background-image-text {
-		top: 11%;
-		font-size: 1.3em;
+		font-size: 1.2em;
 	}
 }

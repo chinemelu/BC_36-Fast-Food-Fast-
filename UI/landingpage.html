@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<title>Signin/Signup</title>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Open+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Lato:700|Open+Sans" rel="stylesheet">
 		<link rel="stylesheet" href="font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/landingpage.css" type="text/css">
 		<meta charset="utf-8">
@@ -21,6 +22,7 @@
 			<a href="customercart.html"><i class="fa fa-shopping-cart"></i></a>
 			<a id="app-name" href="landingpage.html">Food-direct</a>
 		</div>
+		<p id="app-name-toggle" href="landingpage.html">Food-direct</p>
 	  </div>
 	<!-- End of Navigation bar -->
 	
@@ -384,32 +386,48 @@
 			  <!-- <button><h1>Find<i class="fa fa-map-marker"></i></h1></button> -->
 			<!-- </div> -->
 		</section>
-		<section id="breakfast">
-		  <article class="breakfast-img">
-				<img src="./images/breakfast.jpg">
-			</article>
-			<aside class="brekky-text">
-				<h1>Breakfast</h1>
-			</aside>
-		</section>
-		<section id="asian">
-				<article class="asian-img">
-						<h1>Breakfast</h1>
+		<section id="products">
+			<section id="breakfast">
+				<article class="breakfast-img">
+					<img src="./images/burger.jpg">
 				</article>
-				<aside>
-					<img src="./images/asian-1.jpeg">
+				<aside class="breakfast-text-container">
+					<p class="breakfast-text">Delicious inter-continental Fast Food</p>
+				</aside>
+			</section>
+			<section id="asian">
+					<article class="asian-text-container">
+							<h1 class="asian-text">Sumptuous Asian Cuisine</h1>
+					</article>
+					<aside class="asian-img">
+						<img src="./images/Thai.jpg">
+					</aside>
+			</section>
+			<section id="pastries">
+				<article class="cake-img">
+					<img src="images/brownie-desert-cake-smaller.jpeg">
+				</article>
+				<aside class="pastries-text-container">
+					<h1 class="pastries-text">Yummy pastries & Snacks</h1>
+				</aside>
+			</section>
+			<section id="african">
+				<article class="african-text-container">
+						<h1 class="african-text">Tantalising African Cuisine</h1>
+				</article>
+				<aside class="african-img">
+					<img src="./images/Jollof-rice.png">
 				</aside>
 		</section>
-			<section id="healthy">
-					<article class="rolls">
-						<img src="images/cake.jpeg">
-					</article>
-					<aside>
-						<h1>Breakfast</h1>
-					</aside>
-				</section>
+		</section>
 	<!-- End of Introduction -->
-	
+
+	<!-- Beginning of footer --> 
+	<!-- reference https://www.w3schools.com/howto/howto_css_fixed_footer.asp -->
+	<footer class="footer">
+		<p>Food Direct &copy; 2018</p>
+	</footer>
+	<!-- End of footer -->
 	<script src="js/landingpage.js"></script>
 	</body>
 </html>
