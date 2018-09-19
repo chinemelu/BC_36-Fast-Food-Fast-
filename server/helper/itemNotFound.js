@@ -1,4 +1,4 @@
-import { ourItems } from '../dataStructure/dummyDatabase';
+import { ourItems } from '../dataStructure/items';
 
 const itemNotFound = (req, res, next) => {
   const itemId = req.params.id;
