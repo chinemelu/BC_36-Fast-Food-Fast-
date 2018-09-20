@@ -56,6 +56,8 @@ key: Content-Type value: `application/x-www-form-urlencoded`
 * [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
 * [Body-Parser](https://www.npmjs.com/package/body-parser) - Node.js body parsing middleware.
 * [dotenv](https://www.npmjs.com/package/dotenv) - dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
+* [pg](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
+
 
 ## Author
 Chinemelu Nwosu
