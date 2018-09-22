@@ -3,8 +3,8 @@
  */
 
 const idValidator = (req, res, next) => {
-  /**
- *@description validates Id parameter
+/**
+ * @description validates id parameter
  *
  * @param {Object} req - http request
  * @param {Object} res - http response
