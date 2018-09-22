@@ -1,7 +1,9 @@
 /**
  * @function trimToLowerCaseField
  */
-/**
+
+const trimToLowerCaseField = (data, inputField) => {
+  /**
    * @description trims and converts input field to lowercase
    *
    * @param {Object} data http request body
@@ -10,7 +12,6 @@
    * @returns  {String} Returns a string
    */
 
-const trimToLowerCaseField = (data, inputField) => {
   if (data[inputField] === undefined) {
     return '';
   }
