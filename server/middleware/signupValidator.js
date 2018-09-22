@@ -15,6 +15,7 @@ const signupValidator = (req, res, next) => {
  *
  * @returns {Object} error response
  */
+  
   const errors = {};
   const request = req.body;
 

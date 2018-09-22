@@ -12,7 +12,7 @@ const idValidator = (req, res, next) => {
  *
  * @returns {Object} error response
  */
-
+  
   const { id } = req.params;
   const errors = {};
 
