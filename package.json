@@ -12,7 +12,8 @@
     "heroku-postbuild": "npm run build-server",
     "build-server": " node ./node_modules/babel-cli/bin/babel.js -d ./build ./server",
     "start": "node ./build/app",
-    "test-dev": "mocha --require babel-core/register server/test/**/*.js  --exit || exit 0"
+    "test-dev": "mocha --require babel-core/register server/test/**/*.js  --exit || exit 0",
+    "migrate": "psql -U postgres -f ./server/models/data.sql"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,19 @@
 import trimField from '../helper/trimField';
 import trimToLowerCaseField from '../helper/trimToLowerCaseField';
 
+/**
+ * @function signupValidator
+ */
+
+/**
+ *
+ * @param {Object} req - http request
+ * @param {Object} res - http response
+ * @param {function} next - callback function
+ *
+ * @returns {Object} error response
+ */
+
 const signupValidator = (req, res, next) => {
   const errors = {};
   const request = req.body;
@@ -28,7 +41,7 @@ const signupValidator = (req, res, next) => {
   }
 
   if (request.firstName && request.firstName.length > 50) {
-    errors.username = 'First name must be fewer than 50 characters';
+    errors.firstName = 'First name must be fewer than 50 characters';
   }
 
   if (!request.lastName) {
@@ -36,12 +49,12 @@ const signupValidator = (req, res, next) => {
   }
 
   if (request.lastName && !/^[A-Za-z]*$/.test(request.lastName)) {
-    errors.username = 'Last name must consist of only alphabets\n'
+    errors.lastName = 'Last name must consist of only alphabets \n'
       + 'and must contain no spaces between characters';
   }
 
   if (request.lastName && request.lastName.length > 50) {
-    errors.username = 'Last name must be fewer than 50 characters';
+    errors.lastName = 'Last name must be fewer than 50 characters';
   }
 
   if (!request.email) {
@@ -65,12 +78,12 @@ const signupValidator = (req, res, next) => {
     errors.reEnterPassword = 'Re-enter password';
   }
 
-  if (request.reEnterPassword && request.reEnterPassword !== request.password) {
+  if (request.password && request.reEnterPassword && request.reEnterPassword !== request.password) {
     errors.reEnterPassword = 'Passwords do not match';
   }
 
   if (Object.keys(errors).length > 0) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ errors });
   }
   next();
 };

@@ -6,8 +6,10 @@ import orders from '../../dataStructure/orders';
 class OrderController {
 /**
    * @description place food order
+   *
    * @param {object} req http request
    * @param {object} res http response
+   *
    * @returns {JSON} returns a JSON object
    */
   static placeOrder(req, res) {
@@ -150,8 +152,10 @@ class OrderController {
 
   /**
    * @description fetch all food orders
+   *
    * @param {*} req http request
    * @param {*} res http response
+   *
    * @returns {JSON} returns a JSON object
    */
   static fetchAllOrders(req, res) {
@@ -165,8 +169,10 @@ class OrderController {
 
   /**
    * @description fetch order
+   *
    * @param {object} req http request
    * @param {object} res http response
+   *
    * @returns {JSON} returns a JSON object
    */
   static fetchOrder(req, res) {
@@ -183,8 +189,10 @@ class OrderController {
 
   /**
    * @description update order status
+   *
    * @param {object} req http request
    * @param {object} res http response
+   *
    * @returns {JSON} returns a JSON object
    */
   static updateOrderStatus(req, res) {
