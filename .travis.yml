@@ -5,8 +5,8 @@ install: npm install
 services:
 - postgresql
 before_script:
-- psql -c 'drop database if exists food-direct;' -U postgres
-- psql -c 'create database food-direct;' -U postgres
+- psql -c 'drop database if exists food_direct;' -U postgres
+- psql -c 'create database food_direct;' -U postgres
 - npm run migrate
 script: npm test
 after_success: npm run coverage
