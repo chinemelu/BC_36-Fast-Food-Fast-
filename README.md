@@ -30,10 +30,10 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
 * POST ```/api/v1/orders``` Use this route to place an order. The following fields are required
   * ```userId``` The id of the user which is an integer
   * ```items``` The items array containing the food item(s) object(s)
-  * ```itemId``` The itemId property of a food item 
-  * ```name``` The name property of a food item
-  * ```quantity``` The quantity property of a food item
-  * ```price``` The unit price property of a food item
+    * ```itemId``` The itemId property of a food item 
+    * ```name``` The name property of a food item
+    * ```quantity``` The quantity property of a food item
+    * ```price``` The unit price property of a food item
 
 * GET ``` /api/v1/orders``` Use this route to get all orders
 * GET  ```/api/v1/orders/orderId``` Use this route to get a particular order
@@ -47,7 +47,6 @@ utilise every endpoint in this application a with any of these headers:
 key: Content-Type value: `application/json`  
 key: Content-Type value: `application/x-www-form-urlencoded`
 
-  
 ### Front End Dependencies
 * [Font Awesome](http://fontawesome.io/) -font and CSS toolkit
 
@@ -57,7 +56,9 @@ key: Content-Type value: `application/x-www-form-urlencoded`
 * [Body-Parser](https://www.npmjs.com/package/body-parser) - Node.js body parsing middleware.
 * [dotenv](https://www.npmjs.com/package/dotenv) - dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
 * [pg](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
-
+* [jsonwebToken](https://jwt.io/) - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+* [Bcrypt](https://www.npmjs.com/package/bcrypt) - A password hashing function
+* [dotenv](https://www.npmjs.com/package/dotenv) - dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
 
 ## Author
 Chinemelu Nwosu
