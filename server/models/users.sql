@@ -1,4 +1,4 @@
-\c food-direct
+\c food_direct
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
