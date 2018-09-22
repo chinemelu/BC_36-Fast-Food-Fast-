@@ -1,16 +1,18 @@
 /**
  * @function idValidator
  */
+
+const idValidator = (req, res, next) => {
 /**
- *
- *
+   * @description validates id parameter
+*
  * @param {Object} req - http request
  * @param {Object} res - http response
  * @param {function} next - callback function
  *
  * @returns {Object} error response
  */
-const idValidator = (req, res, next) => {
+  
   const { id } = req.params;
   const errors = {};
 

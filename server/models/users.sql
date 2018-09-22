@@ -17,6 +17,8 @@ CREATE TABLE users (
   first_name varchar(255) NOT NULL,
   last_name varchar(255) NOT NULL, 
   email varchar(255) NOT NULL UNIQUE,
+  phone_number varchar(255),
+  address TEXT,
   role role DEFAULT 'user',
   password  VARCHAR(255) NOT NULL,  
   created_at timestamp with time zone NOT NULL DEFAULT now(),

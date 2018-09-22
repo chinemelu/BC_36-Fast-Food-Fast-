@@ -5,16 +5,17 @@ import trimToLowerCaseField from '../helper/trimToLowerCaseField';
  * @function signupValidator
  */
 
-/**
- *
+const signupValidator = (req, res, next) => {
+  /**
+   * @description validates sign up form
+   *
  * @param {Object} req - http request
  * @param {Object} res - http response
  * @param {function} next - callback function
  *
  * @returns {Object} error response
  */
-
-const signupValidator = (req, res, next) => {
+  
   const errors = {};
   const request = req.body;
 

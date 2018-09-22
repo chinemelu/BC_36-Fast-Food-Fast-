@@ -1,7 +1,9 @@
 /**
  * @function trimField
  */
-/**
+
+const trimField = (data, inputField) => {
+  /**
    * @description trims input field
    *
    * @param {Object} data http request body
@@ -9,7 +11,7 @@
    *
    * @returns  {String} Returns a string
    */
-const trimField = (data, inputField) => {
+  
   if (data[inputField] === undefined) {
     return '';
   }
