@@ -23,7 +23,7 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   ```
   .........
   ----------------------------------------------------------------------
-    26 passing
+    56 passing
   ```
 
 ## Routes

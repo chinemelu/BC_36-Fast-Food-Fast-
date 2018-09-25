@@ -11,7 +11,7 @@ const trimField = (data, inputField) => {
    *
    * @returns  {String} Returns a string
    */
-  
+
   if (data[inputField] === undefined) {
     return '';
   }
