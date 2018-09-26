@@ -27,12 +27,16 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   ```
 
 ## Routes
-* POST ```/api/v1/auth/sign``` Use this route to sign up to the application. The following fields are required
+* POST ```/api/v1/auth/signup``` Use this route to sign up to the application. The following fields are required
   * ```firstName``` The first name of the user
   * ```lastName``` The last name of the user
   * ```email``` The email of the user. This must not have been used on the application before
   * ```password``` The password to access the site
   * ```reEnterPassword``` This must match the ```password``` field.
+* POST ```/api/v1/auth/login``` Use this route to sign into to the application. The following fields are required
+  * ```email``` The email of the user
+  * ```password``` The password of the user
+* GET ``` /api/v1/cart/add-to-cart/itemId``` Use this route to add an item to the cart
 * POST ```/api/v1/orders``` Use this route to place an order. The following fields are required
   * ```userId``` The id of the user which is an integer
   * ```items``` The items array containing the food item(s) object(s)
