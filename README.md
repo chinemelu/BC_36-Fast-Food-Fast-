@@ -38,12 +38,8 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   * ```password``` The password of the user
 * GET ``` /api/v1/cart/add-to-cart/itemId``` Use this route to add an item to the cart
 * POST ```/api/v1/orders``` Use this route to place an order. The following fields are required
-  * ```userId``` The id of the user which is an integer
-  * ```items``` The items array containing the food item(s) object(s)
-    * ```itemId``` The itemId property of a food item 
-    * ```name``` The name property of a food item
-    * ```quantity``` The quantity property of a food item
-    * ```price``` The unit price property of a food item
+  * ```address``` The address of the user. This is mandatory
+  * ```mobileNumber``` The mobile number of the user. This is optional.
 * GET ``` /api/v1/orders``` Use this route to get all orders
 * GET  ```/api/v1/orders/orderId``` Use this route to get a particular order
 * PUT  ```/api/v1/orders/orderId``` Use this route to update the status of an order. The following fields are required
