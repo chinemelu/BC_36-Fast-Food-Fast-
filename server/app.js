@@ -4,6 +4,7 @@ import logger from 'morgan';
 
 import orderRoutes from './routes/orderRoutes';
 import userRoutes from './routes/userRoutes';
+import cartRoutes from './routes/cartRoutes';
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(logger('dev'));
 
 app.use('/api/v1/orders', orderRoutes);
 app.use('/api/v1/auth', userRoutes);
+app.use('/api/v1/cart', cartRoutes);
+
 
 app.use((req, res) => {
   res.status(404).json({
