@@ -40,7 +40,7 @@ class OrderController {
         return res.status(500).json({ error: err.stack });
       }
       if (Array.isArray(results.rows) && results.rows.length) {
-        res.status(200).json(results.rows[0]);
+        res.status(200).json(results.rows);
       } else {
         res.status(200).json({
           message: 'There are no available orders',
