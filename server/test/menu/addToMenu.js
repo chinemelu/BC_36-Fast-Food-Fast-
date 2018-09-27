@@ -16,7 +16,22 @@ describe('POST: /api/v1/menu API route', () => {
     });
   });
   beforeEach((done) => {
+    db('DELETE FROM carts_items', () => {
+      done();
+    });
+  });
+  beforeEach((done) => {
+    db('DELETE FROM carts', () => {
+      done();
+    });
+  });
+  beforeEach((done) => {
     db('DELETE FROM items', () => {
+      done();
+    });
+  });
+  beforeEach((done) => {
+    db('DELETE FROM users', () => {
       done();
     });
   });
