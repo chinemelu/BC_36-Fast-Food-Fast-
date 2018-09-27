@@ -5,6 +5,9 @@ import authenticateToken from '../middleware/authenticateToken';
 import doesUserExist from '../middleware/doesUserExist';
 import GetAllOrdersController from '../controllers/orderController/GetAllOrders';
 import isUserAdmin from '../middleware/isUserAdmin';
+import UpdateOrderStatusController from '../controllers/orderController/UpdateOrderStatus';
+import orderStatusValidator from '../middleware/orderStatusValidator';
+import uuidValidator from '../middleware/uuidValidator';
 
 
 const router = express.Router();
@@ -15,6 +18,10 @@ router.post(
 
 router.get(
   '/', authenticateToken, doesUserExist, isUserAdmin, GetAllOrdersController.getAllOrders
+);
+
+router.put(
+  '/:id', uuidValidator, orderStatusValidator, authenticateToken, doesUserExist, isUserAdmin, UpdateOrderStatusController.updateOrderStatus
 );
 
 
