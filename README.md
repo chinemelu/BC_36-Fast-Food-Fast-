@@ -46,9 +46,10 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   * ```name``` The name of the food item. 
   * ```price``` The price of the food item.
   * ```imgUrl``` The image url of the food item.
+* GET ```/api/v1/menu``` Use this route to get the menu. 
 * GET  ```/api/v1/orders/orderId``` Use this route to get a particular order
 * PUT  ```/api/v1/orders/orderId``` Use this route to update the status of an order. The following fields are required
-  * ```orderStatus``` The status of an order. The acceptable values are 'completed', 'declined' and 'pending'.
+  * ```orderStatus``` The status of an order. The acceptable values are 'new', 'processing' 'complete' or 'cancelled'
 
 ## Deployment
 * copy this link `https://fast-food-fast-chinemelu.herokuapp.com/`
