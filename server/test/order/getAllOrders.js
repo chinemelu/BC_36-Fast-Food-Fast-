@@ -9,6 +9,7 @@ chai.use(chaiHttp);
 describe('GET: /api/v1/orders API route', () => {
   const adminInsertText = `INSERT INTO users (first_name, last_name, email, role, password) VALUES 
   ('test', 'admin', 'admin@food-direct.com', 'admin', '${process.env.INSERTED_ADMIN_PASSWORD}')`;
+
   beforeEach((done) => {
     db(adminInsertText, () => {
       done();
@@ -108,33 +109,6 @@ describe('GET: /api/v1/orders API route', () => {
               done();
             });
         });
-    });
-    describe('Request success', () => {
-      it('should indicate if the database is empty', (done) => {
-        const loginDetails = {
-          email: 'admin@food-direct.com',
-          password: process.env.ADMIN_PASSWORD
-        };
-        chai.request(server)
-          .post('/api/v1/auth/login')
-          .send(loginDetails)
-          .end((err, res) => {
-            res.should.have.status(200);
-            res.body.should.have.property('token');
-            const { token } = res.body;
-            chai.request(server)
-              .get('/api/v1/orders')
-              .set('token', token)
-              .end((err, res) => {
-                res.should.have.status(200);
-                res.should.be.json;
-                res.body.should.be.a('object');
-                res.body.should.have.property('message');
-                res.body.message.should.eql('There are no available food orders');
-                done();
-              });
-          });
-      });
     });
   });
 });
