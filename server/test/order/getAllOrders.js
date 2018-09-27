@@ -9,6 +9,7 @@ chai.use(chaiHttp);
 describe('GET: /api/v1/orders API route', () => {
   const adminInsertText = `INSERT INTO users (first_name, last_name, email, role, password) VALUES 
   ('test', 'admin', 'admin@food-direct.com', 'admin', '${process.env.INSERTED_ADMIN_PASSWORD}')`;
+
   beforeEach((done) => {
     db(adminInsertText, () => {
       done();
