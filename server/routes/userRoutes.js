@@ -1,14 +1,15 @@
 import express from 'express';
-import signupValidator from '../middleware/signupValidator';
-import loginValidator from '../middleware/loginValidator';
-import SignupController from '../controllers/userController/SignupController';
-import LoginController from '../controllers/userController/LoginController';
+import uuidValidator from '../middleware/uuidValidator';
+import authenticateUser from '../middleware/authenticateUser';
+import authenticateToken from '../middleware/authenticateToken';
+import doesParamsUserExist from '../middleware/doesParamsUserExist';
+import getUserOrdersController from '../controllers/orderController/GetUsersOrderHistory';
 
 const router = express.Router();
 
-router.post('/signup', signupValidator, SignupController.signup);
-
-router.post('/login', loginValidator, LoginController.login);
+router.get(
+  '/:id/orders', uuidValidator, authenticateToken, doesParamsUserExist, authenticateUser, getUserOrdersController.getUserOrders
+);
 
 
 export default router;
