@@ -23,7 +23,7 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
   ```
   .........
   ----------------------------------------------------------------------
-    56 passing
+    40 passing
   ```
 
 ## Routes
@@ -40,6 +40,7 @@ Fast-Food-Fast​ is a food delivery service app for a restaurant.
 * POST ```/api/v1/orders``` Use this route to place an order. The following fields are required
   * ```address``` The address of the user. This is mandatory
   * ```mobileNumber``` The mobile number of the user. This is optional.
+* GET ```/users/<userId>/orders``` Use this route to get the order history of a user.
 * GET ``` /api/v1/orders``` Use this route to get all orders
 * GET  ```/api/v1/orders/orderId``` Use this route to get a particular order
 * PUT  ```/api/v1/orders/orderId``` Use this route to update the status of an order. The following fields are required
