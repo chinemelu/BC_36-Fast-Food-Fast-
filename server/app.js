@@ -6,7 +6,7 @@ import orderRoutes from './routes/orderRoutes';
 import authRoutes from './routes/authRoutes';
 import cartRoutes from './routes/cartRoutes';
 import userRoutes from './routes/userRoutes';
-
+import menuRoutes from './routes/menuRoutes';
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.use('/api/v1/orders', orderRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/cart', cartRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/menu', menuRoutes);
 
 
 app.use((req, res) => {
