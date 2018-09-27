@@ -15,8 +15,8 @@ class OrderController {
   static placeOrder(req, res) {
     const { userId } = req.decoded;
 
-    const selectText = 'SELECT * FROM carts WHERE user_id = $1';
-    const selectParams = [userId];
+    const selectText = 'SELECT * FROM carts WHERE user_id = $1 and paid_for = $2';
+    const selectParams = [userId, false];
 
     db(selectText, selectParams)
       .then((cart) => {
@@ -32,10 +32,10 @@ class OrderController {
 
         db(insertText, insertParam)
           .then((order) => {
-            const deleteText = 'delete from carts WHERE id = $1 RETURNING \n'
+            const updateText = 'UPDATE carts SET paid_for = $1 WHERE id = $2 RETURNING \n'
             + 'id, total_quantity, total_price, paid_for';
-            const deleteParams = [cart.rows[0].id];
-            db(deleteText, deleteParams, (err) => {
+            const updateParams = [true, cart.rows[0].id];
+            db(updateText, updateParams, (err) => {
               if (err) {
                 return res.status(500).json({ error: err.stack });
               }
