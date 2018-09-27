@@ -36,6 +36,7 @@ class UserController {
               });
               res.status(200).json({
                 message: `${user.rows[0].first_name}, you have successfully logged in`,
+                id: user.rows[0].id,
                 email: user.rows[0].email,
                 token
               });
