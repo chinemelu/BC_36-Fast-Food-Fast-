@@ -16,7 +16,7 @@ const doesItemExist = (req, res, next) => {
     */
 
   const itemId = req.params.id;
-  const selectText = 'SELECT * FROM items WHERE id = $1';
+  const selectText = 'SELECT * FROM food_items WHERE id = $1';
   const selectParams = [itemId];
   db(selectText, selectParams, (err, item) => {
     if (err) {

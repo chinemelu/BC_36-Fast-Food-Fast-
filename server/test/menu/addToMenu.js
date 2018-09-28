@@ -16,7 +16,7 @@ describe('POST: /api/v1/menu API route', () => {
     });
   });
   beforeEach((done) => {
-    db('DELETE FROM carts_items', () => {
+    db('DELETE FROM carts_fooditems', () => {
       done();
     });
   });
@@ -26,7 +26,7 @@ describe('POST: /api/v1/menu API route', () => {
     });
   });
   beforeEach((done) => {
-    db('DELETE FROM items', () => {
+    db('DELETE FROM food_items', () => {
       done();
     });
   });

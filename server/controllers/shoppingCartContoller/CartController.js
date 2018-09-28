@@ -26,7 +26,7 @@ class CartController {
           + 'id, total_quantity, total_price, user_id, paid_for';
         const params2 = [userId, parseFloat(req.item.price, 10), 1];
         db(text2, params2).then((newCart) => {
-          const text7 = 'INSERT INTO carts_items(cart_id, item_id, item_quantity) VALUES ($1, $2, $3) RETURNING \n'
+          const text7 = 'INSERT INTO carts_fooditems(cart_id, item_id, item_quantity) VALUES ($1, $2, $3) RETURNING \n'
           + 'cart_id, item_id, item_quantity';
           const params7 = [newCart.rows[0].id, itemId, 1];
           db(text7, params7, (err) => {
@@ -39,7 +39,7 @@ class CartController {
           });
         }).catch(e => setImmediate(() => { throw e; }));
       } else {
-        const text3 = 'SELECT * FROM carts_items WHERE cart_id = $1 AND item_id = $2';
+        const text3 = 'SELECT * FROM carts_fooditems WHERE cart_id = $1 AND item_id = $2';
         const params3 = [cart.rows[0].id, itemId];
         db(text3, params3, (err, item) => {
           if (err) {
@@ -54,13 +54,13 @@ class CartController {
               parseFloat(cart.rows[0].total_price, 10) + parseFloat(req.item.price, 10),
               cart.rows[0].cart_id
             ];
-            db(text6, params6, (err, results) => {
+            db(text6, params6, (err) => {
               if (err) {
                 return res.status(500).json({ error: err.stack });
               }
             });
 
-            const text4 = 'INSERT INTO carts_items(cart_id, item_id, item_quantity) VALUES ($1, $2, $3) RETURNING \n'
+            const text4 = 'INSERT INTO carts_fooditems(cart_id, item_id, item_quantity) VALUES ($1, $2, $3) RETURNING \n'
           + 'cart_id, item_id, item_quantity';
             const params4 = [cart.rows[0].id, itemId, 1];
             db(text4, params4, (err) => {
@@ -72,7 +72,7 @@ class CartController {
               });
             });
           } else {
-            const text4 = 'UPDATE carts_items SET item_quantity = $1 WHERE cart_id = $2 AND item_id = $3 RETURNING \n'
+            const text4 = 'UPDATE carts_fooditems SET item_quantity = $1 WHERE cart_id = $2 AND item_id = $3 RETURNING \n'
             + 'cart_id, item_id, item_quantity';
             const params4 = [item.rows[0].item_quantity += 1, cart.rows[0].id, itemId];
             db(text4, params4, (err) => {

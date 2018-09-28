@@ -11,7 +11,7 @@ class GetMenuController {
      * @returns  {Array} returns an array
      */
   static getAllItems(req, res) {
-    const text = 'SELECT id, name, price, img_url from items';
+    const text = 'SELECT id, name, price, img_url from food_items';
 
     db(text, (err, results) => {
       if (err) {

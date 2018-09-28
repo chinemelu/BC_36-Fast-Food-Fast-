@@ -8,9 +8,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-CREATE TABLE IF NOT EXISTS carts_items (
+CREATE TABLE IF NOT EXISTS carts_fooditems (
   cart_id uuid NOT NULL DEFAULT uuid_generate_v4() REFERENCES carts(id) ON UPDATE CASCADE ON DELETE CASCADE,
-  item_id uuid NOT NULL DEFAULT uuid_generate_v4() REFERENCES items(id) ON UPDATE CASCADE,
+  item_id uuid NOT NULL DEFAULT uuid_generate_v4() REFERENCES food_items(id) ON UPDATE CASCADE,
   item_quantity INTEGER NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   updated_at timestamp with time zone NOT NULL DEFAULT now(),
@@ -18,6 +18,6 @@ CREATE TABLE IF NOT EXISTS carts_items (
 );
 
 CREATE TRIGGER set_timestamp
-BEFORE UPDATE ON carts_items
+BEFORE UPDATE ON carts_fooditems
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();

@@ -1,0 +1,997 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Food-Direct API",
+		"description": "A simple API to interact with the food direct application",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"schemes": [
+		"http"
+	],
+	"host": "localhost:3000",
+	"basePath": "/api/v1",
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/auth/signup": {
+			"post": {
+				"summary": "Register a user",
+				"description": "Allows a user to signup and obtain token for authentication",
+				"responses": {
+					"201": {
+						"description": "User registered",
+						"schema": {
+							"$ref": "#/definitions/User"
+						},
+						"examples": {
+							"application/json": {
+								"message": "IK, you have successfully created an account",
+								"id": "0fa4d5b1-06df-4478-8e8a-7537765aae78",
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZWEzZDZiMS0wNmRmLTQ0NzgtOGU4YS03NTM3NzY1YmNlNjciLCJyb2xlIjoidXNlciIsImlhdCI6MTUzODEzNDg1MCwiZXhwIjoxNTM4MjIxMjUwfQ.7AlR-CD-qczDfqQHRK2XoZyGPV-DQBgM9jCGu5opmj0"
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400emptyField"
+					},
+					"409": {
+						"description": "User conflict",
+						"schema": {
+							"type": "object",
+							"required": [
+								"errors"
+							],
+							"properties": {
+								"errors": {
+									"type": "object"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"errors": {
+									"emailExists": "email exists"
+								}
+							}
+						}
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"summary": "Login a user",
+				"description": "Allows a user to login and obtain token for authentication",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"required": [
+								"token"
+							],
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"id": {
+									"type": "string"
+								},
+								"email": {
+									"type": "string"
+								},
+								"token": {
+									"type": "string"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"message": "Davido, you have successfully logged in",
+								"id": "ab4234gg-6a84-4e6b-a212-801042c04c05",
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhYjUxMTRmZS02YTg0LTRlNmItYTIxMi04MDEwNDJjMDRjMDMiLCJyb2xlIjoidXNlciIsImlhdCI6MTUzODExODQzNSwiZXhwIjoxNTM4MTI1NjM1fQ.XK-JbZgFBdbKCNwm1qq9DQN2FSHgW0P2VZyqqQmNWHg"
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400emptyField"
+					},
+					"401": {
+						"description": "Unauthorized",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"error": "Invalid email or password"
+							}
+						}
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			}
+		},
+		"/orders": {
+			"get": {
+				"summary": "Fetch all orders in application",
+				"description": "The admin can view all orders in the application.",
+				"security": [
+					{
+						"AdminSecurity": []
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"type": "array",
+									"items": {
+										"required": [
+											"id"
+										],
+										"properties": {
+											"order": {
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"userId": {
+														"type": "string"
+													},
+													"order_status": {
+														"type": "string"
+													},
+													"items": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"price": {
+																	"type": "integer"
+																},
+																"img_url": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"data": [
+									{
+										"order": {
+											"id": "a2e3fa98-f7b8-4d61-9217-d98e66a33f96",
+											"userId": "ab300fe-6a84-4e5b-a111-432042c04c03",
+											"order status": "new",
+											"items": [
+												{
+													"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+													"name": "Puff Puff",
+													"price": 100,
+													"img_url": "\\x707566662d707566662e6a7067",
+													"created_at": "2018-09-27T13:24:20.585779+00:00",
+													"updated_at": "2018-09-27T13:24:20.585779+00:00"
+												}
+											]
+										}
+									},
+									{
+										"order": {
+											"id": "bf285bff-907e-42d6-a6b1-73c805904f6d",
+											"userId": "d9253830-56e2-4e76-905e-fcde98ee5ceb",
+											"order status": "cancelled",
+											"items": [
+												{
+													"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+													"name": "Puff Puff",
+													"price": 100,
+													"img_url": "\\x707566662d707566662e6a7067",
+													"created_at": "2018-09-27T13:24:20.585779+00:00",
+													"updated_at": "2018-09-27T13:24:20.585779+00:00"
+												}
+											]
+										}
+									}
+								]
+							}
+						}
+					},
+					"401": {
+						"$ref": "#/responses/401tokenError"
+					},
+					"403": {
+						"$ref": "#/responses/403NotAdminError"
+					},
+					"404": {
+						"$ref": "#/responses/404UserNotFound"
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			},
+			"post": {
+				"summary": "Place an order for food",
+				"description": "Allows a user to place a food order",
+				"security": [
+					{
+						"UserSecurity": []
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Order placed",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"order": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string"
+										},
+										"user_id": {
+											"type": "string"
+										},
+										"order_status": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"message": "You have ordered successfully"
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400emptyField"
+					},
+					"401": {
+						"$ref": "#/responses/401tokenError"
+					},
+					"403": {
+						"$ref": "#/responses/403tokenError"
+					},
+					"404": {
+						"$ref": "#/responses/404UserNotFound"
+					}
+				}
+			}
+		},
+		"/orders/{orderId}": {
+			"get": {
+				"summary": "Gets a user's order",
+				"description": "Fetch a user's order based on a single ID",
+				"security": [
+					{
+						"AdminSecurity": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "orderId",
+						"in": "path",
+						"required": true,
+						"description": "The id of the order to be fetched",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"order": {
+									"properties": {
+										"id": {
+											"type": "string"
+										},
+										"userId": {
+											"type": "string"
+										},
+										"order status": {
+											"type": "string"
+										},
+										"items": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"price": {
+														"type": "string"
+													},
+													"img_url": {
+														"type": "string"
+													},
+													"created_at": {
+														"type": "string"
+													},
+													"updated_at": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"order": {
+									"id": "bf285bff-908e-42d6-a6b3-73c805904f6d",
+									"userId": "d9253830-56e2-4e76-905e-fcde98ee5ceb",
+									"order status": "cancelled",
+									"items": [
+										{
+											"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+											"name": "Puff Puff",
+											"price": 100,
+											"img_url": "\\x707566662d707566662e6a7067",
+											"created_at": "2018-09-27T13:24:20.585779+00:00",
+											"updated_at": "2018-09-27T13:24:20.585779+00:00"
+										}
+									]
+								}
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400invalidParam"
+					},
+					"401": {
+						"$ref": "#/responses/401tokenError"
+					},
+					"403": {
+						"$ref": "#/responses/403NotAdminError"
+					},
+					"404": {
+						"$ref": "#/responses/404OrderNotFound"
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			},
+			"put": {
+				"summary": "Update the status of an order",
+				"description": "Allows an admin to update the status of an order based on the ID of the order",
+				"security": [
+					{
+						"AdminSecurity": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "orderId",
+						"in": "path",
+						"required": true,
+						"description": "The id of the order whose status is to be modified",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"updated": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string"
+										},
+										"order_status": {
+											"type": "string"
+										},
+										"updated_at": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"message": "You have successfully updated the order status",
+								"updated": {
+									"order_status": "cancelled"
+								}
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400invalidParam"
+					},
+					"401": {
+						"$ref": "#/responses/401tokenError"
+					},
+					"403": {
+						"$ref": "#/responses/403NotAdminError"
+					},
+					"404": {
+						"$ref": "#/responses/404OrderNotFound"
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			}
+		},
+		"/menu": {
+			"get": {
+				"summary": "Get available menu",
+				"description": "Fetch the menu in the application.",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"price": {
+												"type": "string"
+											},
+											"img_url": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string"
+													},
+													"data": {
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"data": [
+									{
+										"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+										"name": "Puff Puff",
+										"price": "100",
+										"img_url": {
+											"type": "Buffer",
+											"data": [
+												112,
+												117,
+												102,
+												102,
+												45,
+												112,
+												117,
+												102,
+												102,
+												46,
+												106,
+												112,
+												103
+											]
+										}
+									},
+									{
+										"id": "88fb38aa-4089-4eb9-a360-84472b6d5991",
+										"name": "Chicken Burger",
+										"price": "5000",
+										"img_url": {
+											"type": "Buffer",
+											"data": [
+												99,
+												104,
+												105,
+												99,
+												107,
+												101,
+												110,
+												45,
+												98,
+												117,
+												114,
+												103,
+												101,
+												114,
+												49,
+												50,
+												48,
+												51,
+												57,
+												46,
+												106,
+												112,
+												103
+											]
+										}
+									}
+								]
+							}
+						}
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			},
+			"post": {
+				"summary": "Add a meal option to the menu",
+				"description": "Allows an admin to add a food item to the application",
+				"security": [
+					{
+						"AdminSecurity": []
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Food item added",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"item": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"price": {
+											"type": "string"
+										},
+										"img_url": {
+											"type": "object",
+											"properties": {
+												"type": {
+													"type": "string"
+												},
+												"data": {
+													"type": "array",
+													"items": {
+														"type": "number"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"message": "You have added the item successfully",
+								"item": {
+									"id": "d3380f87-70f7-453c-92eb-c3664cbd1db9",
+									"name": "Pizza",
+									"price": "2500",
+									"img_url": {
+										"type": "Buffer",
+										"data": [
+											112,
+											105,
+											122,
+											122,
+											97,
+											49,
+											50,
+											51,
+											46,
+											112,
+											110,
+											103
+										]
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400emptyField"
+					},
+					"401": {
+						"$ref": "#/responses/401tokenError"
+					},
+					"403": {
+						"$ref": "#/responses/403NotAdminError"
+					},
+					"404": {
+						"$ref": "#/responses/404UserNotFound"
+					},
+					"409": {
+						"description": "Food item conflict",
+						"schema": {
+							"type": "object",
+							"required": [
+								"errors"
+							],
+							"properties": {
+								"errors": {
+									"type": "object"
+								}
+							}
+						},
+						"examples": {
+							"application/json": {
+								"message": "Item already exists"
+							}
+						}
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			}
+		},
+		"/users/{userId}/orders": {
+			"get": {
+				"summary": "Get a user's order history",
+				"description": "Fetch a particular user's order history using the user's ID",
+				"security": [
+					{
+						"UserSecurity": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "userId",
+						"in": "path",
+						"required": true,
+						"description": "The id of the user whose order history is to be fetched",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"data": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"price": {
+												"type": "number"
+											},
+											"img_url": {
+												"type": "object",
+												"properties": {
+													"type": {
+														"type": "string"
+													},
+													"data": {
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"examples": {
+							"application/json": [
+								{
+									"order": {
+										"id": "a2e3fa98-f7b7-4d61-9217-d98e66a33f96",
+										"userId": "ab5114fe-6a84-4e6b-a212-801042c04c03",
+										"order status": "new",
+										"items": [
+											{
+												"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+												"name": "Puff Puff",
+												"price": 100,
+												"img_url": "\\x707566662d707566662e6a7067",
+												"created_at": "2018-09-27T13:24:20.585779+00:00",
+												"updated_at": "2018-09-27T13:24:20.585779+00:00"
+											}
+										]
+									}
+								},
+								{
+									"order": {
+										"id": "cc316e7d-4b00-4b5a-9ada-6d4a9b4bf0d1",
+										"userId": "ab5114fe-6a84-4e6b-a212-801042c04c03",
+										"order status": "new",
+										"items": [
+											{
+												"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+												"name": "Puff Puff",
+												"price": 100,
+												"img_url": "\\x707566662d707566662e6a7067",
+												"created_at": "2018-09-27T13:24:20.585779+00:00",
+												"updated_at": "2018-09-27T13:24:20.585779+00:00"
+											}
+										]
+									}
+								},
+								{
+									"order": {
+										"id": "f3c2bf1f-9e79-418a-a0df-753b39dd01a5",
+										"userId": "ab5114fe-6a84-4e6b-a212-801042c04c03",
+										"order status": "new",
+										"items": [
+											{
+												"id": "6ce04f34-bfd7-47b0-bb80-90a8f8003793",
+												"name": "Puff Puff",
+												"price": 100,
+												"img_url": "\\x707566662d707566662e6a7067",
+												"created_at": "2018-09-27T13:24:20.585779+00:00",
+												"updated_at": "2018-09-27T13:24:20.585779+00:00"
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					"400": {
+						"$ref": "#/responses/400invalidParam"
+					},
+					"401": {
+						"$ref": "#/responses/401tokenError"
+					},
+					"403": {
+						"$ref": "#/responses/403NotUserError"
+					},
+					"404": {
+						"$ref": "#/responses/404UserNotFound"
+					},
+					"500": {
+						"$ref": "#/responses/500"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"User": {
+			"type": "object",
+			"required": [
+				"token"
+			],
+			"properties": {
+				"message": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"token": {
+					"type": "string"
+				}
+			}
+		},
+		"StringedError": {
+			"properties": {
+				"error": {
+					"type": "string"
+				}
+			}
+		},
+		"StringedMessage": {
+			"properties": {
+				"message": {
+					"type": "string"
+				}
+			}
+		},
+		"StringedTokenMessage": {
+			"properties": {
+				"success": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			}
+		},
+		"ObjectError": {
+			"properties": {
+				"errors": {
+					"type": "object"
+				}
+			}
+		}
+	},
+	"responses": {
+		"500": {
+			"description": "Server error",
+			"schema": {
+				"$ref": "#/definitions/ObjectError"
+			}
+		},
+		"400emptyField": {
+			"description": "Bad request.",
+			"schema": {
+				"$ref": "#/definitions/ObjectError"
+			},
+			"examples": {
+				"application/json": {
+					"errors": {
+						"firstName": "First name field must not be empty"
+					}
+				}
+			}
+		},
+		"400invalidParam": {
+			"description": "Bad request.",
+			"schema": {
+				"$ref": "#/definitions/ObjectError"
+			},
+			"examples": {
+				"application/json": {
+					"errors": {
+						"id": "Invalid Id"
+					}
+				}
+			}
+		},
+		"401tokenError": {
+			"description": "Unauthorized",
+			"schema": {
+				"$ref": "#/definitions/StringedError"
+			},
+			"examples": {
+				"application/json": {
+					"error": "Invalid token"
+				}
+			}
+		},
+		"403tokenError": {
+			"description": "Forbidden",
+			"schema": {
+				"$ref": "#/definitions/StringedTokenMessage"
+			},
+			"examples": {
+				"application/json": {
+					"success": "false",
+					"message": "No token provided"
+				}
+			}
+		},
+		"403NotAdminError": {
+			"description": "forbidden",
+			"schema": {
+				"$ref": "#/definitions/StringedMessage"
+			},
+			"examples": {
+				"application/json": {
+					"message": "You are not authorised to perform this action"
+				}
+			}
+		},
+		"403NotUserError": {
+			"description": "forbidden",
+			"schema": {
+				"$ref": "#/definitions/StringedMessage"
+			},
+			"examples": {
+				"application/json": {
+					"message": "You are not authorised to perform this action"
+				}
+			}
+		},
+		"404UserNotFound": {
+			"description": "User not found",
+			"schema": {
+				"$ref": "#/definitions/StringedMessage"
+			},
+			"examples": {
+				"application/json": {
+					"message": "User does not exist"
+				}
+			}
+		},
+		"404OrderNotFound": {
+			"description": "Order not found",
+			"schema": {
+				"$ref": "#/definitions/StringedMessage"
+			},
+			"examples": {
+				"application/json": {
+					"message": "Order not found"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		"UserSecurity": {
+			"description": "user authorisation",
+			"type": "apiKey",
+			"name": "token",
+			"in": "header"
+		},
+		"AdminSecurity": {
+			"description": "admin or superadmin authorisation",
+			"type": "apiKey",
+			"name": "token",
+			"in": "header"
+		}
+	}
+}

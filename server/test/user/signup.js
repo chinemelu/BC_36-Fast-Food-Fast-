@@ -553,11 +553,6 @@ describe('POST: /api/v1/auth/signup API route', () => {
             res.should.have.status(201);
             res.should.be.json;
             res.body.should.be.a('object');
-            res.body.should.have.property('firstName');
-            res.body.firstName.should.be.a('string');
-            res.body.firstName.should.eql('Chinemelu');
-            res.body.lastName.should.eql('Nwosu');
-            res.body.email.should.eql('chinemelunwosu@gmail.com');
             res.body.should.have.property('token');
             res.body.should.have.property('message');
             res.body.message.should.eql('Chinemelu, you have successfully created an account');
