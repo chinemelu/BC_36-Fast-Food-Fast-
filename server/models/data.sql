@@ -1,7 +1,7 @@
 \ir ./users.sql
-\ir ./items.sql
+\ir ./fooditems.sql
 \ir ./carts.sql
 \ir ./orders.sql
-\ir ./cartsItems.sql
+\ir ./cartsfooditems.sql
 
 

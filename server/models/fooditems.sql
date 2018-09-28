@@ -6,7 +6,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TABLE IF NOT EXISTS items (
+CREATE TABLE IF NOT EXISTS food_items (
   id uuid NOT NULL DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
   price numeric NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS items (
 );
 
 CREATE TRIGGER set_timestamp
-BEFORE UPDATE ON items
+BEFORE UPDATE ON food_items
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
 

@@ -16,7 +16,7 @@ class UpdateOrderStatusController {
     const orderId = req.params.id;
     const { orderStatus } = req.body;
     const text = 'UPDATE orders SET order_status=$1 WHERE id = $2  RETURNING\n'
-    + 'id, order_status, updated_at';
+    + 'order_status';
     const params = [orderStatus, orderId];
     db(text, params, (err, result) => {
       if (err) {

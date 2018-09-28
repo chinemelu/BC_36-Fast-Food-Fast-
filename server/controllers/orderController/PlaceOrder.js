@@ -31,7 +31,7 @@ class OrderController {
         const insertParam = [userId, cart.rows[0].id];
 
         db(insertText, insertParam)
-          .then((order) => {
+          .then(() => {
             const updateText = 'UPDATE carts SET paid_for = $1 WHERE id = $2 RETURNING \n'
             + 'id, total_quantity, total_price, paid_for';
             const updateParams = [true, cart.rows[0].id];
@@ -47,7 +47,6 @@ class OrderController {
                 }
                 res.status(201).json({
                   message: 'You have ordered successfully',
-                  order: order.rows[0]
                 });
               });
             });

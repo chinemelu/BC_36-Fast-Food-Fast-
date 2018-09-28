@@ -173,13 +173,13 @@ body {
 }
 
 #shopping-cart .order-btn {
-	border: 1px solid #FF4136;
-	border-radius: 12px;
-	color: #FF4136;
+	border: none;
+	border-radius: 20px;
+	color: #FFF;
+	background-color: #FF4136;
 	padding: 10px 30px;
 	text-decoration: none;
 	cursor: pointer;
-	background: #FFF;
 	outline: none;
 }
 

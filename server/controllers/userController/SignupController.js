@@ -47,9 +47,6 @@ class UserController {
           res.status(201).json({
             message: `${newUser.rows[0].first_name}, you have successfully created an account`,
             id: newUser.rows[0].id,
-            firstName: newUser.rows[0].first_name,
-            lastName: newUser.rows[0].last_name,
-            email: newUser.rows[0].email,
             token
           });
         });

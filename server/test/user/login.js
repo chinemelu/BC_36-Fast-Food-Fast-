@@ -182,8 +182,6 @@ describe('POST: /api/v1/auth/login API route', () => {
               res.should.be.json;
               res.body.should.be.a('object');
               res.body.should.have.property('token');
-              res.body.should.have.property('email');
-              res.body.email.should.eql('teejay2k4@yahoo.com');
               res.body.should.have.property('message');
               res.body.message.should.eql('Tony, you have successfully logged in');
               done();

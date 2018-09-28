@@ -13,7 +13,7 @@ class AddToMenuController {
    * @returns {JSON} returns a JSON object
    */
   static addItem(req, res) {
-    const selectText = 'SELECT * FROM items WHERE name = $1';
+    const selectText = 'SELECT * FROM food_items WHERE name = $1';
     const selectParams = [req.body.name];
 
     db(selectText, selectParams)
@@ -23,7 +23,7 @@ class AddToMenuController {
             message: 'Item already exists'
           });
         }
-        const insertText = 'INSERT INTO items(name, price, img_url) VALUES ($1, $2, $3) RETURNING \n'
+        const insertText = 'INSERT INTO food_items(name, price, img_url) VALUES ($1, $2, $3) RETURNING \n'
           + 'id, name, price, img_url';
 
         const insertParam = [req.body.name, req.body.price, req.body.imgUrl];
@@ -31,8 +31,7 @@ class AddToMenuController {
         db(insertText, insertParam)
           .then((item) => {
             res.status(201).json({
-              message: 'You have added the item successfully',
-              item: item.rows[0]
+              message: `You have added ${item.rows[0].name} successfully`,
             });
           })
           .catch((err) => {

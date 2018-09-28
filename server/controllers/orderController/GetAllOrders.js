@@ -16,7 +16,7 @@ class GetAllOrdersController {
       'id', orders.id, 
       'userId', orders.user_id, 
       'order status', orders.order_status,
-      'items', jsonb_agg(items)
+      'items', jsonb_agg(food_items)
     ) AS order
 
     FROM orders
@@ -24,11 +24,11 @@ class GetAllOrdersController {
     LEFT JOIN carts
     ON orders.cart_id = carts.id
 
-    LEFT JOIN carts_items
-    ON carts.id = carts_items.cart_id
+    LEFT JOIN carts_fooditems
+    ON carts.id = carts_fooditems.cart_id
 
-    LEFT JOIN items
-    ON carts_items.item_id = items.id
+    LEFT JOIN food_items
+    ON carts_fooditems.item_id = food_items.id
     
     GROUP BY orders.id`;
 

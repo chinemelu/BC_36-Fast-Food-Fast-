@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 describe('GET: /api/v1/menu API route', () => {
   beforeEach((done) => {
-    db('DELETE from items', () => {
+    db('DELETE from food_items', () => {
       done();
     });
   });
@@ -18,7 +18,7 @@ describe('GET: /api/v1/menu API route', () => {
     });
   });
   afterEach((done) => {
-    db('DELETE from items', () => {
+    db('DELETE from food_items', () => {
       done();
     });
   });
