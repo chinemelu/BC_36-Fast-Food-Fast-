@@ -20,7 +20,7 @@ class OrderController {
 
     db(selectText, selectParams)
       .then((cart) => {
-        if (!cart.rows.length) {
+        if (!cart.rows.length || cart.rows[0].total_quantity === 0) {
           return res.status(400).json({
             message: 'Please add at least one item to order'
           });

@@ -2,7 +2,7 @@ import trimField from '../helper/trimField';
 import trimToLowerCaseField from '../helper/trimToLowerCaseField';
 
 /**
- * @function signupValidator
+ * @function loginValidator
  */
 
 const loginValidator = (req, res, next) => {
