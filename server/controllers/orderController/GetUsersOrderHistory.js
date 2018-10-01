@@ -6,33 +6,37 @@ import db from '../../models/db';
 class OrderController {
   /**
      * @description get all user's orders
+     *
      * @param {string} req http request
      * @param {string} res http response
+     *
      * @returns {Array} returns an array
      */
   static getUserOrders(req, res) {
     const { userId } = req.decoded;
-    const text = `SELECT 
+    const text = `SELECT
     json_build_object(
       'id', orders.id, 
       'userId', orders.user_id, 
       'order status', orders.order_status,
-      'items', jsonb_agg(food_items)
+      'items', jsonb_agg(json_build_object('id', food_items.id, 'name', food_items.name, 
+      'price', food_items.price, 'img_url', food_items.img_url, 
+      'quantity', carts_fooditems.item_quantity))
     ) AS order
 
-   FROM orders
-   
-   LEFT JOIN carts
-   ON orders.cart_id = carts.id
+      FROM orders
+      
+      LEFT JOIN carts
+      ON orders.cart_id = carts.id
 
-   LEFT JOIN carts_fooditems
-   ON carts.id = carts_fooditems.cart_id
+      LEFT JOIN carts_fooditems
+      ON carts.id = carts_fooditems.cart_id
 
-   LEFT JOIN food_items
-   ON carts_fooditems.item_id = food_items.id
-   WHERE orders.user_id = $1
-   
-   GROUP BY orders.id`;
+      LEFT JOIN food_items
+      ON carts_fooditems.item_id = food_items.id
+      WHERE orders.user_id = $1
+      
+      GROUP BY orders.id`;
 
     const params = [userId];
     db(text, params, (err, results) => {
