@@ -19,7 +19,6 @@
 		<div class="menu">
 			<a href="customerpage.html">View Products</a>
 			<a id="Login" href="#">Login/Register</a>
-			<a href="customercart.html"><i class="fa fa-shopping-cart"></i></a>
 			<a id="app-name" href="landingpage.html">Food-direct</a>
 		</div>
 		<p id="app-name-toggle" href="landingpage.html">Food-direct</p>
@@ -37,7 +36,7 @@
 		
 		<!-- Start of login section -->
 		<section id="login-section">
-		  <form class="cd-form" autocomplete="off"  action="customerpage.html">
+		  <form class="cd-form" autocomplete="off">
 			<div class="input-container">
 			  <input type="text" class="input-field" id="login-email">
 			  <label class="input-label" for="login-username-email">Email</label>
@@ -51,7 +50,7 @@
 			  <label>Remember me</label>
 			</div>
 			<div class="input-container">
-			  <input type="submit" value="LOGIN" class="submit-form-btn">
+			  <input type="submit" value="LOGIN" class="submit-form-btn" id="login-form-btn">
 			</div>
 			<a id="forgot-password" href="#">Forgot password?</a>
 		  </form>
@@ -62,29 +61,34 @@
 	  <!-- Start of register section -->
 	  
 	  <section id="register-section">
-		  <form class="cd-form" autocomplete="off"  action="customerpage.html">
+		  <form class="cd-form" autocomplete="off">
 			<div class="input-container">
-			  <input type="text" class="input-field" id="register-username">
-			  <label class="input-label" for="register-firstname">First name</label>
+			  <input type="text" class="input-field" id="register-firstname">
+				<label class="input-label" for="register-firstname">First name</label>
+				<p class="cd-error-message" id="register-firstname-error"></p>
 			</div>
 			<div class="input-container">
-			  <input type="text" class="input-field" id="register-username">
-			  <label class="input-label" for="register-lastname">Last name</label>
+			  <input type="text" class="input-field" id="register-lastname">
+				<label class="input-label" for="register-lastname">Last name</label>
+				<p class="cd-error-message" id="register-lastname-error"></p>
 			</div>
 			<div class="input-container">
 			  <input type="text" class="input-field" id="register-email">
-			  <label class="input-label" for="register-email">Email</label>
+				<label class="input-label" for="register-email">Email</label>
+				<p class="cd-error-message" id="register-email-error"></p>
 			</div>
 			<div class="input-container">
 			  <input type="password" class="input-field" id="register-password">
-			  <label class="input-label" for="register-password">Password</label>
+				<label class="input-label" for="register-password">Password</label>
+				<p class="cd-error-message" id="register-password-error"></p>
 			</div>
 			<div class="input-container">
 			  <input type="password" class="input-field" id="register-confirm-password">
-			  <label class="input-label" for="register-confirm-password">Confirm Password</label>
+				<label class="input-label" for="register-confirm-password">Confirm Password</label>
+				<p class="cd-error-message" id="register-confirm-password-error"></p>
 			</div>
 			<div class="input-container">
-			  <input type="submit" value="Create account" class="submit-form-btn">
+			  <input type="submit" value="Create account" class="submit-form-btn" id="signup-form-btn">
 			</div>
 		  </form>
 		</section>
@@ -122,10 +126,6 @@
 			<div class="background-image-text">
 				<h1>We deliver your favourite meals to your doorstep</h1>
 			</div>
-			<!-- <div id="search-bar-section"> -->
-			  <!-- <input type="text" class="search-bar" placeholder="Enter Location"> -->
-			  <!-- <button><h1>Find<i class="fa fa-map-marker"></i></h1></button> -->
-			<!-- </div> -->
 		</section>
 		<section id="products">
 			<section id="breakfast">
@@ -169,6 +169,7 @@
 		<p>Food Direct &copy; 2018</p>
 	</footer>
 	<!-- End of footer -->
+	<script type="text/javascript" src="js/signup.js"></script>
 	<script src="js/landingpage.js"></script>
 	</body>
 </html>
