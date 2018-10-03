@@ -249,6 +249,13 @@ input[type="checkbox"] {
 	outline: none;
 }
 
+#signup-form-btn[disabled], #signup-form-btn:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
 #forgot-password, #back-to-login {
 	text-decoration: none;
 	color: #757575;
@@ -462,6 +469,19 @@ section#products {
 	padding: 0.8% 0%;
 	font-size: 120%;
 }
+
+.cd-error-message {
+	display: none;
+	color: red;
+	font-size: 80%;
+	margin-top: -3%;
+	margin-left: 7%;
+}
+
+.cd-error-message.is-visible {
+	display: block
+}
+
 
 @media only screen and (max-width: 1420px) {
 	#asian article {
