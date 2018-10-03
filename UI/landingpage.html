@@ -37,13 +37,16 @@
 		<!-- Start of login section -->
 		<section id="login-section">
 		  <form class="cd-form" autocomplete="off">
+			<p class="cd-error-message" id="login-form-error"></p>
 			<div class="input-container">
 			  <input type="text" class="input-field" id="login-email">
-			  <label class="input-label" for="login-username-email">Email</label>
+				<label class="input-label" for="login-username-email">Email</label>
+				<p class="cd-error-message" id="login-email-error"></p>
 			</div>
 			<div class="input-container">
 			  <input type="password" class="input-field" id="login-password">
-			  <label class="input-label" for="login-password">Password</label>
+				<label class="input-label" for="login-password">Password</label>
+				<p class="cd-error-message" id="login-password-error"></p>
 			</div>
 			<div class="input-container">
 			  <input type="checkbox" id="remember-me" checked>
@@ -62,6 +65,7 @@
 	  
 	  <section id="register-section">
 		  <form class="cd-form" autocomplete="off">
+			<p class="cd-error-message" id="reg-form-error"></p>
 			<div class="input-container">
 			  <input type="text" class="input-field" id="register-firstname">
 				<label class="input-label" for="register-firstname">First name</label>
@@ -169,6 +173,7 @@
 		<p>Food Direct &copy; 2018</p>
 	</footer>
 	<!-- End of footer -->
+	<script type="text/javascript" src="js/login.js"></script>
 	<script type="text/javascript" src="js/signup.js"></script>
 	<script src="js/landingpage.js"></script>
 	</body>

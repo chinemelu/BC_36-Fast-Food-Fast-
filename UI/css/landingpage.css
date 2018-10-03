@@ -249,7 +249,7 @@ input[type="checkbox"] {
 	outline: none;
 }
 
-#signup-form-btn[disabled], #signup-form-btn:disabled{
+#signup-form-btn[disabled], #signup-form-btn:disabled, #login-form-btn[disabled], #login-form-btn:disabled{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
@@ -480,6 +480,16 @@ section#products {
 
 .cd-error-message.is-visible {
 	display: block
+}
+
+#reg-form-error, #login-form-error {
+	font-size: 100%;
+	text-align: center;
+	width: 80%;
+	margin: 5% auto;
+	padding: 1%;
+	color: #FFF;
+	background-color: #FF4136;
 }
 
 

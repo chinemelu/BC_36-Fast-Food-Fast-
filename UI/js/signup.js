@@ -8,6 +8,7 @@ const firstName = document.getElementById('register-firstname'),
   passwordErrorMessage = document.getElementById('register-password-error'),
   confirmPassword = document.getElementById('register-confirm-password'),
   confirmPasswordErrorMessage = document.getElementById('register-confirm-password-error'),
+  registrationFormError = document.getElementById('reg-form-error'),
   signupButton = document.querySelector('#signup-form-btn');
 
 // regex references
@@ -22,11 +23,13 @@ const validateNameParameters = (parameter, errorMessage, placeholder) => {
     errors.parameter = `${placeholder} is required`;
     errorMessage.classList.add('is-visible');
     errorMessage.innerHTML = errors.parameter;
+    signupButton.disabled = true;
   } else if (parameter.value.trim() && !(/^[A-Za-z]*$/).test(parameter.value.trim())) {
     errors.parameter = `${placeholder} must consist of only alphabets
   and must contain no spaces between characters`;
     errorMessage.classList.add('is-visible');
     errorMessage.innerHTML = errors.parameter;
+    signupButton.disabled = true;
   } else if (parameter.value.trim() && parameter.value.trim().length > 50) {
     errors.parameter = `${placeholder} must be fewer than 50 characters`;
     errorMessage.classList.add('is-visible');
@@ -42,6 +45,7 @@ const validateNameParameters = (parameter, errorMessage, placeholder) => {
 const onKeyDown = (parameter, errorMessage) => {
   parameter.addEventListener('keydown', () => {
     errorMessage.classList.remove('is-visible');
+    registrationFormError.classList.remove('is-visible');
     signupButton.disabled = false;
   });
 };
@@ -175,8 +179,8 @@ const registerUser = (e) => {
     .then((user) => {
       if (user.errors) {
         if (user.errors.emailExists) {
-          emailErrorMessage.innerHTML = user.errors.emailExists;
-          emailErrorMessage.classList.add('is-visible');
+          registrationFormError.innerHTML = user.errors.emailExists;
+          registrationFormError.classList.add('is-visible');
         }
       } else {
         window.localStorage.setItem('token', user.token);
