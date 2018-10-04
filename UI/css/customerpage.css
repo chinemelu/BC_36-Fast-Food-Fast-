@@ -118,10 +118,6 @@ body {
 	height: 60vh;
 }
 
-.customer-page-image-text {
-	display: none;
-}
-
 .add-to-cart  {
 	background-color: #659DBD;
 	border: none;
@@ -172,6 +168,14 @@ body {
 	text-align: center;
 	padding: 0.8% 0%;
 	font-size: 120%;
+}
+
+.total-cart-quantity {
+	border-radius: 50%;
+	background-color: #FFF;
+	padding: 0.5%;
+	color: black;
+	font-weight: 900;
 }
 
 @media only screen and (max-width: 800px) {
