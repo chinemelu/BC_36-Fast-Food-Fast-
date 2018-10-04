@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyparser from 'body-parser';
 import logger from 'morgan';
+import path from 'path';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 
@@ -31,6 +32,11 @@ app.use('/api/v1/cart', cartRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/menu', menuRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(express.static(`${__dirname}/../UI`));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(`${__dirname}/../UI/landingpage.html`));
+});
 
 app.use((req, res) => {
   res.status(404).json({
