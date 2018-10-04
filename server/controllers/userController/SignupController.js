@@ -42,7 +42,7 @@ class UserController {
             role: newUser.rows[0].role
           };
           const token = jwt.sign(payload, process.env.SECRET_KEY, {
-            expiresIn: '24h'
+            expiresIn: '48h'
           });
           res.status(201).json({
             message: `${newUser.rows[0].first_name}, you have successfully created an account`,

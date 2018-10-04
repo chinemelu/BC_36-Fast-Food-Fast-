@@ -32,7 +32,7 @@ class UserController {
                 role: user.rows[0].role
               };
               const token = jwt.sign(payload, process.env.SECRET_KEY, {
-                expiresIn: '2h'
+                expiresIn: '48h'
               });
               res.status(200).json({
                 message: `${user.rows[0].first_name}, you have successfully logged in`,

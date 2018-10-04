@@ -423,6 +423,49 @@ button.add-food-item i {
 	font-size: 120%;
 }
 
+.add-food-item-btn[disabled], .add-food-item-btn:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.cd-error-message {
+	display: none;
+	color: red;
+	font-size: 80%;
+}
+
+.cd-error-banner-message {
+	display: none;
+	background-color: lightcoral;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-error-message.is-visible, .cd-error-banner-message.is-visible {
+	display: block
+}
+
+.cd-success-message {
+	display: none;
+	background-color: #5cb85c;
+	font-size: 100%;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-success-message.is-visible {
+	display: block
+}
+
+
 @media only screen and (max-width: 500px) {
   .orders .order .order-details, .orders .order .order-image {
 	display: block;
@@ -468,6 +511,13 @@ button.add-food-item i {
 		width: 100%;
 	}
 }
+
+@media only screen and (max-width: 800px) {
+  #manage-food-items-section {
+		margin-bottom: 200px;
+	}
+}
+
 
 
 

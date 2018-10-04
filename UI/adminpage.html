@@ -18,7 +18,7 @@
 		<div class="menu">
 		 <a href="customerpage.html">Our Products</a>
 		 <a href="orderhistory.html">My Order History</a>
-		 <a href="adminpage.html">Admin</a></li>
+		 <a href="adminpage.html" class="admin-nav">Admin</a></li>
 		 <a href="landingpage.html">Logout</a></li>
 		 <a href="customercart.html"><i class="fa fa-shopping-cart"></i></a>
 		 <a id="app-name" href="landingpage.html">Food-direct</a>
@@ -38,69 +38,13 @@
 	</div>
 	
 	<section id="manage-food-items-section">
+		<p class="cd-success-message"></p>
+		<p class="cd-error-banner-message"></p>
 		<button class="add-food-item">Add food item <i class="fa fa-plus"></i></button>
-		<table>
-			<tr>
-				<th class="serial-th">S/N</th>
-				<th class="name-th">Name</th>
-				<th class="price-th">Price (Naira)</th>
-				<th class="image-th">Image</th>
-				<th class="action-th">Action</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Spaghetti</td>
-				<td>1500</td>
-				<td><div class="image">
-					  <img src="images/basil-dinner-food-8500.jpg">
-					</div>
-				</td>
-				<td class="admin-action">
-					<div class="edit-entry">
-						<a href="#"><i class="fa fa-edit"></i></a>
-					</div>	 
-					<div class="delete-entry">
-						<a href="#"><i class="fa fa-times"></i></a>
-					</div>
-				</td>
-		  </tr>
-			<tr>
-				<td>2</td>
-				<td>Doughnut</td>
-				<td>200</td>
-				<td>
-					<div class="image">
-						 <img src="images/blue-colors-cream-928475.jpg">
-					</div>
-				</td>
-				<td class="admin-action">
-					<div class="edit-entry">
-						<a href="#"><i class="fa fa-edit"></i></a>
-					</div>	 
-					<div class="delete-entry">
-						<a href="#"><i class="fa fa-times"></i></a>
-					</div>
-				</td>
-		  </tr>
-			<tr>
-				<td>3</td>
-				<td>Chicken burrito</td>
-				<td>1200</td>
-				<td>
-					<div class="image">
-						<img src="images/burrito-chicken-close-up-461198.jpg">
-					</div>
-				</td>
-				<td class="admin-action">
-					<div class="edit-entry">
-						<a href="#"><i class="fa fa-edit"></i></a>
-					</div>	 
-					<div class="delete-entry">
-						<a href="#"><i class="fa fa-times"></i></a>
-					</div>
-				</td>
-		  </tr>
-		</table>
+
+		<div id="manage-food-items-entry">
+	</div>
+   </table>
 	</section>
 
 
@@ -112,14 +56,17 @@
 					 <div class="input-container">
 							<div class="input-label-container"><label class="input-label" for="item-name">Name</label></div>
 							<input type="text" class="input-field" id="item-name">
+							<p class="cd-error-message" id="add-menu-name-error"></p>
 						</div>
 						<div class="input-container">
 							<div class="input-label-container"><label class="input-label" for="item-price">Price (Naira)</label></div>
 							<input type="number" class="input-field" id="item-price">
+							<p class="cd-error-message" id="add-menu-price-error"></p>
 						</div>
 						<div class="input-container">
 							<div class="input-label-container"><label class="input-label">Image</label></div>
-							<input type="file" name="pic" accept="image/*" id="item-img">
+							<input type="file" name="pic" accept="image/*" id="file-upload">
+							<p class="cd-error-message" id="add-menu-img-error"></p>
 						</div>
 						<div class="input-container">
 							<input type="submit" class="add-food-item-btn" value="Add">
@@ -128,9 +75,6 @@
 	  </div>
 	</div>
   <!-- End of add food item modal  -->
-
-
-
 
 	<section id="pending-section">
 		<table>
@@ -340,5 +284,6 @@
 		</footer>
 			<!-- End of footer -->
 	<script src="js/adminpage.js"></script>
+	<script src="js/adminActions.js"></script>
 	</body>
 </html>
