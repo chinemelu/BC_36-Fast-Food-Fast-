@@ -1,4 +1,30 @@
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('token'),
+  getMenuSpinner = document.getElementById('get-menu-spinner'),
+  errorBannerMessage = document.querySelector('.cd-error-banner-message'),
+  addToCartBtn = document.querySelector('.add-to-cart'),
+  successMessage = document.querySelector('.cd-success-message');
+
+const getURLParameter = name => decodeURIComponent((new RegExp(`[?|&]${name}=([^&;]+?)(&|#|;|$)`)
+  .exec(window.location.search) || [null, ''])[1]
+  .replace(/\+/g, '%20')) || null;
+
+const params = getURLParameter('admin');
+
+const paramsMessage = (bool, otherMessage, message, innerMessage) => {
+  if (params === `${bool}`) {
+    otherMessage.innerHTML = '';
+    otherMessage.classList.remove('is-visible');
+    message.innerHTML = innerMessage;
+    message.classList.add('is-visible');
+  }
+};
+if (paramsMessage !== null && paramsMessage !== undefined) {
+  paramsMessage('false', successMessage, errorBannerMessage, 'You are not authorised to perform this action');
+} else {
+  successMessage.classList.remove('is-visible');
+  errorBannerMessage.classList.remove('is-visible');
+}
+
 const myHeaders = new Headers({
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
@@ -13,10 +39,12 @@ const getMenuHeader = {
 
 
 const getCartDetails = () => {
+  getMenuSpinner.classList.remove('hide');
   const getCartUrl = 'https://fast-food-fast-chinemelu.herokuapp.com/api/v1/cart';
   fetch(getCartUrl, getMenuHeader)
     .then(res => res.json())
     .then((cart) => {
+      getMenuSpinner.classList.add('hide');
       const navView = `<label id="hamburger" for="toggle">&#9776;</label>
       <input type="checkbox" id="toggle">
       <div class="menu">
@@ -34,7 +62,6 @@ const getCartDetails = () => {
 };
 
 getCartDetails();
-
 
 const addToCart = (url) => {
   fetch(url, getMenuHeader)

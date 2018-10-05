@@ -72,6 +72,56 @@ body {
 	display: none;
 }
 
+
+#get-menu-spinner {
+	position: fixed;
+	left: 50%;
+	top: 40%;
+	background-color: #FF4136;
+	z-index: 1000;
+}
+
+.hide {
+	display: none;
+}.cd-error-message {
+	display: none;
+	color: red;
+	font-size: 80%;
+}
+
+.cd-error-banner-message {
+	display: none;
+	background-color: lightcoral;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-error-message.is-visible, .cd-error-banner-message.is-visible {
+	display: block
+}
+
+.cd-success-message {
+	display: none;
+	background-color: #5cb85c;
+	font-size: 100%;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-success-message.is-visible {
+	display: block
+}
+
+
+
+
+
 @media only screen and (max-width: 800px) {
 	#hamburger {
 		display: block;
