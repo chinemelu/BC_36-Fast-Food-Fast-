@@ -9,6 +9,7 @@ const firstName = document.getElementById('register-firstname'),
   confirmPassword = document.getElementById('register-confirm-password'),
   confirmPasswordErrorMessage = document.getElementById('register-confirm-password-error'),
   registrationFormError = document.getElementById('reg-form-error'),
+  registrationSpinner = document.getElementById('spinner'),
   signupButton = document.querySelector('#signup-form-btn');
 
 // regex references
@@ -154,8 +155,8 @@ onKeyDown(email, emailErrorMessage);
 onKeyDown(password, passwordErrorMessage);
 onKeyDown(confirmPassword, confirmPasswordErrorMessage);
 
-
 const registerUser = (e) => {
+  registrationSpinner.classList.remove('hide');
   e.preventDefault();
   const signupUrl = 'https://fast-food-fast-chinemelu.herokuapp.com/api/v1/auth/signup';
   const registrationDetails = {
@@ -177,6 +178,7 @@ const registerUser = (e) => {
   fetch(signupUrl, fetchParameters)
     .then(res => res.json())
     .then((user) => {
+      registrationSpinner.classList.add('hide');
       if (user.errors) {
         if (user.errors.emailExists) {
           registrationFormError.innerHTML = user.errors.emailExists;

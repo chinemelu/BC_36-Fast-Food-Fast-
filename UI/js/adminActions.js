@@ -7,6 +7,7 @@ const manageFoodItemBtn = document.querySelector('.manage-food-items'),
   priceErrorMessage = document.querySelector('#add-menu-price-error'),
   fileUpload = document.querySelector('#file-upload'),
   imageErrorMessage = document.querySelector('#add-menu-img-error'),
+  adminSpinner = document.getElementById('admin-spinner'),
   addToMenuBtn = document.querySelector('.add-food-item-btn');
 
 // Cloudinary reference Image Upload in 15 Minutes with Cloudinary and Javascript
@@ -17,9 +18,10 @@ const getURLParameter = name => decodeURIComponent((new RegExp(`[?|&]${name}=([^
   .exec(window.location.search) || [null, ''])[1]
   .replace(/\+/g, '%20')) || null;
 
-const params = getURLParameter('success');
+const successParam = getURLParameter('success');
+const duplicateParam = getURLParameter('duplicate');
 
-const paramsMessage = (bool, otherMessage, message, innerMessage) => {
+const paramsMessage = (params, bool, otherMessage, message, innerMessage) => {
   if (params === `${bool}`) {
     otherMessage.innerHTML = '';
     otherMessage.classList.remove('is-visible');
@@ -28,8 +30,9 @@ const paramsMessage = (bool, otherMessage, message, innerMessage) => {
   }
 };
 if (paramsMessage !== null && paramsMessage !== undefined) {
-  paramsMessage('true', errorBannerMessage, successMessage, 'You have successfully added the food item');
-  paramsMessage('false', successMessage, errorBannerMessage, 'Error adding food item');
+  paramsMessage(successParam, 'true', errorBannerMessage, successMessage, 'You have successfully added the food item');
+  paramsMessage(successParam, 'false', successMessage, errorBannerMessage, 'Error adding food item');
+  paramsMessage(duplicateParam, 'true', successMessage, errorBannerMessage, 'Item already exists');
 } else {
   successMessage.classList.remove('is-visible');
   errorBannerMessage.classList.remove('is-visible');
@@ -58,9 +61,11 @@ let foodItemsView = `<table>
 const getAllFoodItemsUrl = 'https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu';
 
 const getAllFoodItems = () => {
+  adminSpinner.classList.remove('hide');
   fetch(getAllFoodItemsUrl, getAllFoodItemsHeader)
     .then(res => res.json())
     .then((foodItems) => {
+      adminSpinner.classList.add('hide');
       let total = 0;
       foodItems.data.map((foodItem) => {
         foodItemsView += `<tr>
@@ -89,7 +94,9 @@ const getAllFoodItems = () => {
 };
 
 getAllFoodItems();
-manageFoodItemBtn.addEventListener('click', getAllFoodItems);
+manageFoodItemBtn.addEventListener('click', () => {
+  window.location.href = 'adminpage.html';
+});
 
 
 const addToMenuUrl = 'https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu';
@@ -170,7 +177,7 @@ const onAddMenuEvent = (element, event) => {
       imageValidator();
     }
     if (event === 'change' && element === fileUpload) {
-      nameValidator();
+      imageValidator();
     }
     if (event === 'mouseenter' && element === addToMenuBtn) {
       nameValidator();
@@ -196,6 +203,7 @@ onKeyDown(fileUpload, imageErrorMessage);
 
 
 addToMenuBtn.addEventListener('click', (e) => {
+  adminSpinner.classList.remove('hide');
   e.preventDefault();
   const imgFile = fileUpload.files[0];
   const formData = new FormData();
@@ -232,8 +240,18 @@ addToMenuBtn.addEventListener('click', (e) => {
       fetch(addToMenuUrl, addToMenuParameters)
         .then(res => res.json())
         .then((foodItem) => {
+          e.preventDefault();
+          adminSpinner.classList.add('hide');
           if (!foodItem.errors && !foodItem.error) {
             window.location.href = 'adminpage.html?success=true';
+          }
+          if (foodItem.error === 'You are not authorised to perform this action' || foodItem.message === 'No token provided'
+          || foodItem.error === 'Invalid token' || foodItem.message === 'You are not authorised to perform this action'
+          || foodItem.message === 'User does not exist') {
+            window.location.href = 'customerpage.html?admin=false';
+          }
+          if (foodItem.message === 'Item already exists') {
+            window.location.href = 'adminpage.html?duplicate=true';
           } else {
             window.location.href = 'adminpage.html?success=false';
           }
