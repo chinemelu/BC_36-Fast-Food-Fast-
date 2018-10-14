@@ -13,17 +13,6 @@
 	
 	<!-- Start of Navigation bar -->
 	  <div class="nav">
-	    <label id="hamburger" for="toggle">&#9776;</label>
-		<input type="checkbox" id="toggle">
-		<div class="menu">
-		 <a href="customerpage.html">Our Products</a>
-		 <a href="orderhistory.html">My Order History</a>
-		 <a href="adminpage.html" class="admin-nav">Admin</a></li>
-		 <a href="landingpage.html">Logout</a></li>
-		 <a href="customercart.html"><i class="fa fa-shopping-cart"></i></a>
-		 <a id="app-name" href="landingpage.html">Food-direct</a>
-		</div>
-		<p id="app-name-toggle" href="landingpage.html">Food-direct</p>
 	  </div>
 	<!-- End of Navigation bar -->
 	<section id="admin-page">
@@ -38,7 +27,7 @@
 	</div>
 
 	<!-- Introduce spinner -->
-	<div id="admin-spinner" class="hide">
+	<div class="spinner hide">
 			<img id="img-spinner" src="./images/ajax-loader.gif" alt="loading"/>
 		</div>
 	
@@ -82,85 +71,7 @@
   <!-- End of add food item modal  -->
 
 	<section id="pending-section">
-		<table>
-		<tr>
-			<th>Order #</th>
-			<th>Date</th>
-			<th>User</th>
-			<th>Order Time</th>
-			<th>Action</th>
-		</tr>
-		<tr>
-			<td><a class="order-link" href="#">13-26082018</a></td>
-			<td>26 August 2018</td>
-			<td><a href="#">John</a></td>
-			<td>20:30</td>
-			<td class="admin-action">
-				<a class="declined-link" href="#">Decline</a>
-				<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-			</td>
-			</tr>
-			<tr>
-			<td><a class="order-link" href="#">14-26082018</a></td>
-			<td>26 August 2018</td>
-			<td><a href="#">John</a></td>
-			<td>20:30</td>
-			<td class="admin-action">
-				<a class="declined-link" href="#">Decline</a>
-				<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-			</td>
-			</tr>
-			<tr>
-			<td><a class="order-link" href="#">15-26082018</a></td>
-			<td>26 August 2018</td>
-			<td><a href="#">John</a></td>
-			<td>20:30</td>
-			<td class="admin-action">
-				<a class="declined-link" href="#">Decline</a>
-				<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-			</td>
-			</tr>
-		</table>
-	</section>
-		<section id="completed-section">
-		<table>
-		<tr>
-			<th>Order #</th>
-			<th>Date</th>
-			<th>User</th>
-			<th>Order Time</th>
-			<th>Action</th>
-		</tr>
-		<tr>
-			<td><a class="order-link" href="#">18-20082018</a></td>
-			<td>20 August 2018</td>
-			<td><a href="#">Chinemelu</a></td>
-			<td>01:30</td>
-			<td class="admin-action">
-				<a href="#">Decline</a>
-				<label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
-			</td>
-			</tr>
-		<tr>
-			<td><a class="order-link" href="#">22-20082018</a></td>
-			<td>20 August 2018</td>
-			<td><a href="#">Chinemelu</a></td>
-			<td>01:30</td>
-			<td class="admin-action">
-				<a href="#">Decline</a>
-				<label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
-			</td>
-			</tr>
-		<tr>
-			<td><a class="order-link" href="#">23-20082018</a></td>
-			<td>20 August 2018</td>
-			<td><a href="#">Chinemelu</a></td>
-			<td>01:30</td>
-			<td class="admin-action">
-				<a href="#">Decline</a>
-				<label class="completed-link">Completed<input type="checkbox" class="completed-order" checked></label>
-			</td>
-			</tr>
+		
 		</table>
 	</section>
 
@@ -288,7 +199,12 @@
 			<p>Food Direct &copy; 2018</p>
 		</footer>
 			<!-- End of footer -->
+	<script src="js/guestNavbar.js"></script>
+	<script src="js/jwt-decode.min.js"></script>
+	<script src="js/userAdminNavbar.js"></script>
+	<script src="js/adminAuth.js"></script>
 	<script src="js/adminpage.js"></script>
 	<script src="js/adminActions.js"></script>
+	<script src="js/logout.js"></script>
 	</body>
 </html>
