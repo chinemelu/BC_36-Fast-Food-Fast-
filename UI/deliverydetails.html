@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Order History</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="font-awesome/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/deliverydetails.css" type="text/css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<!-- reference Responsive Menu with Media Queries (Checkbox Trick) - Using only CSS3 -->
+	<body>
+		<!-- Start of Navigation bar -->
+	  <div class="nav">
+
+		</div>
+		<!-- End of Navigation bar -->
+		<section id="delivery-details-section">
+			<!-- Introduce spinner -->
+			<div class="spinner hide">
+				<img id="img-spinner" src="./images/ajax-loader.gif" alt="loading"/>
+			</div>
+			<form>
+				<h1>Delivery Details</h1>
+				<p class="fieldset">
+					<label>Delivery Address</label>
+					<input type="text" class="address">
+					<p id="cd-address-error-message"></p>
+				</p>
+				<p class="fieldset">
+					<label>Phone Number</label>
+					<input type="number" class="mobilenumber">
+					<p id="cd-mobile-error-message"></p>
+				</p>
+				<button class="order-btn">Order</button>
+			</form>
+		</section>
+		<footer class="footer">
+			<p>Food Direct &copy; 2018</p>
+		</footer>
+			<!-- End of footer -->
+	<script src="js/guestNavbar.js"></script>
+	<script src="js/jwt-decode.min.js"></script>
+	<script src="js/userAdminNavbar.js"></script>
+	<script src="js/deliveryDetails.js"></script>
+	<script src="js/logout.js"></script>
+	</body>
+</html>

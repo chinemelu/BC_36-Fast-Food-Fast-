@@ -17,6 +17,32 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+
+.cd-error-message {
+	display: none;
+	color: red;
+	font-size: 80%;
+}
+
+.cd-error-banner-message {
+	display: none;
+	background-color: lightcoral;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-error-message.is-visible, .cd-error-banner-message.is-visible {
+	display: block
+}
+
+#cd-mobile-error-message, #cd-address-error-message {
+	color: red;
+	font-size: 80%;
+}
+
 /* Beginning of navigation styling  */
 
 .nav {
@@ -70,6 +96,36 @@ body {
 
 #app-name-toggle {
 	display: none;
+}
+
+
+.cd-error-banner-message {
+	display: none;
+	background-color: lightcoral;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-error-banner-message.is-visible {
+	display: block
+}
+
+.cd-success-message {
+	display: none;
+	background-color: #5cb85c;
+	font-size: 100%;
+	color: #FFF;
+	padding: 1.5%;
+	text-align: center;
+	width: 70%;
+	margin: 1% auto;
+}
+
+.cd-success-message.is-visible {
+	display: block
 }
 
 @media only screen and (max-width: 1100px) {
@@ -168,11 +224,11 @@ body {
 	font-size: 80%;
 	border-top: 1px solid #d2d8d8;
 	text-align: right;
-	margin-bottom: 10%;
+	margin-bottom: 150px;
 	width: 100%;
 }
 
-#shopping-cart .order-btn {
+#shopping-cart .proceed-btn {
 	border: none;
 	border-radius: 20px;
 	color: #FFF;
@@ -184,13 +240,40 @@ body {
 }
 
 .footer {
-	display: inline-block;
+	position: fixed;
+	bottom: 0;
 	width: 100%;
 	background-color: #FF4136;
 	color: #FFF;
 	text-align: center;
 	padding: 0.8% 0%;
 	font-size: 120%;
+}
+
+.spinner {
+	position: fixed;
+	left: 50%;
+	top: 40%;
+	background-color: #FF4136;
+	z-index: 1000;
+}
+
+.hide {
+	display: none;
+}
+
+.total-cart-quantity {
+	border-radius: 50%;
+	background-color: #FFF;
+	padding: 0.5%;
+	color: black;
+	font-weight: 900;
+}
+
+.no-items-text {
+	font-size: 150%;
+	margin: 10% 15% 5% 0%;
+	width: 100%;
 }
 
 @media only screen and (max-width: 950px) {
@@ -234,7 +317,6 @@ body {
 
 	#shopping-cart .price-data {
 		font-size: 55%;
-		
 	}
 
 	#shopping-cart .image-details .image-name a {
@@ -250,6 +332,11 @@ body {
 
 	.image-details h1 {
 		font-size: 70%;
+	}
+	.no-items-text {
+		font-size: 90%;
+		padding-top: 10%;
+		width: 100%;
 	}
 }
 

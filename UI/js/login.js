@@ -50,52 +50,6 @@ const loginPasswordValidator = () => {
   }
 };
 
-// const onEvent = (element, event) => {
-//   element.addEventListener(event, () => {
-//     if (event === 'blur' && element === email) {
-//       loginEmailValidator();
-//     }
-//     if (event === 'blur' && element === password) {
-//       loginPasswordValidator();
-//     }
-//     if (Object.keys(loginErrors).length === 0) {
-//       loginButton.disabled = false;
-//     } else {
-//       loginButton.disabled = true;
-//     }
-//   });
-// };
-
-// onEvent(signupButton, 'mouseenter');
-// onEvent(email, 'blur');
-// onEvent(password, 'blur');
-
-// const loginValidator = (parameter, errorMessage, placeholder) => {
-//   if (!parameter.value.trim()) {
-//     loginErrors.parameter = `${placeholder} is required`;
-//     errorMessage.classList.add('is-visible');
-//     errorMessage.innerHTML = loginErrors.parameter;
-//     loginButton.disabled = true;
-//   }
-//   if (parameter === loginEmail && parameter.value.trim() && (!(/^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/)
-//     .test(parameter.value.trim()))) {
-//     loginErrors.parameter = 'Email is invalid';
-//     errorMessage.classList.add('is-visible');
-//     errorMessage.innerHTML = 'Email is invalid';
-//     loginButton.disabled = true;
-//   }
-//   if (parameter === loginPassword && parameter.value.trim() && parameter.value.trim().length < 8) {
-//     loginErrors.parameter = 'Email is invalid';
-//     errorMessage.classList.add('is-visible');
-//     errorMessage.innerHTML = 'Email is invalid';
-//     loginButton.disabled = true;
-//   } else {
-//     delete (loginErrors.parameter);
-//     errorMessage.classList.remove('is-visible');
-//     loginButton.disabled = false;
-//   }
-// };
-
 const onLoginEvent = (element, event) => {
   element.addEventListener(event, () => {
     if (event === 'blur' && element === loginEmail) {

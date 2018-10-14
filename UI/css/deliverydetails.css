@@ -5,16 +5,8 @@ html {
 
 body {
 	margin: 0px;
-    font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
-}
-
-*, *::before, *::after {
-	box-sizing: border-box;
-}
-
-* {
-  font-family: 'Open Sans', sans-serif;
 }
 
 /* Beginning of navigation styling  */
@@ -73,22 +65,6 @@ body {
 }
 
 
-.spinner {
-	position: fixed;
-	left: 50%;
-	top: 40%;
-	background-color: #FF4136;
-	z-index: 1000;
-}
-
-.hide {
-	display: none;
-}.cd-error-message {
-	display: none;
-	color: red;
-	font-size: 80%;
-}
-
 .cd-error-banner-message {
 	display: none;
 	background-color: lightcoral;
@@ -99,7 +75,7 @@ body {
 	margin: 1% auto;
 }
 
-.cd-error-message.is-visible, .cd-error-banner-message.is-visible {
+.cd-error-banner-message.is-visible {
 	display: block
 }
 
@@ -118,11 +94,7 @@ body {
 	display: block
 }
 
-
-
-
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1100px) {
 	#hamburger {
 		display: block;
 		cursor: pointer;
@@ -137,7 +109,6 @@ body {
 		border-bottom: 1px solid #EAEAEB;
 		margin: 0;
 	}
-	
 	.menu a:first-child {
 	    border-top: 1px solid #EAEAEB;
     }
@@ -145,6 +116,7 @@ body {
 	#toggle:checked + .menu {
 		display: block;
 	}
+
 	#app-name {
 		display: none;
 	}
@@ -161,63 +133,57 @@ body {
 
 /* End of navigation styling */
 
-#customer-page-cover-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0,0,0,0.65)), url("../images/brownie-cake-chocolate-45202.jpg");
-	background-position: center;
-	background-size: cover;
-	height: 60vh;
-}
-
-.add-to-cart  {
-	background-color: #659DBD;
-	border: none;
-	padding: 0.9em 1.2em;
-	color: #FFF;
-	cursor: pointer;
-}
-
-.heading h1 {
-	text-align: center;
-	text-transform: uppercase;
-	border-bottom: 1px solid #d2d8d8;
-}
-
-#food-list {
-	margin-bottom: 10%;
-	float: left;
-}
-
-.food-item img{
-	height: 200px;
-	width: 85%;
-}
-
-#food-list .food-item {
-	display: inline-block;
-	border: 1.5px solid #d2d8d8;
-	width: 22%;
-	text-align: center;
-	margin-left: 2.2%;
-	padding: 1%;
-	margin-top: 1%;
-}
-
-#listing-price {
-	color: #659DBD;
-}
-
-#food-list .food-item h1 {
-	font-size: 100%;
-}
-
 .footer {
-	display: inline-block;
+  position: fixed;
+  bottom: 0;
 	width: 100%;
 	background-color: #FF4136;
 	color: #FFF;
 	text-align: center;
 	padding: 0.8% 0%;
 	font-size: 120%;
+}
+
+#delivery-details-section {
+  margin: 50px auto 100px;
+  max-width: 600px;
+}
+
+.fieldset {
+  width: 100%;
+}
+
+.fieldset label {
+  display: block;
+}
+
+.fieldset input {
+  width: 90%;
+  padding: 1%;
+}
+
+#delivery-details-section .order-btn {
+	border: none;
+	border-radius: 20px;
+	color: #FFF;
+	background-color: #FF4136;
+	padding: 10px 30px;
+	text-decoration: none;
+	cursor: pointer;
+  outline: none;
+  margin-top: 3%;
+}
+
+.spinner {
+	position: fixed;
+	left: 50%;
+	top: 40%;
+	background-color: #FF4136;
+	z-index: 1000;
+}
+
+.hide {
+	display: none;
 }
 
 .total-cart-quantity {
@@ -228,44 +194,19 @@ body {
 	font-weight: 900;
 }
 
-@media only screen and (max-width: 800px) {
-	#food-list .food-item {
-		width: 30%;
-    }
+#delivery-details-section .order-btn[disabled], #delivery-details-section .order-btn:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }
 
-@media only screen and (max-width: 600px) {
-	#food-list {
-		margin-left: 2%;
-    }
-	
-	#food-list .food-item {
-		width: 45%;
-    }
+#cd-address-error-message, #cd-mobile-error-message {
+  display: none;
+	color: red;
+	font-size: 80%;
 }
 
-@media only screen and (max-width: 422px) {
-	#food-list .food-item:first-child {
-		width: 80%;
-		margin: 2% 0 0 7%;
-    }
-	
-	#food-list .food-item {
-		width: 80%;
-		margin: 8% 0 0 7%;
-    }
-	#food-list .food-item:last-child {
-		width: 80%;
-		margin-bottom: 7%;
-    }
+#cd-address-error-message.is-visible, #cd-mobile-error-message.is-visible {
+	display: block
 }
-
-
-
-
-
-
-
-
-
-
