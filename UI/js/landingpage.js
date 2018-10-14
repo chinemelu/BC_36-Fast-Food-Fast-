@@ -8,7 +8,9 @@ const formModal = document.querySelector('.landingpage-modal'),
   forgotPasswordLink = formLogin.querySelector('#forgot-password'),
   backToLoginLink = document.querySelector('#back-to-login'),
   inputFields = document.querySelectorAll('.input-field'),
+  needToLoginMessage = document.querySelector('#login-form-error'),
   mainNav = document.querySelector('#Login');
+
 
 const addClassToClassList = (element, className) => {
   element.classList.add(className);
@@ -35,6 +37,21 @@ const registrationSelected = () => {
   addClassToClassList(tabSignup[0], 'selected');
   removeClassFromClassList(formForgotPassword, 'is-selected');
 };
+
+const getURLParameter = name => decodeURIComponent((new RegExp(`[?|&]${name}=([^&;]+?)(&|#|;|$)`)
+  .exec(window.location.search) || [null, ''])[1]
+  .replace(/\+/g, '%20')) || null;
+
+const needToLoginParams = getURLParameter('user');
+
+if (needToLoginParams === 'false') {
+  needToLoginMessage.innerHTML = 'You have to login to see this page';
+  needToLoginMessage.classList.add('is-visible');
+  formModal.classList.add('is-visible');
+  loginSelected();
+} else {
+  needToLoginMessage.classList.remove('is-visible');
+}
 
 // show login section when navigation bar login/register button is clicked
 mainNav.addEventListener('click', () => {

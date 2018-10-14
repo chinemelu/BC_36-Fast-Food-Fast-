@@ -465,7 +465,7 @@ button.add-food-item i {
 	display: block
 }
 
-#admin-spinner {
+.spinner {
 	position: fixed;
 	left: 50%;
 	top: 40%;
@@ -475,6 +475,14 @@ button.add-food-item i {
 
 .hide {
 	display: none;
+}
+
+.total-cart-quantity {
+	border-radius: 50%;
+	background-color: #FFF;
+	padding: 0.5%;
+	color: black;
+	font-weight: 900;
 }
 
 

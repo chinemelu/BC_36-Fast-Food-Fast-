@@ -7,7 +7,7 @@ const manageFoodItemBtn = document.querySelector('.manage-food-items'),
   priceErrorMessage = document.querySelector('#add-menu-price-error'),
   fileUpload = document.querySelector('#file-upload'),
   imageErrorMessage = document.querySelector('#add-menu-img-error'),
-  adminSpinner = document.getElementById('admin-spinner'),
+  adminSpinner = document.querySelector('.spinner'),
   addToMenuBtn = document.querySelector('.add-food-item-btn');
 
 // Cloudinary reference Image Upload in 15 Minutes with Cloudinary and Javascript
@@ -40,7 +40,7 @@ if (paramsMessage !== null && paramsMessage !== undefined) {
 
 const addToMenuErrors = {};
 const token = localStorage.getItem('token');
-const myHeaders = new Headers({
+const myAdminHeaders = new Headers({
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   token
@@ -51,7 +51,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'd07ctl00';
 const getAllFoodItemsHeader = {
   method: 'GET',
   mode: 'cors',
-  headers: myHeaders
+  headers: myAdminHeaders
 };
 
 let foodItemsView = `<table>
@@ -160,7 +160,6 @@ const imageValidator = () => {
 const onKeyDown = (parameter, errorMessage) => {
   parameter.addEventListener('keydown', () => {
     errorMessage.classList.remove('is-visible');
-    // addToMenuFormError.classList.remove('is-visible');
     addToMenuBtn.disabled = false;
   });
 };
@@ -234,25 +233,22 @@ addToMenuBtn.addEventListener('click', (e) => {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(menuDetails),
-        headers: myHeaders
+        headers: myAdminHeaders
       };
 
       fetch(addToMenuUrl, addToMenuParameters)
-        .then(res => res.json())
-        .then((foodItem) => {
-          e.preventDefault();
+        .then((res) => {
           adminSpinner.classList.add('hide');
-          if (!foodItem.errors && !foodItem.error) {
+          if (res.status === 201) {
             window.location.href = 'adminpage.html?success=true';
           }
-          if (foodItem.error === 'You are not authorised to perform this action' || foodItem.message === 'No token provided'
-          || foodItem.error === 'Invalid token' || foodItem.message === 'You are not authorised to perform this action'
-          || foodItem.message === 'User does not exist') {
+          if (res.status === 404) {
             window.location.href = 'customerpage.html?admin=false';
           }
-          if (foodItem.message === 'Item already exists') {
+          if (res.status === 409) {
             window.location.href = 'adminpage.html?duplicate=true';
-          } else {
+          }
+          if (res.status === 500) {
             window.location.href = 'adminpage.html?success=false';
           }
         }).catch((err) => {
