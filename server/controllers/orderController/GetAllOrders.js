@@ -16,7 +16,10 @@ class GetAllOrdersController {
     const text = `SELECT
     json_build_object(
       'id', orders.id, 
-      'userId', orders.user_id, 
+      'firstName', users.first_name,
+      'lastName', users.last_name,
+      'date', orders.created_at,
+      'total', carts.total_price,
       'order status', orders.order_status,
       'items', jsonb_agg(json_build_object('id', food_items.id, 'name', food_items.name, 
       'price', food_items.price, 'img_url', food_items.img_url, 
@@ -25,6 +28,9 @@ class GetAllOrdersController {
 
       FROM orders
       
+      LEFT JOIN users
+      on orders.user_id = users.id
+
       LEFT JOIN carts
       ON orders.cart_id = carts.id
 
@@ -34,7 +40,9 @@ class GetAllOrdersController {
       LEFT JOIN food_items
       ON carts_fooditems.item_id = food_items.id
       
-      GROUP BY orders.id`;
+      GROUP BY orders.id, carts.id, users.id
+      ORDER BY orders.created_at DESC
+      `;
 
     db(text, (err, results) => {
       if (err) {

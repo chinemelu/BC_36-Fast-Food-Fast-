@@ -39,11 +39,11 @@ if (paramsMessage !== null && paramsMessage !== undefined) {
 }
 
 const addToMenuErrors = {};
-const token = localStorage.getItem('token');
+const adminToken = localStorage.getItem('token');
 const myAdminHeaders = new Headers({
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
-  token
+  token: adminToken
 });
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/chinemelu/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'd07ctl00';

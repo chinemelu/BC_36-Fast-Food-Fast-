@@ -17,8 +17,9 @@ class GetSingleOrderController {
 
     const text = `SELECT
       json_build_object(
-        'id', orders.id, 
-        'userId', orders.user_id, 
+        'id', orders.id,  
+        'date', orders.created_at,
+        'total', carts.total_price,
         'order status', orders.order_status,
         'items', jsonb_agg(json_build_object('id', food_items.id, 'name', food_items.name, 
         'price', food_items.price, 'img_url', food_items.img_url, 
@@ -37,7 +38,7 @@ class GetSingleOrderController {
       ON carts_fooditems.item_id = food_items.id
       WHERE orders.id = $1
       
-      GROUP BY orders.id`;
+      GROUP BY orders.id, carts.id`;
 
     const param = [id];
 

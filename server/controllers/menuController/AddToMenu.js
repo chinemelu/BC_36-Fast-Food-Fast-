@@ -29,9 +29,9 @@ class AddToMenuController {
         const insertParam = [req.body.name, req.body.price, req.body.imgUrl];
 
         db(insertText, insertParam)
-          .then((item) => {
+          .then(() => {
             res.status(201).json({
-              message: `You have added ${item.rows[0].name} successfully`,
+              message: 'You have added the food item successfully',
             });
           })
           .catch((err) => {

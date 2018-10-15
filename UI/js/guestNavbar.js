@@ -1,6 +1,17 @@
 const pageToken = localStorage.getItem('token');
 
-if (!pageToken) {
+
+const decodedToken = jwt_decode(pageToken);
+
+let isExpiredToken = false;
+
+const dateNow = new Date();
+
+if (decodedToken && decodedToken.exp < (dateNow.getTime() / 1000)) {
+  isExpiredToken = true;
+}
+
+if (!pageToken || isExpiredToken === true) {
   const getGuestMenuSpinner = document.querySelector('.spinner');
 
   const myGuestHeaders = new Headers({
