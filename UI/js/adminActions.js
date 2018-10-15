@@ -78,10 +78,10 @@ const getAllFoodItems = () => {
        </td>
          <td class="admin-action">
          <div class="edit-entry">
-          <a href="#"><i class="fa fa-edit"></i></a>
+          <a href="#"><i class="fa fa-edit edit-item"></i></a>
           </div> 
             <div class="delete-entry">
-          <a href="#"><i class="fa fa-times"></i></a>
+          <a href="#"><i class="fa fa-times delete-item"></i></a>
           </div>
          </td>
        </tr>
@@ -94,6 +94,7 @@ const getAllFoodItems = () => {
 };
 
 getAllFoodItems();
+
 manageFoodItemBtn.addEventListener('click', () => {
   window.location.href = 'adminpage.html';
 });

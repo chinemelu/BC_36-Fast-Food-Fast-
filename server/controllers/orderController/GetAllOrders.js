@@ -39,12 +39,16 @@ class GetAllOrdersController {
 
       LEFT JOIN food_items
       ON carts_fooditems.item_id = food_items.id
+
+      WHERE orders.order_status = $1
       
       GROUP BY orders.id, carts.id, users.id
       ORDER BY orders.created_at DESC
       `;
 
-    db(text, (err, results) => {
+    const param = [req.query.status];
+
+    db(text, param, (err, results) => {
       if (err) {
         return res.status(500).json({ error: err.stack });
       }
