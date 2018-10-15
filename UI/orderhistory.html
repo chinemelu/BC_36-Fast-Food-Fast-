@@ -13,155 +13,18 @@
 	
 	<!-- Start of Navigation bar -->
 	  <div class="nav">
-	    <label id="hamburger" for="toggle">&#9776;</label>
-		<input type="checkbox" id="toggle">
-		<div class="menu">
-			<a href="customerpage.html">Our Products</a>
-			<a href="orderhistory.html">My Order History</a>
-			<a href="adminpage.html">Admin</a></li>
-			<a href="landingpage.html">Logout</a></li>
-			<a href="customercart.html"><i class="fa fa-shopping-cart"></i></a>
-			<a id="app-name" href="landingpage.html">Food-direct</a>
-		</div>
-		  <p id="app-name-toggle" href="landingpage.html">Food-direct</p>
+
 	  </div>
 	<!-- End of Navigation bar -->
+
+	<!-- Introduce spinner -->
+	<div class="spinner hide">
+		<img id="img-spinner" src="./images/ajax-loader.gif" alt="loading"/>
+	</div>
+		
 	<section id="order-history">
-		  <h1 id="mh-order-history">Your Orders</h1>
-		  <table>
-			<tr>
-			<th>
-			  Date
-			</th>
-			<th>
-			  Total
-			</th>
-			<th>
-			  Order #130082018
-			</th>
-			</tr>
-			<tr>
-			<td>
-			  30 August 2018
-			</td>
-			
-			<td class="total-price">
-			  £19.50
-			</td>
-			<td></td>
-		</tr>
-			 <!-- </table> -->
-			 <tr>
-				<td>
-		  <div class="order">
-			<div class="order-image">
-			  <img src="images/blue-colors-cream-928475.jpg">
-			</div>
-		</td>
-		  <td>
-			<div class="order-details">
-			<p class="order-name">Doughnut</p>
-			<p>Qty: 1</p>
-			<p>£1.50</p>
-			</div>
-			</div>
-		</td>
-		<td></td>
-			</tr>
-			<tr>
-			<td>
-		  <div class="order">
-			<div class="order-image">
-			  <img src="images/burrito-chicken-close-up-461198.jpg">
-			</div>
-		</td>
-		 <td>
-			<div class="order-details">
-			<p class="order-name">Chicken burrito</p>
-			<p>Qty: 1</p>
-			<p>£6.50</p>
-			</div>
-			</div>
-		</td>
-		<td></td>
-			</tr>
-			<tr>
-			<td>
-		  <div class="order">
-			<div class="order-image">
-			  <img src="images/basil-dinner-food-8500.jpg">
-			</div>
-		</td>
-		 <td>
-			<div class="order-details">
-			<p class="order-name">Spaghetti</p>
-			<p>Qty: 1</p>
-			<p>£8.50</p>
-			</div>
-			</div>
-			 </td>
-			 <td></td>
-			 </tr>
-			 
-			  <tr>
-				<td>
-		  <div class="order">
-			<div class="order-image">
-			  <img src="images/cake-chocolate-chocolate-cake-132694.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="order-details">
-			<p class="order-name">Chocolate cake</p>
-			<p>Qty: 1</p>
-			<p>£3.00</p>
-			</div>
-			</div>
-			</td>
-			<td></td>
-			</tr>
-
-		  <table>
-			<tr>
-			<th>
-			  Date
-			</th>
-			<th>
-			  Total
-			</th>
-			<th>
-			  Order #227082017
-			</th>
-			</tr>
-			<tr>
-			<td>
-			  27 August 2017
-			</td>
-			
-			<td class="total-price">
-			  £4.50
-			</td>
-			<td></td>
-		   <tr>
-			 <!-- </table> -->
-			 <td>
-		  <div class="order">
-			<div class="order-image">
-			  <img src="images/blur-breakfast-close-up-376464.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="order-details">
-			<p class="order-name">Pancake</p>
-			<p>Qty: 1</p>
-			<p>£4.50</p>
-			</div>
-			</div>
-			</td>		
-			<td></td>
-		</tr>
-
-		</table>
+		<div class="order-history-entry">
+		</div>
 	</section>
 		<!-- Beginning of footer --> 
 		<!-- reference https://www.w3schools.com/howto/howto_css_fixed_footer.asp -->
@@ -169,5 +32,12 @@
 			<p>Food Direct &copy; 2018</p>
 		</footer>
 		<!-- End of footer -->
+		<script src="js/guestNavbar.js"></script>
+		<script src="js/jwt-decode.min.js"></script>
+		<script src="js/hasTokenExpired.js"></script>
+		<script src="js/userAdminNavbar.js"></script>
+		<script src="js/hasTokenExpired.js"></script>
+		<script src="js/getOrderHistory.js"></script>
+		<script src="js/logout.js"></script>
 	</body>
 </html>

@@ -16,9 +16,10 @@ class OrderController {
     const { userId } = req.decoded;
     const text = `SELECT
     json_build_object(
-      'id', orders.id, 
-      'userId', orders.user_id, 
+      'id', orders.id,
       'order status', orders.order_status,
+      'date', orders.created_at,
+      'total', carts.total_price,
       'items', jsonb_agg(json_build_object('id', food_items.id, 'name', food_items.name, 
       'price', food_items.price, 'img_url', food_items.img_url, 
       'quantity', carts_fooditems.item_quantity))
@@ -34,9 +35,11 @@ class OrderController {
 
       LEFT JOIN food_items
       ON carts_fooditems.item_id = food_items.id
-      WHERE orders.user_id = $1
+      WHERE orders.user_id = $1 
       
-      GROUP BY orders.id`;
+      GROUP by orders.id, carts.id
+      ORDER BY orders.created_at DESC
+      `;
 
     const params = [userId];
     db(text, params, (err, results) => {

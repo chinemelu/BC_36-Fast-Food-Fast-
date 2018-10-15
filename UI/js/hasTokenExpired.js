@@ -3,16 +3,17 @@ if (!token) {
   window.location.href = 'landingpage.html?user=false';
 }
 
-const decodedToken = jwt_decode(token);
+const decodedAuthorisedToken = jwt_decode(token);
 
-let isExpiredToken = false;
+let isExpiredAuthorisedToken = false;
 
-const dateNow = new Date();
+const date = new Date();
 
-if (decodedToken && decodedToken.exp < (dateNow.getTime() / 1000)) {
-  isExpiredToken = true;
+if (decodedAuthorisedToken && decodedAuthorisedToken.exp < (date.getTime() / 1000)) {
+  isExpiredAuthorisedToken = true;
 }
 
-if (isExpiredToken === true) {
+if (isExpiredAuthorisedToken === true) {
+  localStorage.removeItem('token');
   window.location.href = 'landingpage.html?user=false';
 }

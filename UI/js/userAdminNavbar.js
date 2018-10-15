@@ -23,7 +23,6 @@ const getCartDetails = () => {
     .then(res => res.json())
     .then((cart) => {
       spinner.classList.add('hide');
-
       if (role === 'admin' || role === 'superadmin') {
         const navView = `<label id="hamburger" for="toggle">&#9776;</label>
       <input type="checkbox" id="toggle">
