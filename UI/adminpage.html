@@ -19,10 +19,11 @@
 	<div class="order-navigation">
 	  <h1>Admin Dashboard</h1>
 	  <ul>
-			<li><a class="manage-food-items" href="#">Manage food items</a></li>
-	    <li><a class="pending-orders" href="#">Pending Orders</a></li>
-			<li><a class="completed-orders" href="#">Completed Orders</a></li>
-			<li><a class="declined-orders" href="#">Declined Orders</a></li>
+			<li><a class="manage-food-items" href="#">Manage items</a></li>
+	    <li><a class="new-orders" href="#">New</a></li>
+			<li><a class="processing-orders" href="#">Processing</a></li>
+			<li><a class="completed-orders" href="#">Completed</a></li>
+			<li><a class="declined-orders" href="#">Cancelled</a></li>
 	  </ul>
 	</div>
 
@@ -38,7 +39,6 @@
 
 		<div id="manage-food-items-entry">
 	</div>
-   </table>
 	</section>
 
 
@@ -69,49 +69,20 @@
 	  </div>
 	</div>
   <!-- End of add food item modal  -->
+  <section id="new-section">
+	
+	</section>
 
-	<section id="pending-section">
+	<section id="processing-section">
 		
-		</table>
+	</section>
+
+	<section id="completed-section">
+
 	</section>
 
 	<section id="declined-section">
-		<table>
-		<tr>
-			<th>Order #</th>
-			<th>Date</th>
-			<th>User</th>
-			<th>Order Time</th>
-			<th>Action</th>
-		</tr>
-		<tr>
-			<td><a class="order-link" href="#">24-06082018</a></td>
-			<td>6 August 2018</td>
-			<td><a href="#">Amaka</a></td>
-			<td>09:00</td>
-			<td class="admin-action">
-					<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-			</td>
-			</tr>
-		<tr>
-			<td><a class="order-link" href="#">25-06082018</a></td>
-			<td>6 August 2018</td>
-			<td><a href="#">Amaka</a></td>
-			<td>09:00</td>
-			<td class="admin-action">
-					<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-			</td>
-			</tr>
-		<tr>
-			<td><a class="order-link" href="#">26-06082018</a></td>
-			<td>6 August 2018</td>
-			<td><a href="#">Amaka</a></td>
-			<td>09:00</td>
-			<td class="admin-action">
-					<label class="completed-link">Completed<input type="checkbox" class="completed-order"></label>
-			</td>
-			</tr>
-			</table>
+		
 	</section>	  
 	
 	  <!-- Start of order details Modal -->
@@ -206,6 +177,7 @@
 	<script src="js/adminAuth.js"></script>
 	<script src="js/adminpage.js"></script>
 	<script src="js/adminActions.js"></script>
+	<script src="js/getAllOrders.js"></script>
 	<script src="js/logout.js"></script>
 	</body>
 </html>

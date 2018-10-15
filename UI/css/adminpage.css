@@ -113,8 +113,8 @@ body {
 
 
 #admin-page .order-navigation {
-   max-width: 1100px;
-   margin: 0 auto;
+	 max-width: 1100px;
+	 margin: 0 auto;
 }
 
 #admin-page .order-navigation ul li > a {
@@ -125,19 +125,17 @@ body {
 #admin-page .order-navigation li {
 	list-style: none;
 	display: inline-block;
-}
-
-#admin-page .order-navigation ul li:first-child {
-    margin-left: 0;
+	font-size: 110%;
+	margin-left: 5%;
 }
 
 #admin-page .order-navigation ul {
 	border-bottom: 1px solid #d2d8d8;
 	margin-top: 4%;
+	padding: 0;
 }
 
 #admin-page .order-navigation ul li a {
-	margin-right: 40px;
 	color: black;
 }
 
@@ -192,7 +190,7 @@ body {
    cursor: pointer;
 }
 
-#manage-food-items-section, #pending-section, #completed-section, #declined-section {
+#manage-food-items-section, #new-section, #processing-section, #completed-section, #declined-section {
 	max-width: 1100px;
 	margin: 0 auto;
 }
@@ -224,13 +222,38 @@ button.add-food-item i {
 	margin-top: 4%;
 }
 
+.accept-order {
+	color: #5cb85c;
+}
+
+.complete-order {
+	color: #5cb85c;
+}
+
+.reject-order {
+	color: #FF4136;
+	margin-left: 20%;
+}
+
+.reject-order-single {
+	color: #FF4136;
+}
+
 .admin-action a {
 	text-decoration: none;
 	color: black;
 }
 
 .admin-action i {
-	font-size: 150%;
+	font-size: 180%;
+}
+
+.edit-item {
+	color: #5cb85c;
+}
+
+.delete-item {
+	color: #FF4136;
 }
 
 .edit-entry, .delete-entry {
@@ -300,25 +323,13 @@ button.add-food-item i {
 	text-transform: uppercase;
 }
 
-#pending-section {
+#new-section, #completed-section, #processing-section, #declined-section {
 	 margin-top: 4%; 
 	 display: none;
 	 margin-bottom: 10%;
 }
 
-#completed-section {
-	margin-top: 4%;
-	display: none;
-	margin-bottom: 10%;
-}
-
-#declined-section {
-	margin-top: 4%;
-	display: none;
-	margin-bottom: 10%;
-}
-
-#completed-section.selected, #declined-section.selected, #pending-section.selected {
+#completed-section.selected, #declined-section.selected, #new-section.selected, #processing-section.selected {
 	display: block;
 }
 
@@ -383,7 +394,6 @@ button.add-food-item i {
 	margin-bottom: 7%;
 }
 
-
 .orders:last-child {
 	border-bottom: 1px solid #d2d8d8;
 	margin-bottom: 10%;
@@ -393,7 +403,6 @@ button.add-food-item i {
     font-size: 90%;
 	font-weight: 700;
 }
-
 
 .orders .order .order-details, .orders .order .order-image {
 	display: inline-block;
@@ -485,8 +494,25 @@ button.add-food-item i {
 	font-weight: 900;
 }
 
+@media only screen and (max-width: 390px) {
+	#admin-page .order-navigation ul li {
+		font-size: 100%;
+		margin-left: 2%;
+	}
+}
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 450px) {
+	#admin-page .order-navigation li a  {
+		font-size: 80%;
+	}
+}
+
+
+@media only screen and (max-width: 550px) {
+	#admin-page .order-navigation {
+		font-size: 90%;
+	}
+
   .orders .order .order-details, .orders .order .order-image {
 	display: block;
   }
@@ -497,28 +523,16 @@ button.add-food-item i {
   }
 }
 
-@media only screen and (max-width: 700px) {
-	#admin-page .order-navigation ul {
-		width: 100%;
-    }
-	
-	#admin-page .order-navigation ul li {
-		width: 23.5%;
-		font-size: 80%;
-    }
-	
-	#admin-page .order-navigation {
-	   z-index: -1
-		}
-}
-
 @media only screen and (max-width: 600px) {
+	#admin-page .order-navigation li {
+		font-size: 90%;
+	}
   #manage-food-items-section .image > img {
 		height: 50px;
 		width: 50px;
 	}
 	.admin-action i {
-		font-size: 100%;
+		font-size: 130%;
 	}
 
 	#admin-page table td, #admin-page table th {
@@ -532,8 +546,14 @@ button.add-food-item i {
 	}
 }
 
+@media only screen and (max-width: 700px) {
+	#admin-page .order-navigation li {
+		font-size: 100%;
+	}
+}
+
 @media only screen and (max-width: 800px) {
-  #manage-food-items-section {
+  #manage-food-items-section, #new-section, #processing-section, #completed-section, #declined-section {
 		margin-bottom: 200px;
 	}
 }
