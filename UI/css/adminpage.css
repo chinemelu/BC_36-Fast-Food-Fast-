@@ -366,6 +366,13 @@ button.add-food-item i {
 	width: 80%;
 }
 
+.order-heading {
+	display: inline-block;
+	margin-top: 0;
+	margin-left: 37%;
+	border-bottom: 2px solid #FF4136;
+}
+
 .orders .order-image > img {
 	width: 100px;
 	height: 100px;
@@ -406,6 +413,11 @@ button.add-food-item i {
 
 .orders .order .order-details, .orders .order .order-image {
 	display: inline-block;
+}
+
+.orders .order .order-details {
+	position: absolute;
+	left: 30%;
 }
 
 .orders .order:first-child {
@@ -499,10 +511,18 @@ button.add-food-item i {
 		font-size: 100%;
 		margin-left: 2%;
 	}
+	.order-heading {
+		margin-left: 48%;
+		font-size: 80%;
+	}
 }
 
 @media only screen and (max-width: 450px) {
 	#admin-page .order-navigation li a  {
+		font-size: 80%;
+	}
+	.order-heading {
+		margin-left: 54%;
 		font-size: 80%;
 	}
 }
@@ -513,9 +533,10 @@ button.add-food-item i {
 		font-size: 90%;
 	}
 
-  .orders .order .order-details, .orders .order .order-image {
-	display: block;
-  }
+  .orders .order .order-details {
+		left: 45%;
+		font-size: 95%;
+	}
   
   .orders .order {
 	margin-top: 5px;
@@ -533,6 +554,11 @@ button.add-food-item i {
 	}
 	.admin-action i {
 		font-size: 130%;
+	}
+
+	.orders .order .order-details {
+		left: 45%;
+		font-size: 95%;
 	}
 
 	#admin-page table td, #admin-page table th {

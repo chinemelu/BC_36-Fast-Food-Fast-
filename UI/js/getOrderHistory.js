@@ -28,6 +28,9 @@ const getUserOrderHistory = () => {
   fetch(orderHistoryUrl, userHistoryHeader)
     .then(res => res.json())
     .then((orders) => {
+      if (!orders.length) {
+        document.querySelector('.no-order-history').innerHTML = 'There are no available orders';
+      }
       orderHistorySpinner.classList.add('hide');
       orders.map((order) => {
         orderHistoryView += `<table><tr><th>Date</th><th>Total</th><th>Order #${orderIdGenerator(order.order.id, new Date(order.order.date))}</th></tr>

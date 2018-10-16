@@ -10,8 +10,8 @@ const addItemBtn = document.querySelector('.add-food-item'),
   declinedOrdersSection = document.getElementById('declined-section'),
   processingOrdersBtn = document.querySelector('.processing-orders'),
   processingOrdersSection = document.getElementById('processing-section'),
-  orderLinks = document.querySelectorAll('.order-link'),
   orderModal = document.querySelector('.adminpage-modal');
+
 
 const addClassToClassList = (element, className) => {
   element.classList.add(className);
@@ -129,12 +129,6 @@ selectOrders(addItemModal, 'click', addItemModal, '.add-food-item-modal');
 selectOrders(orderModal, 'click', orderModal, '.adminpage-modal');
 selectOrders(document, 'keyup', orderModal);
 selectOrders(document, 'keyup', addItemModal);
-
-// show order details modal when the order links are clicked
-orderLinks.forEach(orderLink => orderLink.addEventListener('click', () => {
-  // this.orderLink = orderLink;
-  addClassToClassList(orderModal, 'is-visible');
-}));
 
 // close modal when clicking the esc keyboard button
 document.addEventListener('keyup', (event) => {
