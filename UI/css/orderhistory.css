@@ -114,6 +114,10 @@ body {
 
 /* End of navigation styling */
 
+.no-order-history {
+	margin: 10% auto;
+}
+
 #order-history .order-image > img {
 	width: 100px;
 	height: 100px;
