@@ -54,9 +54,7 @@ const getAllFoodItemsHeader = {
   headers: myAdminHeaders
 };
 
-let foodItemsView = `<table>
-<tr><th class="serial-th">S/N</th><th class="name-th">Name</th><th class="price-th">Price (naira)</th>
-<th class="image-th">Image</th><th class="action-th">Action</th></tr>`;
+let foodItemsView = '';
 
 const getAllFoodItemsUrl = 'https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu';
 
@@ -65,6 +63,9 @@ const getAllFoodItems = () => {
   fetch(getAllFoodItemsUrl, getAllFoodItemsHeader)
     .then(res => res.json())
     .then((foodItems) => {
+      foodItemsView = `<table>
+<tr><th class="serial-th">S/N</th><th class="name-th">Name</th><th class="price-th">Price (naira)</th>
+<th class="image-th">Image</th><th class="action-th">Action</th></tr>`;
       adminSpinner.classList.add('hide');
       let total = 0;
       foodItems.data.map((foodItem) => {
@@ -93,10 +94,8 @@ const getAllFoodItems = () => {
     .catch(error => error);
 };
 
-getAllFoodItems();
-
 manageFoodItemBtn.addEventListener('click', () => {
-  window.location.href = 'adminpage.html';
+  getAllFoodItems();
 });
 
 
