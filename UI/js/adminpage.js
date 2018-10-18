@@ -40,9 +40,9 @@ const getNewOrders = () => {
             <a href="#" onclick="updateOrderStatus('https://fast-food-fast-chinemelu.herokuapp.com/api/v1/orders/${order.order.id}', 'cancelled', 'new')"><i class="fa fa-times reject-order"></i></a>
           </td>
           </tr>`;
+        document.querySelector('#new-section').innerHTML = getNewOrdersView;
         return getNewOrdersView;
       });
-      document.querySelector('#new-section').innerHTML = getNewOrdersView;
     }).catch(error => error);
 };
 
@@ -275,22 +275,5 @@ addEventAdminPage(newOrdersBtn, getNewOrders);
 addEventAdminPage(completedOrdersBtn, getCompleteOrders);
 addEventAdminPage(processingOrdersBtn, getProcessingOrders);
 addEventAdminPage(declinedOrdersBtn, getCancelledOrders);
-
-// newOrdersBtn.addEventListener('click', () => {
-//   getNewOrders();
-// });
-
-// completedOrdersBtn.addEventListener('click', () => {
-//   getCompleteOrders();
-// });
-
-// processingOrdersBtn.addEventListener('click', () => {
-//   getProcessingOrders();
-// });
-
-
-// declinedOrdersBtn.addEventListener('click', () => {
-//   getCancelledOrders();
-// });
 
 newOrdersSectionSelected();
