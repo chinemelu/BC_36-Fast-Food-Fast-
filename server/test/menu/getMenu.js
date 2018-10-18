@@ -17,11 +17,11 @@ describe('GET: /api/v1/menu API route', () => {
       done();
     });
   });
-  afterEach((done) => {
-    db('DELETE from food_items', () => {
-      done();
-    });
-  });
+  // afterEach((done) => {
+  //   db('DELETE from food_items', () => {
+  //     done();
+  //   });
+  // });
   beforeEach((done) => {
     db('DELETE from users', () => {
       done();
