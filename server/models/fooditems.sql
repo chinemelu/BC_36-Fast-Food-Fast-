@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS food_items (
   name TEXT NOT NULL,
   price numeric NOT NULL,
   img_url TEXT NOT NULL,
+  active  BOOLEAN NOT NULL DEFAULT true,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   updated_at timestamp with time zone NOT NULL DEFAULT now(),
   PRIMARY KEY (id)
