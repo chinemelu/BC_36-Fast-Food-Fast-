@@ -15,8 +15,8 @@ class deleteFromMenuController {
   static deleteItem(req, res) {
     const itemId = req.params.id;
 
-    const deleteText = 'DELETE from food_items WHERE id = $1';
-    const deleteParams = [itemId];
+    const deleteText = 'UPDATE food_items SET active = $1 WHERE id = $2';
+    const deleteParams = [false, itemId];
 
     db(deleteText, deleteParams)
       .then(() => {

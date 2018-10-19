@@ -10,11 +10,16 @@ const addItemBtn = document.querySelector('.add-food-item'),
   declinedOrdersSection = document.getElementById('declined-section'),
   processingOrdersBtn = document.querySelector('.processing-orders'),
   processingOrdersSection = document.getElementById('processing-section'),
+  deleteConfirmationModal = document.querySelector('.delete-food-item-modal-container'),
   orderModal = document.querySelector('.adminpage-modal');
 
-const adminNav = document.createElement('a');
-adminNav.className = 'admin-nav';
-document.body.appendChild(adminNav);
+const createElement = (name, tagName, classOfElement) => {
+  name = document.createElement(tagName);
+  name.className = classOfElement;
+  document.body.appendChild(name);
+};
+
+createElement('adminNav', 'a', 'admin-nav');
 
 let getNewOrdersView = '';
 const getNewOrdersUrl = 'https://fast-food-fast-chinemelu.herokuapp.com/api/v1/orders?status=new';
@@ -256,12 +261,15 @@ selectOrders(addItemModal, 'click', addItemModal, '.add-food-item-modal');
 selectOrders(orderModal, 'click', orderModal, '.adminpage-modal');
 selectOrders(document, 'keyup', orderModal);
 selectOrders(document, 'keyup', addItemModal);
+selectOrders(document, 'keyup', deleteConfirmationModal);
+selectOrders(deleteConfirmationModal, 'click', deleteConfirmationModal, '.delete-food-item-modal-container');
 
 // close modal when clicking the esc keyboard button
 document.addEventListener('keyup', (event) => {
   if (event.which === 27 || event.code === 'Escape' || event.key === 'Escape') {
     removeClassFromClassList(orderModal, 'is-visible');
     removeClassFromClassList(addItemModal, 'is-visible');
+    removeClassFromClassList(deleteConfirmationModal, 'is-visible');
   }
 });
 
@@ -275,5 +283,4 @@ addEventAdminPage(newOrdersBtn, getNewOrders);
 addEventAdminPage(completedOrdersBtn, getCompleteOrders);
 addEventAdminPage(processingOrdersBtn, getProcessingOrders);
 addEventAdminPage(declinedOrdersBtn, getCancelledOrders);
-
 newOrdersSectionSelected();

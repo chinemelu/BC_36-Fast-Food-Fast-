@@ -16,8 +16,8 @@ const doesItemExist = (req, res, next) => {
     */
 
   const itemId = req.params.id;
-  const selectText = 'SELECT * FROM food_items WHERE id = $1';
-  const selectParams = [itemId];
+  const selectText = 'SELECT * FROM food_items WHERE id = $1 AND active = $2';
+  const selectParams = [itemId, true];
   db(selectText, selectParams, (err, item) => {
     if (err) {
       return res.status(500).json({ error: err.stack });

@@ -11,9 +11,10 @@ class GetMenuController {
      * @returns  {Array} returns an array
      */
   static getAllItems(req, res) {
-    const text = 'SELECT id, name, price, img_url from food_items';
+    const text = 'SELECT id, name, price, img_url from food_items WHERE active = $1';
+    const param = [true];
 
-    db(text, (err, results) => {
+    db(text, param, (err, results) => {
       if (err) {
         return res.status(500).json({ error: err.stack });
       }

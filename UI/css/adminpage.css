@@ -5,7 +5,7 @@ html {
 
 body {
 	margin: 0px;
-    font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 }
 
@@ -504,6 +504,89 @@ button.add-food-item i {
 	padding: 0.5%;
 	color: black;
 	font-weight: 900;
+}
+
+.delete-food-item-modal-container {
+	position: fixed;
+	background: rgba(52,54,66,0.9);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;	
+	overflow-y: auto;
+	visibility: hidden;
+}
+
+.delete-food-item-modal-container.is-visible {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity .3s, visibility 0s;
+}
+
+.delete-food-item-modal {
+	max-width: 500px;
+	background-color: #FFF;
+	margin: 6em auto 6em;
+	cursor: auto;
+	position: relative;
+	border-radius: 0.25em;	
+	width: 80%;
+}
+
+.delete-food-item-modal-content {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+	margin-top: 5%;
+}
+
+.delete-food-item-modal-header {
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+
+.delete-food-item-modal-body {
+	padding: 3% 0;
+}
+
+.delete-food-item-modal-footer {
+	border-top: 1px solid #ccc;
+	padding-top: 5%;
+}
+
+.cancel-delete-food-item-modal {
+	position: absolute;
+	right: 4%;
+	top: 0;
+	cursor: pointer;
+	font-size: 120%;
+	line-height: 70%;
+	height: 70%;
+	font-weight: 400;
+}
+
+.cancel-delete-food-item-modal:active {
+	outline: 1px solid lightblue;
+}
+
+.delete-item-btn, .close-modal-btn {
+	color: #FFF;
+	border: none;
+	border-radius: 2px;
+	padding: 2.5%;
+	cursor: pointer;
+	margin-bottom: 1.5%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+button.delete-item-btn {
+	background-color: #FF4136;
+}
+
+button.close-modal-btn {
+	background-color: #5cb85c;
 }
 
 @media only screen and (max-width: 390px) {

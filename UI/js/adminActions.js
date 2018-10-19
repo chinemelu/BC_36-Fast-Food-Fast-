@@ -13,30 +13,12 @@ const manageFoodItemBtn = document.querySelector('.manage-food-items'),
 // Cloudinary reference Image Upload in 15 Minutes with Cloudinary and Javascript
 //  Tutorial  by DevCoffee
 
-// reference (getURLParameter function)  - https://stackoverflow.com/questions/11582512/how-to-get-url-parameters-with-javascript
-const getURLParameter = name => decodeURIComponent((new RegExp(`[?|&]${name}=([^&;]+?)(&|#|;|$)`)
-  .exec(window.location.search) || [null, ''])[1]
-  .replace(/\+/g, '%20')) || null;
-
-const successParam = getURLParameter('success');
-const duplicateParam = getURLParameter('duplicate');
-
-const paramsMessage = (params, bool, otherMessage, message, innerMessage) => {
-  if (params === `${bool}`) {
-    otherMessage.innerHTML = '';
-    otherMessage.classList.remove('is-visible');
-    message.innerHTML = innerMessage;
-    message.classList.add('is-visible');
-  }
+const statusMessage = (otherMessage, message, innerMessage) => {
+  otherMessage.innerHTML = '';
+  otherMessage.classList.remove('is-visible');
+  message.innerHTML = innerMessage;
+  message.classList.add('is-visible');
 };
-if (paramsMessage !== null && paramsMessage !== undefined) {
-  paramsMessage(successParam, 'true', errorBannerMessage, successMessage, 'You have successfully added the food item');
-  paramsMessage(successParam, 'false', successMessage, errorBannerMessage, 'Error adding food item');
-  paramsMessage(duplicateParam, 'true', successMessage, errorBannerMessage, 'Item already exists');
-} else {
-  successMessage.classList.remove('is-visible');
-  errorBannerMessage.classList.remove('is-visible');
-}
 
 const addToMenuErrors = {};
 const adminToken = localStorage.getItem('token');
@@ -52,6 +34,69 @@ const getAllFoodItemsHeader = {
   method: 'GET',
   mode: 'cors',
   headers: myAdminHeaders
+};
+
+const deleteItem = (deleteFromMenuUrl) => {
+  adminSpinner.classList.remove('hide');
+
+  const deleteFromMenuParameters = {
+    method: 'DELETE',
+    mode: 'cors',
+    headers: myAdminHeaders
+  };
+
+  fetch(deleteFromMenuUrl, deleteFromMenuParameters)
+    .then((res) => {
+      adminSpinner.classList.add('hide');
+      removeClassFromClassList(deleteConfirmationModal, 'is-visible');
+
+      if (res.status === 200) {
+        manageFoodItemsSectionSelected();
+        statusMessage(errorBannerMessage, successMessage, 'You have successfully deleted the food item');
+      }
+      if (res.status === 404) {
+        statusMessage(successMessage, errorBannerMessage, 'Item does not exist');
+      }
+      if (res.status === 500) {
+        manageFoodItemsSectionSelected();
+        statusMessage(successMessage, errorBannerMessage, 'Error deleting the food item');
+      }
+    }).catch((err) => {
+      throw err;
+    });
+};
+
+const openConfirmationModal = (url, name) => {
+  let deleteConfirmationModalView = `<div class="delete-food-item-modal-header">
+  <h3>Delete confirmation</h3><span class="cancel-delete-food-item-modal">x</span>
+  </div>`;
+
+  deleteConfirmationModalView += `<div class="delete-food-item-modal-body">
+  <p>Are you sure you want to delete ${name}?</p>
+  </div>`;
+
+  deleteConfirmationModalView += `<div class="delete-food-item-modal-footer">
+  <button class="delete-item-btn">Delete</button>
+  <button class="close-modal-btn">Close</button>	
+</div>`;
+
+  document.querySelector('.delete-food-item-modal-content').innerHTML = deleteConfirmationModalView;
+  addClassToClassList(deleteConfirmationModal, 'is-visible');
+
+  createElement('deleteButton', 'a', 'delete-item-btn');
+  createElement('closeModalBtn', 'a', 'close-modal-btn');
+  createElement('cancelModalIcon', 'a', 'cancel-delete-food-item-modal');
+
+  const closeModalButton = document.createElement('button');
+
+  document.addEventListener('click', (e) => {
+    if (e.target.className === 'delete-item-btn') {
+      deleteItem(url);
+    }
+    if (e.target.className === 'close-modal-btn' || e.target.className === 'cancel-delete-food-item-modal') {
+      removeClassFromClassList(deleteConfirmationModal, 'is-visible');
+    }
+  })
 };
 
 let foodItemsView = '';
@@ -82,7 +127,7 @@ const getAllFoodItems = () => {
           <a href="#"><i class="fa fa-edit edit-item"></i></a>
           </div> 
             <div class="delete-entry">
-          <a href="#"><i class="fa fa-times delete-item"></i></a>
+          <a href="#" onclick="openConfirmationModal('https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu/${foodItem.id}', '${foodItem.name}')"><i class="fa fa-times delete-item"></i></a>
           </div>
          </td>
        </tr>
@@ -239,17 +284,21 @@ addToMenuBtn.addEventListener('click', (e) => {
       fetch(addToMenuUrl, addToMenuParameters)
         .then((res) => {
           adminSpinner.classList.add('hide');
+          removeClassFromClassList(addItemModal, 'is-visible');
           if (res.status === 201) {
-            window.location.href = 'adminpage.html?success=true';
+            manageFoodItemsSectionSelected();
+            statusMessage(errorBannerMessage, successMessage, 'You have successfully added the food item');
           }
           if (res.status === 404) {
             window.location.href = 'customerpage.html?admin=false';
           }
           if (res.status === 409) {
-            window.location.href = 'adminpage.html?duplicate=true';
+            manageFoodItemsSectionSelected();
+            statusMessage(successMessage, errorBannerMessage, 'Item already exists');
           }
           if (res.status === 500) {
-            window.location.href = 'adminpage.html?success=false';
+            manageFoodItemsSectionSelected();
+            statusMessage(successMessage, errorBannerMessage, 'Error adding food item');
           }
         }).catch((err) => {
           throw err;
