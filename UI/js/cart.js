@@ -7,6 +7,33 @@ const cartNav = document.createElement('a');
 cartNav.className = 'cart-nav';
 document.body.appendChild(cartNav);
 
+const createSelectElement = (itemQuantity) => {
+  const quantities = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10+'
+  ];
+
+  let optionsStr = '';
+
+  quantities.forEach((quantity) => {
+    if (parseInt(quantity, 10) === itemQuantity) {
+      optionsStr += `<option value="${quantity}" selected>${quantity}</option>`;
+    } else {
+      optionsStr += `<option value="${quantity}">${quantity}</option>`;
+    }
+  });
+
+  return optionsStr;
+};
+
 const myCartHeaders = new Headers({
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
@@ -70,18 +97,9 @@ const getMyCartDetails = () => {
         <h1>#${item.price}</h1>
       </td>
       <td class="quantity-data">
-        <select id="cart-item-quantity">
-        <option value=1>1</option>
-        <option value=2>2</option>
-        <option value=3>3</option>
-        <option value=4>4</option>
-        <option value=5>5</option>
-        <option value=6>6</option>
-        <option value=7>7</option>
-        <option value=8>8</option>
-        <option value=9>9</option>
-        <option value=10+>10+</option>
-        </select>
+      <select class="cart-item-quantity">
+       ${createSelectElement(item.quantity)}
+      </select>
       </td>
     </tr>`;
         return cartView;

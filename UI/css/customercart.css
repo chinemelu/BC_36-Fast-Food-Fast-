@@ -181,10 +181,6 @@ body {
 	text-align: center;
 }
 
-#shopping-cart .heading table th:last-child, #shopping-cart .heading table td:last-child {
-	padding-left: 20%;
-}
-
 #shopping-cart .price-data {
 	font-size: 85%;
 	

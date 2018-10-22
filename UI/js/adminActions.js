@@ -54,6 +54,9 @@ const deleteItem = (deleteFromMenuUrl) => {
         manageFoodItemsSectionSelected();
         statusMessage(errorBannerMessage, successMessage, 'You have successfully deleted the food item');
       }
+      if (res.status === 401 || res.status === 403) {
+        window.location.href = 'customerpage.html?admin=false';
+      }
       if (res.status === 404) {
         statusMessage(successMessage, errorBannerMessage, 'Item does not exist');
       }
@@ -288,6 +291,9 @@ addToMenuBtn.addEventListener('click', (e) => {
           if (res.status === 201) {
             manageFoodItemsSectionSelected();
             statusMessage(errorBannerMessage, successMessage, 'You have successfully added the food item');
+          }
+          if (res.status === 401 || res.status === 403) {
+            window.location.href = 'customerpage.html?admin=false';
           }
           if (res.status === 404) {
             window.location.href = 'customerpage.html?admin=false';
