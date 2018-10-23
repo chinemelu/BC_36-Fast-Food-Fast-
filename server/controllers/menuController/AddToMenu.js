@@ -13,8 +13,8 @@ class AddToMenuController {
    * @returns {JSON} returns a JSON object
    */
   static addItem(req, res) {
-    const selectText = 'SELECT * FROM food_items WHERE name = $1';
-    const selectParams = [req.body.name];
+    const selectText = 'SELECT * FROM food_items WHERE name = $1 and active = $2';
+    const selectParams = [req.body.name, true];
 
     db(selectText, selectParams)
       .then((result) => {
