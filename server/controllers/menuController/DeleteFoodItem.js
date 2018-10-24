@@ -1,9 +1,9 @@
 import db from '../../models/db';
 
 /**
- * @class deleteFromMenuController
+ * @class DeleteFromMenuController
  */
-class deleteFromMenuController {
+class DeleteFromMenuController {
 /**
    * @description delete item from menu
    *
@@ -30,4 +30,4 @@ class deleteFromMenuController {
   }
 }
 
-export default deleteFromMenuController;
+export default DeleteFromMenuController;
