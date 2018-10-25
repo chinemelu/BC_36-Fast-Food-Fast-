@@ -9,6 +9,7 @@ import getMenuController from '../controllers/menuController/GetMenu';
 import deleteFromMenuController from '../controllers/menuController/DeleteFoodItem';
 import editItemValidator from '../middleware/editItemValidator';
 import editMenuItemController from '../controllers/menuController/EditMenuItem';
+import getItemController from '../controllers/menuController/GetFoodItem';
 import uuidValidator from '../middleware/uuidValidator';
 
 
@@ -28,6 +29,10 @@ router.delete(
 
 router.put(
   '/:id', uuidValidator, authenticateToken, doesUserExist, doesItemExist, editItemValidator, isUserAdmin, editMenuItemController.editItem
+);
+
+router.get(
+  '/:id', uuidValidator, authenticateToken, doesUserExist, isUserAdmin, getItemController.getItem
 );
 
 
