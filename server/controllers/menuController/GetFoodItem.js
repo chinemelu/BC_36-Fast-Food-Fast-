@@ -15,7 +15,7 @@ class GetFoodItemController {
   static getItem(req, res) {
     const itemId = req.params.id;
 
-    const selectText = 'SELECT name, price, img_url FROM food_items WHERE id = $1 AND active = $2';
+    const selectText = 'SELECT id, name, price, img_url FROM food_items WHERE id = $1 AND active = $2';
     const selectParams = [itemId, true];
     db(selectText, selectParams, (err, item) => {
       if (err) {

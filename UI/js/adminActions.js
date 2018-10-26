@@ -10,6 +10,15 @@ const manageFoodItemBtn = document.querySelector('.manage-food-items'),
   adminSpinner = document.querySelector('.spinner'),
   addToMenuBtn = document.querySelector('.add-food-item-btn');
 
+const editFileUpload = document.createElement('input');
+editFileUpload.type = 'file';
+editFileUpload.className = 'hide';
+document.body.appendChild(editFileUpload);
+
+console.log(editFileUpload);
+const editItemName = createElement('editItemName', 'a', 'edit-item-name');
+const editItemPrice = createElement('editItemPrice', 'a', 'edit-item-name');
+
 // Cloudinary reference Image Upload in 15 Minutes with Cloudinary and Javascript
 //  Tutorial  by DevCoffee
 
@@ -35,6 +44,105 @@ const getAllFoodItemsHeader = {
   mode: 'cors',
   headers: myAdminHeaders
 };
+
+const uploadToCloudinary = (callback) => {
+  if (fileUpload.files.length === 0 && editFileUpload.files.length === 0) {
+    return callback({});
+  }
+  const imgFile = fileUpload.files[0] || editFileUpload.files[0];
+  const formData = new FormData();
+  formData.append('file', imgFile);
+  formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+  const uploadImageUrl = CLOUDINARY_URL;
+
+  const uploadImageParameters = {
+    method: 'POST',
+    body: formData,
+  };
+
+  return fetch(uploadImageUrl, uploadImageParameters)
+    .then(res => res.json())
+    .then(imgUploadResponse => callback(imgUploadResponse));
+};
+
+const editItem = (editItemUrl) => {
+  uploadToCloudinary((cloudinaryResponse) => {
+    const itemDetails = {
+      name: editItemName.value,
+      price: editItemPrice.value,
+      imgUrl: cloudinaryResponse.secure_url
+    };
+
+    const editItemParameters = {
+      method: 'PUT',
+      mode: 'cors',
+      body: JSON.stringify(itemDetails),
+      headers: myAdminHeaders
+    };
+
+    adminSpinner.classList.remove('hide');
+    fetch(editItemUrl, editItemParameters)
+      .then((res) => {
+        adminSpinner.classList.add('hide');
+        removeClassFromClassList(addItemModal, 'is-visible');
+        if (res.status === 201) {
+          manageFoodItemsSectionSelected();
+          statusMessage(errorBannerMessage, successMessage, 'You have successfully edited the food item');
+        }
+        if (res.status === 401 || res.status === 403) {
+          window.location.href = 'customerpage.html?admin=false';
+        }
+        if (res.status === 404) {
+          window.location.href = 'customerpage.html?admin=false';
+        }
+        if (res.status === 409) {
+          manageFoodItemsSectionSelected();
+          statusMessage(successMessage, errorBannerMessage, 'Item already exists');
+        }
+        if (res.status === 500) {
+          manageFoodItemsSectionSelected();
+          statusMessage(successMessage, errorBannerMessage, 'Error editing food item');
+        }
+      });
+  });
+};
+
+const openEditItemModal = (getItemUrl) => {
+  adminSpinner.classList.remove('hide');
+  let editFoodItemView = '';
+  fetch(getItemUrl, getAllFoodItemsHeader)
+    .then(res => res.json())
+    .then((item) => {
+      adminSpinner.classList.add('hide');
+      addClassToClassList(editFoodItemModal, 'is-visible');
+      editFoodItemView += `
+        <form>
+          <div class="input-container">
+            <div class="input-label-container"><label class="input-label" for="item-name">Name</label></div>
+            <input type="text" class="input-field" class="edit-item-name" value='${item.item.name}'>
+            <p class="cd-error-message" id="add-menu-name-error"></p>
+          </div>
+          <div class="input-container">
+            <div class="input-label-container"><label class="input-label" for="item-price">Price (Naira)</label></div>
+            <input type="number" class="input-field" class="edit-item-price" value='${item.item.price}'>
+            <p class="cd-error-message" id="add-menu-price-error"></p>
+          </div>
+          <div class="input-container">
+            <div class="input-label-container"><label class="input-label">Image</label></div>
+            <input type="file" name="pic" accept="image/*" id="file-upload">
+            <p class="cd-error-message" id="add-menu-img-error"></p>
+          </div>
+          <div class="input-container">
+            <input type="submit" class="add-food-item-btn" value="Update" onclick="editItem('https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu/${item.item.id}')">
+          </div>
+       </form>
+      `;
+      document.querySelector('.edit-food-item-modal-container').innerHTML = editFoodItemView;
+    });
+};
+
+console.log(document.querySelector('#edit-item-price'));
 
 const deleteItem = (deleteFromMenuUrl) => {
   adminSpinner.classList.remove('hide');
@@ -99,7 +207,7 @@ const openConfirmationModal = (url, name) => {
     if (e.target.className === 'close-modal-btn' || e.target.className === 'cancel-delete-food-item-modal') {
       removeClassFromClassList(deleteConfirmationModal, 'is-visible');
     }
-  })
+  });
 };
 
 let foodItemsView = '';
@@ -127,7 +235,7 @@ const getAllFoodItems = () => {
        </td>
          <td class="admin-action">
          <div class="edit-entry">
-          <a href="#"><i class="fa fa-edit edit-item"></i></a>
+          <a href="#" onclick="openEditItemModal('https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu/${foodItem.id}')"><i class="fa fa-edit edit-item"></i></a>
           </div> 
             <div class="delete-entry">
           <a href="#" onclick="openConfirmationModal('https://fast-food-fast-chinemelu.herokuapp.com/api/v1/menu/${foodItem.id}', '${foodItem.name}')"><i class="fa fa-times delete-item"></i></a>
@@ -250,66 +358,46 @@ onKeyDown(fileUpload, imageErrorMessage);
 
 
 addToMenuBtn.addEventListener('click', (e) => {
-  adminSpinner.classList.remove('hide');
   e.preventDefault();
-  const imgFile = fileUpload.files[0];
-  const formData = new FormData();
-  formData.append('file', imgFile);
-  formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+  uploadToCloudinary((cloudinaryResponse) => {
+    const menuDetails = {
+      name: foodItemName.value,
+      price: foodItemPrice.value,
+      imgUrl: cloudinaryResponse.secure_url
+    };
 
-  const uploadImageUrl = CLOUDINARY_URL;
+    const addToMenuParameters = {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(menuDetails),
+      headers: myAdminHeaders
+    };
 
-  const uploadImageParameters = {
-    method: 'POST',
-    body: formData,
-  };
-
-  fetch(uploadImageUrl, uploadImageParameters)
-    .then(res => res.json())
-    .then((imgUploadResponse) => {
-      if (Object.keys(imgUploadResponse).length === 0) {
-        addToMenuBtn.disabled = false;
-      }
-
-      const menuDetails = {
-        name: foodItemName.value,
-        price: foodItemPrice.value,
-        imgUrl: imgUploadResponse.secure_url
-      };
-
-      const addToMenuParameters = {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify(menuDetails),
-        headers: myAdminHeaders
-      };
-
-      fetch(addToMenuUrl, addToMenuParameters)
-        .then((res) => {
-          adminSpinner.classList.add('hide');
-          removeClassFromClassList(addItemModal, 'is-visible');
-          if (res.status === 201) {
-            manageFoodItemsSectionSelected();
-            statusMessage(errorBannerMessage, successMessage, 'You have successfully added the food item');
-          }
-          if (res.status === 401 || res.status === 403) {
-            window.location.href = 'customerpage.html?admin=false';
-          }
-          if (res.status === 404) {
-            window.location.href = 'customerpage.html?admin=false';
-          }
-          if (res.status === 409) {
-            manageFoodItemsSectionSelected();
-            statusMessage(successMessage, errorBannerMessage, 'Item already exists');
-          }
-          if (res.status === 500) {
-            manageFoodItemsSectionSelected();
-            statusMessage(successMessage, errorBannerMessage, 'Error adding food item');
-          }
-        }).catch((err) => {
-          throw err;
-        });
-    }).catch((err) => {
-      throw err;
-    });
+    adminSpinner.classList.remove('hide');
+    fetch(addToMenuUrl, addToMenuParameters)
+      .then((res) => {
+        adminSpinner.classList.add('hide');
+        removeClassFromClassList(addItemModal, 'is-visible');
+        if (res.status === 201) {
+          manageFoodItemsSectionSelected();
+          statusMessage(errorBannerMessage, successMessage, 'You have successfully added the food item');
+        }
+        if (res.status === 401 || res.status === 403) {
+          window.location.href = 'customerpage.html?admin=false';
+        }
+        if (res.status === 404) {
+          window.location.href = 'customerpage.html?admin=false';
+        }
+        if (res.status === 409) {
+          manageFoodItemsSectionSelected();
+          statusMessage(successMessage, errorBannerMessage, 'Item already exists');
+        }
+        if (res.status === 500) {
+          manageFoodItemsSectionSelected();
+          statusMessage(successMessage, errorBannerMessage, 'Error adding food item');
+        }
+      }).catch((err) => {
+        throw err;
+      });
+  });
 });
