@@ -444,7 +444,7 @@ button.add-food-item i, button.edit-food-item i {
 	font-size: 120%;
 }
 
-.add-food-item-btn[disabled], .add-food-item-btn:disabled {
+.add-food-item-btn[disabled], .add-food-item-btn:disabled, .edit-food-item-btn:disabled, .edit-food-item-btn[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
