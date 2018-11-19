@@ -36,7 +36,7 @@
 	<section id="manage-food-items-section">
 		<p class="cd-success-message"></p>
 		<p class="cd-error-banner-message"></p>
-		<button class="add-food-item">Add food item <i class="fa fa-plus"></i></button>
+		<button class="add-food-item" onclick=addEditFoodItem(false)>Add food item <i class="fa fa-plus"></i></button>
 
 		<div id="manage-food-items-entry">
 	</div>
@@ -51,25 +51,34 @@
 					 <div class="input-container">
 							<div class="input-label-container"><label class="input-label" for="item-name">Name</label></div>
 							<input type="text" class="input-field" id="item-name">
-							<p class="cd-error-message" id="add-menu-name-error"></p>
+							<p class="cd-error-message add-edit-menu-name-error"></p>
 						</div>
 						<div class="input-container">
 							<div class="input-label-container"><label class="input-label" for="item-price">Price (Naira)</label></div>
 							<input type="number" class="input-field" id="item-price">
-							<p class="cd-error-message" id="add-menu-price-error"></p>
+							<p class="cd-error-message add-edit-menu-price-error"></p>
 						</div>
 						<div class="input-container">
 							<div class="input-label-container"><label class="input-label">Image</label></div>
 							<input type="file" name="pic" accept="image/*" id="file-upload">
-							<p class="cd-error-message" id="add-menu-img-error"></p>
+							<p class="cd-error-message add-edit-menu-img-error"></p>
 						</div>
 						<div class="input-container">
 							<input type="submit" class="add-food-item-btn" value="Add">
+							<input type="submit" class="edit-food-item-btn" value="Update">
 						</div>
 				</form>
 	  </div>
 	</div>
 	<!-- End of add food item modal  -->
+
+	<!-- Start of edit food item modal -->
+	<div class="edit-food-item-modal">
+		<div class="edit-food-item-modal-container">
+		
+	</div>
+</div>
+<!--  End of edit food item mmodal -->
 	
 	<!-- Start of delete food item  modal -->
   <div class="delete-food-item-modal-container">

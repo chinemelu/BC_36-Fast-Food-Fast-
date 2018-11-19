@@ -11,12 +11,13 @@ const addItemBtn = document.querySelector('.add-food-item'),
   processingOrdersBtn = document.querySelector('.processing-orders'),
   processingOrdersSection = document.getElementById('processing-section'),
   deleteConfirmationModal = document.querySelector('.delete-food-item-modal-container'),
+  editFoodItemModal = document.querySelector('.edit-food-item-modal'),
   orderModal = document.querySelector('.adminpage-modal');
 
 const createElement = (name, tagName, classOfElement) => {
   name = document.createElement(tagName);
   name.className = classOfElement;
-  document.body.appendChild(name);
+  return document.body.appendChild(name);
 };
 
 createElement('adminNav', 'a', 'admin-nav');
@@ -263,6 +264,7 @@ selectOrders(document, 'keyup', orderModal);
 selectOrders(document, 'keyup', addItemModal);
 selectOrders(document, 'keyup', deleteConfirmationModal);
 selectOrders(deleteConfirmationModal, 'click', deleteConfirmationModal, '.delete-food-item-modal-container');
+selectOrders(editFoodItemModal, 'click', editFoodItemModal, '.edit-food-item-modal');
 
 // close modal when clicking the esc keyboard button
 document.addEventListener('keyup', (event) => {
@@ -270,6 +272,7 @@ document.addEventListener('keyup', (event) => {
     removeClassFromClassList(orderModal, 'is-visible');
     removeClassFromClassList(addItemModal, 'is-visible');
     removeClassFromClassList(deleteConfirmationModal, 'is-visible');
+    removeClassFromClassList(editFoodItemModal, 'is-visible');
   }
 });
 
