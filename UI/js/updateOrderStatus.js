@@ -30,12 +30,12 @@ const getSingleOrder = (url) => {
       getSingleOrdersView = `<div class="orders"><table><tr><th>Date</th><th>Total
       </th><th>Time</th></tr>`;
 
-      getSingleOrdersView += `<tr><td>${new Date(order.order.date).toLocaleString('en-US', options)}</td>
-      <td>#${order.order.total}</td>
-      <td>${order.order.date.slice(11, 16)}</td><tr>
+      getSingleOrdersView += `<tr><td>${new Date(order.data.order.date).toLocaleString('en-US', options)}</td>
+      <td>#${order.data.order.total}</td>
+      <td>${order.data.order.date.slice(11, 16)}</td><tr>
       </table>`;
 
-      order.order.items.map((item) => {
+      order.data.order.items.map((item) => {
         getSingleOrdersView += `<div class="order">
           <div class="order-image">
             <img src="${item.img_url}">
