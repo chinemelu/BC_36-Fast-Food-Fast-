@@ -24,7 +24,9 @@ const doesUserExist = (req, res, next) => {
       next();
     } else {
       return res.status(404).json({
-        message: 'User does not exist'
+        message: 'User does not exist',
+        status: 404,
+        success: false
       });
     }
   });

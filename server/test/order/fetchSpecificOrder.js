@@ -40,7 +40,7 @@ describe('GET: /api/v1/orders/<orderId> API route', () => {
           chai.request(server)
             .get('/api/v1/orders/555a5728-677a-4056-b7fc-bad11eb6e822') // unlikely UUID
             .end((err, res) => {
-              res.should.have.status(403);
+              res.should.have.status(401);
               res.should.be.json;
               res.body.should.be.a('object');
               res.body.should.have.property('success');

@@ -16,7 +16,9 @@ const isUserAdmin = (req, res, next) => {
   const { role } = req.decoded;
   if (role !== 'superadmin' && role !== 'admin') {
     return res.status(403).json({
-      message: 'You are not authorised to perform this action'
+      message: 'You are not authorised to perform this action',
+      status: 403,
+      success: false
     });
   }
   next();

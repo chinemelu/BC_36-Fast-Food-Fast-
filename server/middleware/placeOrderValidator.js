@@ -30,7 +30,7 @@ const placeOrderValidator = (req, res, next) => {
   }
 
   if (Object.keys(errors).length > 0) {
-    return res.status(400).json({ errors });
+    return res.status(400).json({ errors, status: 400, success: false });
   }
   next();
 };

@@ -24,7 +24,9 @@ const uuidValidator = (req, res, next) => {
 
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({
-      errors
+      errors,
+      status: 400,
+      success: false
     });
   }
   next();

@@ -21,6 +21,8 @@ const authenticateToken = (req, res, next) => {
       if (err) {
         res.status(401).json({
           error: 'Invalid token',
+          status: 401,
+          success: false
         });
       } else {
         req.decoded = decoded;
@@ -28,9 +30,10 @@ const authenticateToken = (req, res, next) => {
       }
     });
   } else {
-    return res.status(403).send({
+    return res.status(401).send({
       success: 'false',
-      message: 'No token provided'
+      message: 'No token provided',
+      status: 401
     });
   }
 };

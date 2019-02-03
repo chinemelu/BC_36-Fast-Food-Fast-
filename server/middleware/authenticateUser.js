@@ -18,6 +18,8 @@ const authenticateUser = (req, res, next) => {
   const paramUserId = req.params.id;
   if (userId !== paramUserId) {
     return res.status(403).json({
+      status: 403,
+      success: false,
       error: 'You are not authorised to perform this action'
     });
   }

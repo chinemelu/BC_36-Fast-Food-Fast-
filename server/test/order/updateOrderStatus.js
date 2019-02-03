@@ -100,7 +100,7 @@ describe('PUT: /api/v1/orders/<orderId> API route', () => {
             .put('/api/v1/orders/2167c143-fcfd-4ecf-b1eb-1ab1b97f429a') // unlikely UUID
             .send(orderStatus)
             .end((err, res) => {
-              res.should.have.status(403);
+              res.should.have.status(401);
               res.should.be.json;
               res.body.should.be.a('object');
               res.body.should.have.property('success');

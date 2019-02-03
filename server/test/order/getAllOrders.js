@@ -43,7 +43,7 @@ describe('GET: /api/v1/orders API route', () => {
           chai.request(server)
             .get('/api/v1/orders')
             .end((err, res) => {
-              res.should.have.status(403);
+              res.should.have.status(401);
               res.should.be.json;
               res.body.should.be.a('object');
               res.body.should.have.property('success');

@@ -20,10 +20,12 @@ const doesItemExist = (req, res, next) => {
   const selectParams = [itemId, true];
   db(selectText, selectParams, (err, item) => {
     if (err) {
-      return res.status(500).json({ error: err.stack });
+      return res.status(500).json({ error: err.stack, success: false });
     }
     if (!item.rows.length) {
       return res.status(404).json({
+        status: 404,
+        success: false,
         message: 'Item not found'
       });
     }
