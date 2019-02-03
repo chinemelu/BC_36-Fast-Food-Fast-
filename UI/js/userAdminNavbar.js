@@ -31,7 +31,7 @@ const getCartDetails = () => {
         <a href="orderhistory.html">My Order History</a>
         <a href="adminpage.html" class="admin-nav">Admin</a></li>
         <a href="#" id="logout">Logout</a></li>
-        <a class="cart-nav" href="customercart.html"><i class="fa fa-shopping-cart"></i><span class="total-cart-quantity">${cart.cart.totalQuantity}</span></a>
+        <a class="cart-nav" href="customercart.html"><i class="fa fa-shopping-cart"></i><span class="total-cart-quantity">${cart.cart.cart.totalQuantity}</span></a>
         <a id="app-name" href="landingpage.html">Food-direct</a>
       </div>
         <p id="app-name-toggle" href="landingpage.html">Food-direct</p>`;
@@ -45,7 +45,7 @@ const getCartDetails = () => {
         <a href="customerpage.html">Our Products</a>
         <a href="orderhistory.html">My Order History</a>
         <a href="#" id="logout">Logout</a></li>
-        <a class="cart-nav" href="customercart.html"><i class="fa fa-shopping-cart"></i><span class="total-cart-quantity">${cart.cart.totalQuantity}</span></a>
+        <a class="cart-nav" href="customercart.html"><i class="fa fa-shopping-cart"></i><span class="total-cart-quantity">${cart.cart.cart.totalQuantity}</span></a>
         <a id="app-name" href="landingpage.html">Food-direct</a>
       </div>
         <p id="app-name-toggle" href="landingpage.html">Food-direct</p>`;

@@ -76,11 +76,11 @@ const getMyCartDetails = () => {
   fetch(getCartUrl, cartHeader)
     .then(res => res.json())
     .then((cart) => {
-      if (cart.cart.totalQuantity === 0) {
+      if (cart.cart.cart.totalQuantity === 0) {
         document.querySelector('.no-items-text').innerHTML = 'There are no items in the cart';
       }
       myCartSpinner.classList.add('hide');
-      cart.cart.items.map((item) => {
+      cart.cart.cart.items.map((item) => {
         cartView += `<tr>
       <td>
         <div class="image-details">
@@ -106,7 +106,7 @@ const getMyCartDetails = () => {
       });
       cartView += `</table>
         <div class="sub-total">
-        <h1>Subtotal (${cart.cart.totalQuantity} items):  #${cart.cart.totalprice}</h1>
+        <h1>Subtotal (${cart.cart.cart.totalQuantity} items):  #${cart.cart.cart.totalprice}</h1>
         <button class="proceed-btn">Proceed</button>
         </div>`;
       document.querySelector('.cart-entry').innerHTML = cartView;
