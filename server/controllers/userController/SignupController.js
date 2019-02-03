@@ -54,7 +54,7 @@ class UserController {
         });
       } else {
         errors.emailExists = 'email exists';
-        return res.status(409).json({ errors });
+        return res.status(409).json({ errors, status: 409, success: false });
       }
     });
   }
