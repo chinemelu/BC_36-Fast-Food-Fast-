@@ -26,7 +26,7 @@ class UserController {
 
     db(selectText, selectParams, (error, user) => {
       if (error) {
-        return res.status(500).json({ error });
+        return res.status(500).json({ error, success: false });
       }
       if (!user.rows.length) {
         const hashedPassword = bcrypt.hashSync(req.body.password, 10);
@@ -35,7 +35,7 @@ class UserController {
         const insertParams = [email, hashedPassword, firstName, lastName];
         db(insertText, insertParams, (err, newUser) => {
           if (err) {
-            return res.status(500).json({ error: err.stack });
+            return res.status(500).json({ error: err.stack, success: false });
           }
           const payload = {
             userId: newUser.rows[0].id,
@@ -45,6 +45,8 @@ class UserController {
             expiresIn: '48h'
           });
           res.status(201).json({
+            status: 201,
+            success: true,
             message: `${newUser.rows[0].first_name}, you have successfully created an account`,
             id: newUser.rows[0].id,
             token

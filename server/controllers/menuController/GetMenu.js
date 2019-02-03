@@ -20,12 +20,16 @@ class GetMenuController {
       }
       if (Array.isArray(results.rows) && results.rows.length) {
         res.status(200).json({
-          data: results.rows
+          data: results.rows,
+          status: 200,
+          success: true
         });
       } else {
         res.status(200).json({
           message: 'There are no available food items',
-          data: results.rows
+          data: results.rows,
+          status: 200,
+          success: true
         });
       }
     });

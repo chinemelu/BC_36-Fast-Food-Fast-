@@ -20,7 +20,9 @@ class AddToMenuController {
       .then((result) => {
         if (result.rows.length) {
           return res.status(409).json({
-            message: 'Item already exists'
+            message: 'Item already exists',
+            success: false,
+            status: 409
           });
         }
         const insertText = 'INSERT INTO food_items(name, price, img_url) VALUES ($1, $2, $3) RETURNING \n'
@@ -32,10 +34,12 @@ class AddToMenuController {
           .then(() => {
             res.status(201).json({
               message: 'You have added the food item successfully',
+              success: true,
+              status: 201
             });
           })
           .catch((err) => {
-            res.status(500).json({ error: err.stack });
+            res.status(500).json({ error: err.stack, success: false });
           });
       });
   }

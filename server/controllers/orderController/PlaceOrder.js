@@ -22,7 +22,9 @@ class OrderController {
       .then((cart) => {
         if (!cart.rows.length || cart.rows[0].total_quantity === 0) {
           return res.status(400).json({
-            message: 'Please add at least one item to order'
+            message: 'Please add at least one item to order',
+            success: false,
+            status: 400
           });
         }
         const insertText = 'INSERT INTO orders(user_id, cart_id) VALUES ($1, $2) RETURNING \n'
@@ -37,22 +39,24 @@ class OrderController {
             const updateParams = [true, cart.rows[0].id];
             db(updateText, updateParams, (err) => {
               if (err) {
-                return res.status(500).json({ error: err.stack });
+                return res.status(500).json({ error: err.stack, success: false });
               }
               const updateUserText = 'UPDATE users SET address = $1, phone_number = $2 WHERE id = $3';
               const updateUserParams = [req.body.address, req.body.mobileNumber, userId];
               db(updateUserText, updateUserParams, (err) => {
                 if (err) {
-                  return res.status(500).json({ error: err.stack });
+                  return res.status(500).json({ error: err.stack, success: false });
                 }
                 res.status(201).json({
                   message: 'You have ordered successfully',
+                  status: 201,
+                  success: true
                 });
               });
             });
           })
           .catch((err) => {
-            res.status(500).json({ error: err.stack });
+            res.status(500).json({ error: err.stack, success: false });
           });
       });
   }

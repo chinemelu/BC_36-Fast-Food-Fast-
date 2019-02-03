@@ -47,10 +47,16 @@ class GetSingleOrderController {
         return res.status(500).json({ error: err.stack });
       }
       if (results.rows.length) {
-        res.status(200).json(results.rows[0]);
+        res.status(200).json({
+          data: results.rows[0],
+          status: 200,
+          success: true
+        });
       } else {
         res.status(404).json({
-          message: 'Order not found'
+          message: 'Order not found',
+          status: 404,
+          success: false
         });
       }
     });

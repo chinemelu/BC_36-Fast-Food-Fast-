@@ -19,15 +19,19 @@ class GetFoodItemController {
     const selectParams = [itemId, true];
     db(selectText, selectParams, (err, item) => {
       if (err) {
-        return res.status(500).json({ error: err.stack });
+        return res.status(500).json({ error: err.stack, success: false });
       }
       if (!item.rows.length) {
         return res.status(404).json({
-          message: 'Item not found'
+          message: 'Item not found',
+          success: false,
+          status: 404
         });
       }
       res.status(200).json({
-        item: item.rows[0]
+        item: item.rows[0],
+        success: true,
+        status: 200
       });
     });
   }

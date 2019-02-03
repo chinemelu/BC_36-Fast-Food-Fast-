@@ -48,7 +48,11 @@ class getCartController {
           }
         });
       } else {
-        res.status(200).json(cart.rows[0]);
+        res.status(200).json({
+          cart: cart.rows[0],
+          success: true,
+          status: 200
+        });
       }
     });
   }

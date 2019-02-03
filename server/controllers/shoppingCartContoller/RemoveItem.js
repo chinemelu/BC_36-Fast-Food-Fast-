@@ -25,7 +25,9 @@ class RemoveItemController {
       }
       if (!cart.rows.length) {
         return res.status(404).json({
-          message: 'This item does not exist in the cart'
+          message: 'This item does not exist in the cart',
+          success: false,
+          status: 404
         });
       }
       const selectText2 = 'SELECT * FROM carts_fooditems WHERE cart_id = $1 AND item_id = $2';
@@ -37,7 +39,9 @@ class RemoveItemController {
         }
         if (!item.rows.length) {
           return res.status(404).json({
-            message: 'This item does not exist in the cart'
+            message: 'This item does not exist in the cart',
+            status: 404,
+            success: false
           });
         }
         const updateText = `UPDATE carts SET total_quantity = $1, total_price = $2 
@@ -56,7 +60,9 @@ class RemoveItemController {
         const deleteParam1 = [itemId];
 
         db(deleteText1, deleteParam1).then(() => res.status(200).json({
-          message: `${req.item.name} removed from cart`
+          message: `${req.item.name} removed from cart`,
+          status: 200,
+          success: true
         })).catch(e => setImmediate(() => { throw e; }));
       });
     });

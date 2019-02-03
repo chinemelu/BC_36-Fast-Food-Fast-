@@ -35,17 +35,24 @@ class UserController {
                 expiresIn: '48h'
               });
               res.status(200).json({
+                status: 200,
+                success: false,
                 message: `${user.rows[0].first_name}, you have successfully logged in`,
                 id: user.rows[0].id,
                 token
               });
             } else {
-              return res.status(401).json({ error: 'Invalid email or password' });
+              return res.status(401).json({ 
+                error: 'Invalid email or password', 
+                status: 401, 
+                success: false 
+              });
             }
           })
           .catch((error) => {
             res.status(500).json({
-              error
+              error,
+              success: false
             });
           });
       }

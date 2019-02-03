@@ -20,17 +20,21 @@ class UpdateOrderStatusController {
     const params = [orderStatus, orderId];
     db(text, params, (err, result) => {
       if (err) {
-        return res.status(500).json({ error: err.stack });
+        return res.status(500).json({ error: err.stack, success: false });
       }
 
       if (!result.rows.length) {
         return res.status(404).json({
-          message: 'Order not found'
+          message: 'Order not found',
+          success: false,
+          status: 404
         });
       }
       res.status(200).json({
         message: 'You have successfully updated the order status',
-        updated: result.rows[0]
+        updated: result.rows[0],
+        success: true,
+        status: 200
       });
     });
   }

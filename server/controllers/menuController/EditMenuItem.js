@@ -26,18 +26,22 @@ class EditItemController {
       .then((result) => {
         if (result.rows.length) {
           return res.status(409).json({
-            message: 'Item already exists'
+            message: 'Item already exists',
+            success: false,
+            status: 409
           });
         }
         db(editText, editParams)
           .then(() => {
             res.status(200).json({
               message: 'You have edited the food item successfully',
+              success: true,
+              status: 200
             });
           });
       })
       .catch((err) => {
-        res.status(500).json({ error: err.stack });
+        res.status(500).json({ error: err.stack, success: false });
       });
   }
 }

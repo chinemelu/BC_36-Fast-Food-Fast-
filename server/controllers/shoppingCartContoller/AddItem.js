@@ -33,7 +33,7 @@ class AddItemController {
           const params7 = [newCart.rows[0].id, itemId, 1];
           db(text7, params7, (err) => {
             if (err) {
-              return res.status(500).json({ error: err.stack });
+              return res.status(500).json({ error: err.stack, success: false });
             }
             res.status(200).json({
               message: `${req.item.name} added to cart`
@@ -51,7 +51,7 @@ class AddItemController {
         ];
         db(text6, params6, (err) => {
           if (err) {
-            return res.status(500).json({ error: err.stack });
+            return res.status(500).json({ error: err.stack, success: false });
           }
         });
 
@@ -67,9 +67,11 @@ class AddItemController {
             const params4 = [cart.rows[0].id, itemId, 1];
             db(text4, params4, (err) => {
               if (err) {
-                return res.status(500).json({ error: err.stack });
+                return res.status(500).json({ error: err.stack, success: false });
               }
               res.status(200).json({
+                status: 200,
+                success: true,
                 message: `${req.item.name} added to cart`
               });
             });
@@ -82,7 +84,9 @@ class AddItemController {
                 return res.status(500).json({ error: err.stack });
               }
               res.status(200).json({
-                message: `${req.item.name} added to cart`
+                message: `${req.item.name} added to cart`,
+                status: 200,
+                success: true
               });
             });
           }

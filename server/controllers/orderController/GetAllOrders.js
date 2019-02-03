@@ -50,16 +50,19 @@ class GetAllOrdersController {
 
     db(text, param, (err, results) => {
       if (err) {
-        return res.status(500).json({ error: err.stack });
+        return res.status(500).json({ error: err.stack, success: false });
       }
       if (Array.isArray(results.rows) && results.rows.length) {
         res.status(200).json({
-          data: results.rows
+          data: results.rows,
+          success: true
         });
       } else {
         res.status(200).json({
           message: 'There are no available food orders',
-          data: results.rows
+          data: results.rows,
+          status: 200,
+          success: true
         });
       }
     });
